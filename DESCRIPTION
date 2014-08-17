@@ -1,0 +1,11 @@
+Package: crandb
+Title: CRAN metadata in a CouchDB database
+Version: 0.1
+Authors@R: "Gabor Csardi <csardi.gabor@gmail.com> [aut, cre]"
+Description: Build, update and query a CouchDB database
+    that contains CRAN metadata, about all versions of all packages.
+Imports:
+    magrittr,
+    R4CouchDB
+License: MIT + file LICENSE
+LazyData: true
