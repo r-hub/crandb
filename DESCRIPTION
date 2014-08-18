@@ -6,6 +6,19 @@ Description: Build, update and query a CouchDB database
     that contains CRAN metadata, about all versions of all packages.
 Imports:
     magrittr,
-    R4CouchDB
+    R4CouchDB,
+    rappdirs,
+    yaml,
+    falsy,
+    jsonlite
 License: MIT + file LICENSE
 LazyData: true
+Collate:
+    'build.r'
+    'cran.r'
+    'config.r'
+    'couch.r'
+    'crandb-package.r'
+    'utils.r'
+Suggests:
+    testthat
