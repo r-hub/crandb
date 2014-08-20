@@ -85,9 +85,25 @@ fix_deps <- function(rec) {
   rec
 }
 
+## TODO: what if all these fail? There are some
+## very old packages like that
+
 add_date <- function(rec) {
-  ## TODO
+  rec$date <- (rec[["Date/Publication"]] %||%
+   rec[["Packaged"]] %||%
+   rec[["Date"]]) %>%
+     sub(pattern = ";.*$", replacement = "") %>%
+     normalize_date() %>%
+     unbox()
+
   rec
+}
+
+#' @importFrom parsedate parse_date
+
+normalize_date <- function(date) {
+  parse_date(date) %>%
+    strftime(format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC", usetz = FALSE)
 }
 
 couch_add <- function(json) {

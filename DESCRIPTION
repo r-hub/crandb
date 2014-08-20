@@ -10,7 +10,8 @@ Imports:
     rappdirs,
     yaml,
     falsy,
-    jsonlite
+    jsonlite,
+    parsedate
 License: MIT + file LICENSE
 LazyData: true
 Collate:
