@@ -1,6 +1,10 @@
 
 context("Extracting data from CRAN")
 
+if (getOption("repos")["CRAN"] == "@CRAN@") {
+  options(repos = structure(c(CRAN = "http://cran.rstudio.com")))
+}
+
 #' Download a file from CRAN
 #'
 #' @param file The file to download, it is a character vector
