@@ -11,12 +11,20 @@ pkg_to_json <- function(dcf, archived, pretty = FALSE) {
   list() %>%
     set("_id", unbox(pkg)) %>%
     set("name", unbox(pkg)) %>%
-    set("versions", apply(dcf, 1, pkg_version_to_json)) %>%
+    set("versions", get_versions(dcf)) %>%
     add_latest_version() %>%
     add_timeline() %>%
     add_title() %>% ## TODO frec$versions[[frec[["latest"]]]]$Title
     add_archived () %>%
     toJSON(pretty = pretty)
+}
+
+#' @importFrom magrittr "%>%" set_names
+
+get_versions <- function(dcf) {
+  res <- apply(dcf, 1, pkg_version_to_json)
+  res %>%
+    set_names(sapply(res, "[[", "Version"))
 }
 
 add_releases <- function(pkg) {
