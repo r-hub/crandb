@@ -99,11 +99,12 @@ add_date <- function(rec) {
   rec
 }
 
-#' @importFrom parsedate parse_date
+#' @importFrom parsedate parse_date format_iso_8601
 
 normalize_date <- function(date) {
-  parse_date(date) %>%
-    strftime(format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC", usetz = FALSE)
+  date %>%
+    parse_date() %>%
+    format_iso_8601()
 }
 
 couch_add <- function(json) {
