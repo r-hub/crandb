@@ -1,6 +1,8 @@
 
 set <- .Primitive("[[<-")
 
+## TODO: add archival date, reason
+
 #' @importFrom R4CouchDB cdbIni
 #' @importFrom jsonlite toJSON unbox
 
@@ -12,14 +14,12 @@ pkg_to_json <- function(dcf, archived, pretty = FALSE) {
     set("_id", unbox(pkg)) %>%
     set("name", unbox(pkg)) %>%
     set("versions", get_versions(dcf)) %>%
-    add_latest_version() %>%
     add_timeline() %>%
-    add_title() %>% ## TODO frec$versions[[frec[["latest"]]]]$Title
-    add_archived () %>%
+    add_latest_version() %>%
+    add_title() %>%
+    set("archived", unbox(archived)) %>%
     toJSON(pretty = pretty)
 }
-
-#' @importFrom magrittr "%>%" set_names
 
 get_versions <- function(dcf) {
   res <- apply(dcf, 1, pkg_version_to_json)
@@ -33,22 +33,19 @@ add_releases <- function(pkg) {
 }
 
 add_title <- function(pkg) {
-  ## TODO
+  pkg$title <- pkg$versions[[pkg$latest]]$Title
   pkg
 }
 
 add_latest_version <- function(pkg) {
-  pkg$latest <- "TODO"
+  pkg[["latest"]] <- tail(pkg$timeline, 1) %>%
+    names() %>%
+    unbox()
   pkg
 }
 
 add_timeline <- function(frec) {
-  ## TODO
-  frec
-}
-
-add_archived <- function(frec) {
-  ## TODO
+  frec[["timeline"]] <- lapply(frec$versions, "[[", "date")
   frec
 }
 

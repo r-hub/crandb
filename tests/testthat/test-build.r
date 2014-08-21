@@ -191,14 +191,45 @@ test_that("Convert DESCRIPTIONs to JSON", {
     "Author", "Maintainer", "NeedsCompilation", "Repository",
     "Date/Publication")))
   json <- pkg_to_json(desc, archived = FALSE, pretty = TRUE)
-  ## TODO
+  fj <- jsonlite::fromJSON(json, simplifyVector = FALSE)
+  expect_equal(sort(names(fj)), c("_id", "archived", "latest", "name",
+                                  "timeline", "title", "versions"))
+  expect_equal(fj[["_id"]], "assertthat")
+  expect_equal(fj[["name"]], "assertthat")
+
+  vers <- fj[["versions"]]
+  expect_equal(length(vers), 1)
+  expect_equal(sort(names(vers[[1]])),
+    c("Author", "Authors@R", "Collate", "date", "Date/Publication",
+      "Description", "License", "Maintainer", "NeedsCompilation", "Package",
+      "Packaged", "Repository", "Roxygen", "Suggests", "Title", "Version"))
+  expect_equal(vers[[1]]$Suggests, structure(list(testthat = "*"),
+                                             .Names = "testthat"))
+  expect_equal(vers[[1]]$date, "2013-12-06T00:51:10+00:00")
+  ## TODO: latest
 })
 
 test_that("Convert real DESCRIPTIONs to JSON", {
   need_pkgs(c("assertthat", "testthat", "igraph0"))
-  json <- get_descriptions("assertthat") %>%
-    pkg_to_json(archived = FALSE, pretty = TRUE)
-  ## TODO
+  json <- get_descriptions("igraph0") %>%
+    pkg_to_json(archived = TRUE, pretty = TRUE)
+  fj <- jsonlite::fromJSON(json, simplifyVector = FALSE)
+  expect_equal(sort(names(fj)), c("_id", "archived", "latest", "name",
+                                  "timeline", "title", "versions"))
+
+  vers <- fj[["versions"]]
+  expect_equal(length(vers), 8)
+  expect_false(is.unsorted(sapply(vers, "[[", "date")))
+  expect_equal(names(vers), c("0.5.5", "0.5.5-1", "0.5.5-2", "0.5.5-3",
+                              "0.5.6", "0.5.6-1", "0.5.6-2", "0.5.7"))
+
+  expect_equal(names(fj$timeline), names(vers))
+  expect_equal(unlist(fj$timeline), sapply(vers, "[[", "date"))
+
+  expect_equal(fj$latest, "0.5.7")
+  expect_equal(fj$title,
+    "Network analysis and visualization, old, deprecated package.")
+  expect_true(fj$archived)
 })
 
 ## ----------------------------------------------------------------------
