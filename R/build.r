@@ -84,7 +84,15 @@ get_desc_from_file <- function(file, pkg) {
     from_tarball(files = file.path(pkg, "DESCRIPTION")) %>%
     trim_trailing() %>%
     add_more_info(pkg = pkg, file = file) %>%
-    fix_empty_lines()
+    fix_empty_lines() %>%
+    fix_continuation_lines()
+}
+
+## If there are no spaces in a continuation line, then we indent it
+
+fix_continuation_lines <- function(text) {
+  gsub("\\n([^\\n:]+)\\n", "\n  \\1\n", text, useBytes = TRUE,
+       perl = TRUE)
 }
 
 ## TODO: add download url, extract package version from
