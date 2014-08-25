@@ -6,12 +6,12 @@ Description: Build, update and query a CouchDB database
     that contains CRAN metadata, about all versions of all packages.
 Imports:
     magrittr,
-    R4CouchDB,
     rappdirs,
     yaml,
     falsy,
     jsonlite,
-    parsedate
+    parsedate,
+    httr
 License: MIT + file LICENSE
 LazyData: true
 Collate:
@@ -23,3 +23,4 @@ Collate:
     'utils.r'
 Suggests:
     testthat
+SystemRequirements: node.js, couchapp

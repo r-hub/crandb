@@ -24,3 +24,14 @@ with_wd <- function(dir, expr) {
 }
 
 trim <- function (x) gsub("^\\s+|\\s+$", "", x)
+
+check_external <- function(cmdline) {
+  system(cmdline, ignore.stdout = TRUE, ignore.stderr = TRUE) %>%
+    equals(0)
+}
+
+check_couchapp <- function() {
+  if (!check_external("couchapp")) {
+    stop("Need an installed couchapp")
+  }
+}

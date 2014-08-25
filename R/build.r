@@ -39,14 +39,10 @@ current_rds <- function() {
     readRDS()
 }
 
-create_empty_db <- function() {
-  TODO
-}
-
 add_package <- function(pkg, archived = FALSE) {
   get_descriptions(pkg) %>%
     pkg_to_json(archived = archived) %>%
-    couch_add(pkg)
+    couch_add(id = pkg)
 }
 
 get_descriptions <- function(pkg) {

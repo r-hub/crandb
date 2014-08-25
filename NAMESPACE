@@ -2,6 +2,7 @@
 
 export(couchdb_server)
 export(cran_mirror)
+export(create_empty_db)
 export(list_cran_packages)
 import(magrittr)
 importFrom(R4CouchDB,cdbIni)

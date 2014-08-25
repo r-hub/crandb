@@ -112,6 +112,39 @@ normalize_date <- function(date) {
     format_iso_8601()
 }
 
-couch_add <- function(json) {
+#' Create an empty Couchdb database with CRAN-DB structure
+#'
+#' @export
 
+create_empty_db <- function() {
+  check_couchapp()
+
+  couch_exists() %||% couch_create_db() %||%
+    stop("Cannot create DB", call. = TRUE)
+
+  paste("couchapp push",
+        system.file("app.js", package = packageName()),
+        couchdb_server()) %>%
+    system(ignore.stdout = TRUE, ignore.stderr = TRUE)
+}
+
+couch_add <- function(id, json) {
+  check_couchapp()
+  couchdb_server() %>%
+    paste(sep = "/", id) %>%
+    httr::PUT(body = json, httr::content_type_json()) %>%
+    httr::stop_for_status()
+}
+
+couch_exists <- function() {
+  couchdb_server() %>%
+    httr::url_ok()
+}
+
+couch_create_db <- function() {
+  couchdb_server() %>%
+    httr::PUT() %>%
+    httr::stop_for_status()
+
+  TRUE
 }
