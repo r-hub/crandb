@@ -40,9 +40,24 @@ current_rds <- function() {
 }
 
 add_package <- function(pkg, archived = FALSE) {
-  get_descriptions(pkg) %>%
-    pkg_to_json(archived = archived) %>%
-    couch_add(id = pkg)
+
+  descs <- get_descriptions(pkg) %>%
+    remove_bundles()
+
+  if (nrow(descs) > 0) {
+    descs %>%
+      pkg_to_json(archived = archived) %>%
+      couch_add(id = pkg)
+  }
+}
+
+## TODO: do something with bundles
+
+remove_bundles <- function(dcf) {
+  if ("Bundle" %in% colnames(dcf)) {
+    dcf <- dcf[is.na(dcf[, "Bundle"]), , drop = FALSE]
+  }
+  dcf
 }
 
 get_descriptions <- function(pkg) {
