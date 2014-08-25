@@ -80,15 +80,26 @@ get_descriptions <- function(pkg) {
 }
 
 get_desc_from_file <- function(file, pkg) {
-  file_date <- file %>%
-    file.info() %>%
-    extract2("mtime")
-
   file %>%
     from_tarball(files = file.path(pkg, "DESCRIPTION")) %>%
     trim_trailing() %>%
-    fix_empty_lines() %>%
-    paste0("\ncrandb_file_date: ", file_date, "\n")
+    add_more_info(pkg = pkg, file = file) %>%
+    fix_empty_lines()
+}
+
+## TODO: add download url, extract package version from
+## file name if no description file, also TITLE, README, etc.
+
+add_more_info <- function(pkg, file, desc) {
+  file_date <- file %>%
+    file.info() %>%
+    extract2("mtime")
+  desc <- paste0(desc, "\ncrandb_file_date: ", file_date, "\n")
+  
+  grepl("^Package:", desc) %||% {
+    desc <- paste0(desc, "\nPackage: ", pkg, "\n")
+  }
+  desc
 }
 
 fix_empty_lines <- function(text) {
@@ -110,6 +121,7 @@ from_tarball <- function(tar_file, files) {
 }
 
 read_file <- function(path) {
+  file.exists(path) %||% return("")
   readChar(path, file.info(path)$size, useBytes = TRUE)
 }
 
