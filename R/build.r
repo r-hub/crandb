@@ -47,9 +47,20 @@ add_package <- function(pkg, archived = FALSE) {
 
 get_descriptions <- function(pkg) {
   list_tarballs(pkg) %>%
-    sapply(from_tarball, files = file.path(pkg, "DESCRIPTION")) %>%
+    sapply(get_desc_from_file, pkg = pkg) %>%
     paste(collapse = "\n\n") %>%
     dcf_from_string()
+}
+
+get_desc_from_file <- function(file, pkg) {
+  file_date <- file %>%
+    file.info() %>%
+    extract2("mtime")
+
+  file %>%
+    from_tarball(files = file.path(pkg, "DESCRIPTION")) %>%
+    trim_trailing() %>%
+    paste0("\ncrandb_file_date: ", file_date)
 }
 
 from_tarball <- function(tar_file, files) {

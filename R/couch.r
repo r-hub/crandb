@@ -95,7 +95,8 @@ fix_deps <- function(rec) {
 add_date <- function(rec) {
   rec$date <- (rec[["Date/Publication"]] %||%
    rec[["Packaged"]] %||%
-   rec[["Date"]]) %>%
+   rec[["Date"]] %||%
+   rec[["crandb_file_date"]]) %>%
      sub(pattern = ";.*$", replacement = "") %>%
      normalize_date() %>%
      unbox()

@@ -25,6 +25,10 @@ with_wd <- function(dir, expr) {
 
 trim <- function (x) gsub("^\\s+|\\s+$", "", x)
 
+trim_leading <- function (x)  sub("^\\s+", "", x)
+
+trim_trailing <- function (x) sub("\\s+$", "", x)
+
 check_external <- function(cmdline) {
   system(cmdline, ignore.stdout = TRUE, ignore.stderr = TRUE) %>%
     equals(0)
