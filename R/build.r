@@ -92,7 +92,11 @@ get_desc_from_file <- function(file, pkg) {
 }
 
 fix_empty_lines <- function(text) {
-  gsub("\\n[ \\t\\r]*\\n", "\n  .\n", text)
+  text %>%
+    gsub(pattern = "\\n[ \\t\\r]*\\n", replacement = "\n  .\n",
+         perl = TRUE, useBytes = TRUE) %>%
+    gsub(pattern = "\\n[ \\t\\r]*\\n", replacement = "\n",
+         perl = TRUE, useBytes = TRUE)
 }
 
 from_tarball <- function(tar_file, files) {
