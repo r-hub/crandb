@@ -61,10 +61,10 @@ pkg_version_to_json <- function(rec) {
     set_encoding() %>%
     na.omit() %>%
     as.list() %>%
-    lapply(unbox) %>%
-    fix_deps() %>%
     add_releases() %>%
-    add_date()
+    add_date() %>%
+    lapply(unbox) %>%
+    fix_deps()
 }
 
 set_encoding <- function(str) {
@@ -93,17 +93,26 @@ fix_deps <- function(rec) {
   rec
 }
 
+try_date <- function(date) {
+
+  date %||% return(NULL)
+
+  norm_date <- date %>%
+    sub(pattern = ";.*$", replacement = "") %>%
+    normalize_date()
+
+  if (is.na(norm_date)) NULL else norm_date
+}
+
 ## TODO: what if all these fail? There are some
 ## very old packages like that
 
 add_date <- function(rec) {
-  rec$date <- (rec[["Date/Publication"]] %||%
-   rec[["Packaged"]] %||%
-   rec[["Date"]] %||%
-   rec[["crandb_file_date"]]) %>%
-     sub(pattern = ";.*$", replacement = "") %>%
-     normalize_date() %>%
-     unbox()
+  rec$date <-
+    try_date(rec[["Date/Publication"]]) %||%
+    try_date(rec[["Packaged"]]) %||%
+    try_date(rec[["Date"]]) %||%
+    try_date(rec[["crandb_file_date"]])
 
   rec
 }
