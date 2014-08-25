@@ -1,8 +1,20 @@
 
 ## We build the database from a complete CRAN mirror.
 
-build_db <- function() {
+build_db <- function(from = NA) {
   pkgs <- list_cran_packages()
+
+  if (!is.na(from)) {
+    if (from %in% pkgs$current) {
+      idx <- match(from, pkgs$current)
+      pkgs$current <- pkgs$current[idx:length(pkgs$current)]
+    } else {
+      pkgs$current <- character()
+      idx <- match(from, pkgs$archive)
+      pkgs$archive <- pkgs$archive[idx:length(pkgs$archive)]
+    }
+  }
+
   for (pkg in pkgs$current) { add_package(pkg) }
   for (pkg in pkgs$archive) { add_package(pkg, archived = TRUE) }
 }
