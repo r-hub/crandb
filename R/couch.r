@@ -128,7 +128,6 @@ create_empty_db <- function() {
 }
 
 couch_add <- function(id, json) {
-  check_couchapp()
   couchdb_server() %>%
     paste(sep = "/", id) %>%
     httr::PUT(body = json, httr::content_type_json()) %>%
