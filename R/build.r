@@ -75,7 +75,12 @@ get_desc_from_file <- function(file, pkg) {
   file %>%
     from_tarball(files = file.path(pkg, "DESCRIPTION")) %>%
     trim_trailing() %>%
-    paste0("\ncrandb_file_date: ", file_date)
+    fix_empty_lines() %>%
+    paste0("\ncrandb_file_date: ", file_date, "\n")
+}
+
+fix_empty_lines <- function(text) {
+  gsub("\\n[ \\t\\r]*\\n", "\n  .\n", text)
 }
 
 from_tarball <- function(tar_file, files) {
