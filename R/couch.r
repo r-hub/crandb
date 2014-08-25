@@ -6,8 +6,12 @@ set <- .Primitive("[[<-")
 #' @importFrom jsonlite toJSON unbox
 
 pkg_to_json <- function(dcf, archived, pretty = FALSE) {
-  pkg <- unique(dcf[, "Package"])
-  if (length(pkg) != 1) { stop("Multiple packages in DCF", call. = FALSE) }
+
+  pkg <- dcf[, "Package"] %>%
+    unique() %>%
+    tail(1)
+
+  if (length(pkg) < 1) { stop("No packages in DCF", call. = FALSE) }
 
   list() %>%
     set("_id", unbox(pkg)) %>%
