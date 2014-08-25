@@ -3,7 +3,6 @@ set <- .Primitive("[[<-")
 
 ## TODO: add archival date, reason
 
-#' @importFrom R4CouchDB cdbIni
 #' @importFrom jsonlite toJSON unbox
 
 pkg_to_json <- function(dcf, archived, pretty = FALSE) {

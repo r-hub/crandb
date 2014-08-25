@@ -21,8 +21,7 @@ Description: Build, update and query a CouchDB database
     that contains CRAN metadata, about all versions of all packages.
 Imports:
     magrittr,
-    R4CouchDB,
-    rappdirs,
+    rappdirs
 '
 
   dcf <- dcf_from_string(DESC)
