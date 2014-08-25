@@ -74,7 +74,7 @@ from_tarball <- function(tar_file, files) {
 }
 
 read_file <- function(path) {
-  readChar(path, file.info(path)$size)
+  readChar(path, file.info(path)$size, useBytes = TRUE)
 }
 
 dcf_from_string <- function(dcf, ...) {
