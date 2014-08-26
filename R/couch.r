@@ -42,8 +42,10 @@ add_title <- function(pkg) {
 }
 
 add_latest_version <- function(pkg) {
-  pkg[["latest"]] <- tail(pkg$timeline, 1) %>%
+  pkg[["latest"]] <- pkg$timeline %>%
     names() %>%
+    grep(pattern = "archived", invert = TRUE, fixed = TRUE, value = TRUE) %>%
+    tail(1) %>%
     unbox()
   pkg
 }

@@ -111,7 +111,8 @@ test_that("Convert DESCRIPTIONs to JSON", {
 test_that("Convert real DESCRIPTIONs to JSON", {
   need_pkgs(c("assertthat", "testthat", "igraph0"))
   json <- get_descriptions("igraph0") %>%
-    pkg_to_json(archived = TRUE, pretty = TRUE)
+    pkg_to_json(archived = TRUE, archived_at = parse_date("2013-09-21"),
+                pretty = TRUE)
   fj <- jsonlite::fromJSON(json, simplifyVector = FALSE)
   expect_equal(sort(names(fj)), c("_id", "archived", "latest", "name",
                                   "timeline", "title", "versions"))
@@ -122,8 +123,12 @@ test_that("Convert real DESCRIPTIONs to JSON", {
   expect_equal(names(vers), c("0.5.5", "0.5.5-1", "0.5.5-2", "0.5.5-3",
                               "0.5.6", "0.5.6-1", "0.5.6-2", "0.5.7"))
 
-  expect_equal(names(fj$timeline), names(vers))
-  expect_equal(unlist(fj$timeline), sapply(vers, "[[", "date"))
+  expect_equal(names(fj$timeline), c(names(vers), "archived"))
+  drop_last <- function(x) x[-length(x)]
+  expect_equal(drop_last(unlist(fj$timeline)), sapply(vers, "[[", "date"))
+  expect_equal(tail(unlist(fj$timeline), 1),
+               c("archived" = format_iso_8601(parse_date("2013-09-21"))))
+
 
   expect_equal(fj$latest, "0.5.7")
   expect_equal(fj$title,
