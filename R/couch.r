@@ -170,12 +170,12 @@ create_empty_db <- function() {
 
   paste("couchapp push",
         system.file("app.js", package = packageName()),
-        couchdb_server()) %>%
+        couchdb_server(root = TRUE)) %>%
     system(ignore.stdout = TRUE, ignore.stderr = TRUE)
 }
 
 couch_add <- function(id, json) {
-  couchdb_server() %>%
+  couchdb_server(root = TRUE) %>%
     paste(sep = "/", id) %>%
     httr::PUT(body = json, httr::content_type_json()) %>%
     httr::stop_for_status()
@@ -187,7 +187,7 @@ couch_exists <- function() {
 }
 
 couch_create_db <- function() {
-  couchdb_server() %>%
+  couchdb_server(root = TRUE) %>%
     httr::PUT() %>%
     httr::stop_for_status()
 

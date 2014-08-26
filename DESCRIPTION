@@ -15,11 +15,13 @@ Imports:
 License: MIT + file LICENSE
 LazyData: true
 Collate:
+    'api.r'
     'build.r'
     'cran.r'
     'config.r'
     'couch.r'
     'crandb-package.r'
+    'update.r'
     'utils.r'
 Suggests:
     testthat

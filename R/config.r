@@ -73,6 +73,7 @@ cran_mirror <- function(path) {
 #'   the CouchDB URI set to the given one.
 #'
 
-couchdb_server <- function(uri) {
-  getset_config("couchdb_server_uri", uri, default = couchdb_uri_default)
+couchdb_server <- function(uri, root = FALSE) {
+  key <- if (root) "couchdb_server_uri_root" else "couchdb_server_uri"
+  getset_config(key, uri, default = couchdb_uri_default)
 }

@@ -39,3 +39,19 @@ check_couchapp <- function() {
     stop("Need an installed couchapp")
   }
 }
+
+NA_NULL <- function(x) {
+  if (length(x) == 1 && is.na(x)) NULL else x
+}
+
+unboxx <- function(x) {
+  if (inherits(x, "scalar") ||
+      is.null(x) ||
+      is.list(x) ||
+      length(x) != 1) x else unbox(x)
+}
+
+rsync <- function(from, to, args = "-rtlzv --delete") {
+  cmd <- paste("rsync", args, from, to)
+  system(cmd, ignore.stdout = TRUE, ignore.stderr = TRUE)
+}
