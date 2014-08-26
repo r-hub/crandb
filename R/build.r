@@ -139,7 +139,8 @@ from_tarball <- function(tar_file, files) {
 
 read_file <- function(path) {
   file.exists(path) %||% return("")
-  text <- readChar(path, file.info(path)$size, useBytes = TRUE)
+  text <- readChar(path, file.info(path)$size, useBytes = TRUE) %>%
+    gsub(pattern = '\r\n', replacement = '\n')
   Encoding(text) <- "bytes"
   text
 }
