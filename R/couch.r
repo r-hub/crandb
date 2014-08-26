@@ -1,7 +1,7 @@
 
 set <- .Primitive("[[<-")
 
-## TODO: add archival date, reason
+## TODO: add archival reason
 
 #' @importFrom jsonlite toJSON unbox
 
@@ -140,9 +140,6 @@ try_date <- function(date) {
 
   if (is.na(norm_date)) NULL else norm_date
 }
-
-## TODO: what if all these fail? There are some
-## very old packages like that
 
 add_date <- function(rec) {
   rec$date <-
