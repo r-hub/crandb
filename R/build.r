@@ -85,6 +85,7 @@ get_descriptions <- function(pkg) {
   list_tarballs(pkg) %>%
     sapply(get_desc_from_file, pkg = pkg) %>%
     paste(collapse = "\n\n") %>%
+    trim_leading() %>%
     dcf_from_string()
 }
 
