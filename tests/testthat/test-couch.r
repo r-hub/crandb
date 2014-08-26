@@ -25,7 +25,8 @@ test_that("Create DB, test if exists", {
 
 test_that("Add a couple of packages to DB", {
   
-  need_pkgs(c("assertthat", "testthat", "igraph0"))
+  need_pkgs(c("assertthat", "testthat", "igraph0",
+              "AMORE", "RSA", "RandVar"))
   build_db()
   
 })
@@ -55,8 +56,9 @@ test_that("API: /-/all", {
     httr::content(as = "text") %>%
     jsonlite::fromJSON(simplifyVector = FALSE)
   
-  expect_equal(length(js), 2)
-  expect_equal(names(js), c("assertthat", "testthat"))
+  expect_equal(length(js), 5)
+  expect_equal(names(js), c("AMORE", "assertthat", "RandVar", "RSA",
+                            "testthat"))
 
 })
 
@@ -71,8 +73,9 @@ test_that("API: /-/desc", {
     httr::content(as = "text") %>%        
     jsonlite::fromJSON(simplifyVector = FALSE)
 
-  expect_equal(length(js), 2)
-  expect_equal(names(js), c("assertthat", "testthat"))
+  expect_equal(length(js), 5)
+  expect_equal(names(js), c("AMORE", "assertthat", "RandVar", "RSA",
+                            "testthat"))
   expect_equal(names(js$assertthat), c("version", "title"))
 
 })
@@ -98,6 +101,21 @@ test_that("API: /-/desc", {
 ## /-/topdeps/:version
 
 ## /-/deps/:version
+
+test_that("UTF-8 (and other special) characters go through", {
+  get <- function(pkg) {
+    pkg %>%
+      paste0(couchdb_server(), .) %>%
+      httr::GET() %>%
+      httr::content(as = "text", encoding = "UTF-8")
+  }
+
+  d1 <- get("AMORE")
+  d2 <- get("RSA")
+
+  expect_match(d1, "Castejón")
+  expect_match(d2, "Schönbrodt")
+})
 
 test_that("Teardown", {
   httr::DELETE(couchdb_server())

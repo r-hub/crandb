@@ -113,7 +113,7 @@ add_more_info <- function(pkg, file, desc) {
     extract2("mtime")
   desc <- paste0(desc, "\ncrandb_file_date: ", file_date, "\n")
   
-  grepl("^Package:", desc) %||% {
+  grepl("^Package:", desc, useBytes = TRUE) %||% {
     desc <- paste0(desc, "\nPackage: ", pkg, "\n")
   }
   desc
@@ -139,7 +139,9 @@ from_tarball <- function(tar_file, files) {
 
 read_file <- function(path) {
   file.exists(path) %||% return("")
-  readChar(path, file.info(path)$size, useBytes = TRUE)
+  text <- readChar(path, file.info(path)$size, useBytes = TRUE)
+  Encoding(text) <- "bytes"
+  text
 }
 
 dcf_from_string <- function(dcf, ...) {
