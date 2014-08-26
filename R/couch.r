@@ -22,6 +22,7 @@ pkg_to_json <- function(dcf, archived, archived_at = NA,
     add_latest_version() %>%
     add_title() %>%
     set("archived", unbox(archived)) %>%
+    add_releases() %>%
     toJSON(pretty = pretty)
 }
 
@@ -31,9 +32,36 @@ get_versions <- function(dcf) {
     set_names(sapply(res, "[[", "Version"))
 }
 
-add_releases <- function(pkg) {
-  ## TODO
-  pkg
+add_releases <- function(frec) {
+  ## For each R release, find the versions on CRAN at the time
+  act_ver <- r_releases$date %>%
+    as.character() %>%
+    sapply(pkg_ver_at_time, frec = frec) %>%
+    set_names(r_releases$version)
+
+  frec$versions <- frec$versions %>%
+    lapply(set, "releases", character())
+
+  for (i in seq_along(act_ver)) {
+    if (!is.na(act_ver[i])) {
+      frec$versions[[ act_ver[i] ]]$releases <-
+        c(names(act_ver)[i], frec$versions[[ act_ver[i] ]]$releases)
+    }
+  }
+
+  frec
+}
+
+pkg_ver_at_time <- function(frec, date) {
+
+  ver <- frec$versions %>%
+    sapply(extract2, "date") %>%
+    is_weakly_less_than(date) %>%
+    which() %>%
+    names() %>%
+    tail(1)
+
+  ver %||% NA_character_
 }
 
 add_title <- function(pkg) {
@@ -71,7 +99,6 @@ pkg_version_to_json <- function(rec) {
     set_encoding() %>%
     na.omit() %>%
     as.list() %>%
-    add_releases() %>%
     add_date() %>%
     lapply(unbox) %>%
     fix_deps()

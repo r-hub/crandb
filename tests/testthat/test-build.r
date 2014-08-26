@@ -101,7 +101,8 @@ test_that("Convert DESCRIPTIONs to JSON", {
   expect_equal(sort(names(vers[[1]])),
     c("Author", "Authors@R", "Collate", "date", "Date/Publication",
       "Description", "License", "Maintainer", "NeedsCompilation", "Package",
-      "Packaged", "Repository", "Roxygen", "Suggests", "Title", "Version"))
+      "Packaged", "releases", "Repository", "Roxygen", "Suggests", "Title",
+      "Version"))
   expect_equal(vers[[1]]$Suggests, structure(list(testthat = "*"),
                                              .Names = "testthat"))
   expect_equal(vers[[1]]$date, "2013-12-06T00:51:10+00:00")

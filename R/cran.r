@@ -20,7 +20,8 @@ couchdb_uri_default <- "http://db.r-pkg.org/"
 
 ## R release dates
 
-r_releases <- read.table(header = TRUE, textConnection(
+r_releases <- read.table(header = TRUE, stringsAsFactors = FALSE,
+                         textConnection(
 "version      date
 3.1.1   2014-07-10
 3.1.0   2014-04-10
