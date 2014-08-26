@@ -24,7 +24,7 @@ build_db <- function(from = NA) {
 #' This includes archived packages, but currently does
 #' not include packages whose name was resued by another package.
 #'
-#' @export
+
 list_cran_packages <- function() {
   current <- current_rds() %>%
     rownames() %>%

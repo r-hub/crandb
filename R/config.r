@@ -62,7 +62,6 @@ getset_config <- function(key, value, default) {
 #' @param path If not missing, then the path to the CRAN mirror.
 #'   If missing, then the current setting is returned.
 #'
-#' @export
 
 cran_mirror <- function(path) {
   getset_config("cran_mirror_path", path, default = cran_mirror_default)
@@ -73,7 +72,6 @@ cran_mirror <- function(path) {
 #' @param uri If missing, then the current URI is returned. Otherwise
 #'   the CouchDB URI set to the given one.
 #'
-#' @export
 
 couchdb_server <- function(uri) {
   getset_config("couchdb_server_uri", uri, default = couchdb_uri_default)
