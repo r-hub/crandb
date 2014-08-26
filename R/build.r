@@ -56,11 +56,20 @@ add_package <- function(pkg, archived = FALSE) {
   descs <- get_descriptions(pkg) %>%
     remove_bundles()
 
+  archived_at <- (! archived) %||% archival_date(pkg)
+
   if (nrow(descs) > 0) {
     descs %>%
-      pkg_to_json(archived = archived) %>%
+      pkg_to_json(archived = archived, archived_at = archived_at) %>%
       couch_add(id = pkg)
   }
+}
+
+archival_date <- function(pkg) {
+  cran_mirror() %>%
+    file.path("web", "packages", pkg) %>%
+    file.info() %>%
+    extract2("mtime")
 }
 
 ## TODO: do something with bundles

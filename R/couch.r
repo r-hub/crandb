@@ -5,7 +5,8 @@ set <- .Primitive("[[<-")
 
 #' @importFrom jsonlite toJSON unbox
 
-pkg_to_json <- function(dcf, archived, pretty = FALSE) {
+pkg_to_json <- function(dcf, archived, archived_at = NA,
+                        pretty = FALSE) {
 
   pkg <- dcf[, "Package"] %>%
     unique() %>%
@@ -17,7 +18,7 @@ pkg_to_json <- function(dcf, archived, pretty = FALSE) {
     set("_id", unbox(pkg)) %>%
     set("name", unbox(pkg)) %>%
     set("versions", get_versions(dcf)) %>%
-    add_timeline() %>%
+    add_timeline(archived, archived_at) %>%
     add_latest_version() %>%
     add_title() %>%
     set("archived", unbox(archived)) %>%
@@ -47,8 +48,15 @@ add_latest_version <- function(pkg) {
   pkg
 }
 
-add_timeline <- function(frec) {
+add_timeline <- function(frec, archived, archived_at) {
   frec[["timeline"]] <- lapply(frec$versions, "[[", "date")
+
+  if (archived) {
+    frec[["timeline"]][["archived"]] <- archived_at %>%
+      format_iso_8601() %>%
+      unbox
+  }
+  
   frec
 }
 
