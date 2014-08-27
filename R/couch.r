@@ -105,11 +105,7 @@ pkg_version_to_json <- function(rec) {
 }
 
 set_encoding <- function(str) {
-  if (! is.na(str["Encoding"])) {
-    Encoding(str) <- str['Encoding']
-  } else {
-    Encoding(str) <- "latin1"
-  }
+  Encoding(str) <- "UTF-8"
   str
 }
 

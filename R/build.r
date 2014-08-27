@@ -140,10 +140,20 @@ from_tarball <- function(tar_file, files) {
 
 read_file <- function(path) {
   file.exists(path) %||% return("")
-  text <- readChar(path, file.info(path)$size, useBytes = TRUE) %>%
+  readChar(path, file.info(path)$size, useBytes = TRUE) %>%
+    try_to_decode() %>%
     gsub(pattern = '\r\n', replacement = '\n')
-  Encoding(text) <- "bytes"
-  text
+}
+
+iconv_or_null <- function(...) {
+  iconv(...) %>% NA_NULL()
+}
+
+try_to_decode <- function(text) {
+  (iconv_or_null(text, from = "UTF-8", "UTF-8") %||%
+   iconv_or_null(text, from = "latin1", "UTF-8") %||%
+   iconv_or_null(text, from = "latin2", "UTF-8")
+   )
 }
 
 dcf_from_string <- function(dcf, ...) {
