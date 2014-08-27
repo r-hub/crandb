@@ -194,3 +194,17 @@ couch_create_db <- function() {
 
   TRUE
 }
+
+add_releases <- function() {
+  apply(r_releases, 1, add_release)
+}
+
+#' @importFrom parsedate parse_date format_iso_8601
+
+add_release <- function(rec) {
+  list("_id" = rec[[1]] %>% unbox(),
+       "date" = rec[[2]] %>% parse_date() %>% format_iso_8601() %>% unbox(),
+       "type" = "release" %>% unbox()) %>%
+    toJSON() %>%
+    couch_add(id = rec[[1]])
+}
