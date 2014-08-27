@@ -39,6 +39,11 @@ add_releases <- function(frec) {
     sapply(pkg_ver_at_time, frec = frec) %>%
     set_names(r_releases$version)
 
+  ## Remove the releases after the archival of the package
+  if (frec$archived) {
+    act_ver <- act_ver[r_releases$date <= frec$timeline[["archived"]]]
+  }
+
   frec$versions <- frec$versions %>%
     lapply(set, "releases", character())
 
