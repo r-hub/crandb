@@ -116,7 +116,7 @@ add_versions <- function(object, to_add, archive, current) {
     add_timeline(archived = FALSE, archived_at = NA) %>%
     add_latest_version() %>%
     add_title() %>%
-    add_releases()
+    add_releases_to_versions()
 }
 
 #' @importFrom falsy "%&&%"

@@ -22,7 +22,7 @@ pkg_to_json <- function(dcf, archived, archived_at = NA,
     add_latest_version() %>%
     add_title() %>%
     set("archived", unbox(archived)) %>%
-    add_releases() %>%
+    add_releases_to_versions() %>%
     toJSON(pretty = pretty)
 }
 
@@ -32,7 +32,7 @@ get_versions <- function(dcf) {
     set_names(sapply(res, "[[", "Version"))
 }
 
-add_releases <- function(frec) {
+add_releases_to_versions <- function(frec) {
   ## For each R release, find the versions on CRAN at the time
   act_ver <- r_releases$date %>%
     as.character() %>%
@@ -195,7 +195,7 @@ couch_create_db <- function() {
   TRUE
 }
 
-add_releases <- function() {
+add_r_releases <- function() {
   apply(r_releases, 1, add_release)
 }
 
