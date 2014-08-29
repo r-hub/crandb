@@ -1,0 +1,229 @@
+
+```{r, setup, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  comment = "##",
+  tidy = FALSE,
+  error = FALSE,
+  fig.width = 8,
+  fig.height = 8)
+```
+
+# The CRAN database
+
+The CRAN database provides an API for programatically accessing all
+meta-data of CRAN R packages. This API can be used for various purposes,
+here are three examples I am woking on right now:
+* Writing a package manager for R. The package manager can use the
+  CRAN DB API to query dependencies, or other meta data.
+* Building a search engine for CRAN packages. The DB itself does not
+  provide a search API, but it can be (easily) mirrored in a search
+  engine.
+* Creating an RSS feed for the new, updated or archived packages on CRAN.
+
+## The `crandb` API
+
+This is the API provided in the `crandb` R package.
+This is still under planning and development.
+
+## The raw API
+
+This is the raw JSON API.
+
+We will use the
+[`httr`](https://github.com/hadley/httr) package to query it, and the
+[`jsonlite`](https://github.com/jeroenooms/jsonlite) package to nicely
+format it. [`magrittr`](https://github.com/smbache/magrittr) is loaded
+for the pipes. We use `DB` to query the API and format the result.
+
+```{r}
+library(magrittr)
+skip_lines <- function(text, head = 1e6, tail = 1e6) {
+	text <- strsplit(text, "\n")[[1]]
+	tail <- min(tail, max(0, length(text) - head))
+	skip_text <- if (length(text) > head + tail) {
+		paste("\n... not showing", length(text) - head - tail, "lines ...\n")
+	} else {
+		character()
+	}
+    c(head(text, head), skip_text, tail(text, tail)) %>%
+		paste(collapse = "\n")
+}
+DB <- function(api, head = 1e6, tail = head) {
+  paste0("http://db.r-pkg.org", "/", api) %>%
+    httr::GET() %>%
+	httr::content(as = "text", encoding = "UTF-8") %>%
+	jsonlite::prettify() %>%
+	skip_lines(head = head, tail = tail) %>%
+	cat()
+}
+```
+
+### `/:pkg` Latest version of a package
+
+The result includes all fields verbatim from the DESCRIPTION file,
+plus some extra:
+* `date`: The date and time when the package was published on CRAN.
+  This is needed, because especially old packages might not have some
+  (or any) of the `Date`, `Date/Publication` or `Packaged` fields.
+* `releases`: The R version(s) that were released when this version
+  of the package was the latest on CRAN.
+* The `Suggests`, `Depends`, etc. fields are formatted as named lists.
+
+```{r}
+DB("/magrittr")
+```
+
+### `/:pkg/:version` A specific version of a package
+
+The format is the same as for the latest version.
+
+```{r}
+DB("/magrittr/1.0.0")
+```
+
+### `/:pkg/all` All versions of a package
+
+The result is a list of package versions in the `versions` field, in the
+format above, plus some extra:
+* `name`: The name of the package.
+* `title`: The title field of the package.
+* `latest`: The latest version of the package.
+* `archived`: Whether the package was archived.
+* `timeline`: All versions and their release dates of the package.
+
+```{r}
+DB("/magrittr/all")
+```
+
+### `/-/all` All packages, in alphabetical order
+
+Note that this API point _really_ returns a list of all active CRAN packages
+(currently about 6,000), so it is a good idea to query the date in
+chunks. `limit` specifies the number of records to return, and `startkey`
+can be used to specify the first key to list. Note that the result will
+include the full records of the package, all package versions.
+
+```{r}
+DB("/-/all?limit=3", head = 20)
+```
+
+### `/-/latest` Latest versions of all packages
+
+This is similar to `/-/all`, but only the latest versions of
+the packages are returned, instead of the complete records with
+all versions.
+
+```{r}
+DB("/-/latest?limit=3", head = 20)
+```
+
+### `/-/desc` Short description of latest package versions
+
+Latest versions of all packages, in alphabetical order. It also
+contains the `title` fields of the packages. Only active (not archived)
+packages are included.
+
+```{r}
+DB("/-/desc?limit=5")
+```
+
+### `/-/allall` Complete records for all packages, including archived ones
+
+This is similar to `/-/all`, but lists the archived packages as well.
+
+```{r}
+DB("/-/desc?limit=2", head = 20)
+```
+
+### `/-/pkgreleases` Package releases
+
+All versions of all packages, in the order of their release. Note that
+this includes each version of each package separately, so it is a very
+long list, and it is a good idea to use the `limit` parameter. `descending`
+can be used to reverse the ordering, and start with the most recent
+releases.
+
+```{r}
+DB("/-/pkgreleases?limit=3&descending=true", head = 20)
+```
+
+### `/-/archivals` Package archivals
+
+Package archival events, sorted by date times. The latest version
+of the package record is also included. Again, use the `limit` parameter
+to query in chunks, and the `descending` parameter to reverse the order,
+and see most recent archivals last.
+
+```{r}
+DB("/-/archivals?limit=3&descending=true", head = 20)
+```
+
+### `/-/events` Release and archival events
+
+The union of `/-/pkgreleases` and `/-/archivals`, so it includes
+all package releases and archivals.
+
+```{r}
+DB("/-/events?limit=3&descending=true", head = 20)
+```
+
+### `/-/releases` List of R versions
+
+List of all R versions supported by the database. Currently this goes
+back to version 2.0.0, older versions will be potentially added later.
+
+```{r}
+DB("/-/releases", head = 20)
+```
+
+### `/-/releasepkgs/:version` Packages that were current at an R release
+
+All package records that were current when a given version of R
+was released. This is essentially a snapshot of CRAN, for a given R
+release.
+
+```{r}
+DB("/-/releasepkgs/2.15.3", head = 20)
+```
+
+### `/-/release/:version` Package versions that were current at an R release
+
+Similar to the previous list, but it only includes the version numbers,
+and not the records of the packages.
+
+```{r}
+DB("/-/release/2.15.3", head = 20)
+```
+
+### `/-/releasedesc/:version` Short description of CRAN snapshots
+
+Similar to `/-/release`, but it also include the the `title` fields of
+the packages.
+
+```{r}
+DB("/-/releasedesc/2.15.3", head = 20)
+```
+
+### `/-/topdeps/:version` Packages most depended upon
+
+Top twenty packages. It includes all forms of dependencies, and it can be
+restricted to dependencies that were in place at a given R release. 
+
+```{r}
+DB("/-/topdeps/3.1.1")
+```
+
+For the latest versions of the packages and their dependencies, you can set
+`:version` to `dev`:
+
+```{r}
+DB("/-/topdeps/devel")
+```
+
+### `/-/deps/:version` Number of reverse dependencies
+
+For all packages, not just the top twenty.
+
+```{r}
+DB("/-/deps/2.15.1", head = 20)
+```
