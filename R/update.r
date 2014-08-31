@@ -87,7 +87,7 @@ updated_packages <- function(pkgs, archive, current) {
 }
 
 update_package <- function(pkg, archive, current) {
-  db_pkg <- package(pkg)
+  db_pkg <- get_package(pkg)
   to_add <- setdiff(cran_versions(pkg, archive, current),
                     names(db_pkg$versions))
   db_pkg %>%
@@ -184,7 +184,7 @@ archive_package <- function(pkg, archive, current) {
   ## TODO: maybe a new version before it was archived?
   ## TODO: maybe a new package was archived right away?
   archived_at <- archival_date_url(pkg)
-  db_pkg <- package(pkg)
+  db_pkg <- get_package(pkg)
   db_pkg$archived <- TRUE
   db_pkg$timeline[["archived"]] <- archived_at %>%
     format_iso_8601()

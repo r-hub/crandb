@@ -11,16 +11,20 @@ Imports:
     falsy,
     jsonlite,
     parsedate,
-    httr
+    httr,
+    assertthat
 License: MIT + file LICENSE
 LazyData: true
 Collate:
     'api.r'
+    'assert.r'
     'build.r'
     'cran.r'
     'config.r'
     'couch.r'
     'crandb-package.r'
+    'print.r'
+    'public_api.r'
     'update.r'
     'utils.r'
 Suggests:

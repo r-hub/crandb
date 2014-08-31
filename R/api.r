@@ -28,7 +28,7 @@ exists <- function(pkg) {
     url_ok()
 }
 
-package <- function(pkg) {
+get_package <- function(pkg) {
   pkg %>%
     paste0("/all") %>%
     api()

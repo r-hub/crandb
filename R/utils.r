@@ -55,3 +55,37 @@ rsync <- function(from, to, args = "-rtlzv --delete") {
   cmd <- paste("rsync", args, from, to)
   system(cmd, ignore.stdout = TRUE, ignore.stderr = TRUE)
 }
+
+query <- function(url, ...) {
+  url %>%
+    GET() %>%
+    content(as = "text", encoding = "UTF-8") %>%
+    fromJSON(...)
+}
+
+add_class <- function(x, class_name) {
+  if (! inherits(x, class_name)) {
+    class(x) <- c(class_name, attr(x, "class"))
+  }
+  x
+}
+
+contains <- function(x, y) y %in% x
+
+isin <- function(x, y) x %in% y
+
+remove_special <- function(list, level = 1) {
+
+  assert_that(is.count(level), level >= 1)
+
+  if (level == 1) {
+    names(list) %>%
+      grepl(pattern = "^_") %>%
+      replace(x = list, values = NULL)
+  } else {
+    lapply(list, remove_special, level = level - 1)
+  }
+
+}
+
+pluck <- function(list, idx) list[[idx]]
