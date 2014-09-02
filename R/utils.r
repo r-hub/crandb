@@ -40,6 +40,10 @@ check_couchapp <- function() {
   }
 }
 
+check_curl <- function() {
+  check_external("curl --version") %||% stop("Need a working 'curl'")
+}
+
 NA_NULL <- function(x) {
   if (length(x) == 1 && is.na(x)) NULL else x
 }
