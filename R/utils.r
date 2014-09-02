@@ -80,6 +80,11 @@ add_class <- function(x, class_name) {
   x
 }
 
+add_attr <- function(object, key, value) {
+  attr(object, key) <- value
+  object
+}
+
 contains <- function(x, y) y %in% x
 
 isin <- function(x, y) x %in% y
