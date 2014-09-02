@@ -65,7 +65,7 @@ query <- function(url, error = TRUE, ...) {
   result <- url %>%
     GET() %>%
     content(as = "text", encoding = "UTF-8") %>%
-    fromJSON(...)
+    fromJSON(unicode = TRUE, ...)
 
   error %&&% ("error" %in% names(result)) %&&%
     stop("crandb query: ", result$reason, call. = FALSE)
