@@ -103,7 +103,7 @@ ddoc.views.pkgreleases = {
 		t != "archived") {
 		emit(doc.timeline[t], 
 		     { "date": doc.timeline[t], "name": doc.name,
-		       "package": doc.versions[t] })
+		       "event": "released", "package": doc.versions[t] })
 	    }
 	}
     }
@@ -130,8 +130,9 @@ ddoc.views.archivals = {
 	if (doc.type && doc.type != "package") return
 	if (doc.archived) {
 	    emit(doc.timeline['archived'], 
-		 { "date": doc.archived_date, "name": doc.name, 
-		   "comment": doc.archived_comment, 
+		 { "date": doc.timeline['archived'], "name": doc.name,
+		   "comment": doc.archived_comment,
+		   "event": "archived",
 		   "package": doc.versions[doc.latest] })
 	}
     }
