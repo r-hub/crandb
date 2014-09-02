@@ -48,6 +48,10 @@ NA_NULL <- function(x) {
   if (length(x) == 1 && is.na(x)) NULL else x
 }
 
+NULL_NA <- function(x) {
+  if (is.null(x)) NA else x
+}
+
 unboxx <- function(x) {
   if (inherits(x, "scalar") ||
       is.null(x) ||
