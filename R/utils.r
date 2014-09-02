@@ -95,3 +95,18 @@ remove_special <- function(list, level = 1) {
 }
 
 pluck <- function(list, idx) list[[idx]]
+
+#' @importFrom assertthat assert_that is.string
+
+`%+%` <- function(lhs, rhs) {
+  assert_that(is.string(lhs),
+              is.string(rhs))
+  paste0(lhs, rhs)
+}
+
+`%s%` <- function(lhs, rhs) {
+  assert_that(is.string(lhs))
+  list(lhs) %>%
+    c(as.list(rhs)) %>%
+    do.call(what = sprintf)
+}
