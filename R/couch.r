@@ -208,3 +208,38 @@ add_release <- function(rec) {
     toJSON() %>%
     couch_add(id = rec[[1]])
 }
+
+update_design <- function() {
+
+  ## Check if we have command line curl
+  check_curl()
+
+  ## Copy design document
+  ("curl -X COPY " %+% couchdb_server(root = TRUE) %+%
+     '/_design/app -H "Destination: _design/app-old"') %>%
+    system(ignore.stdout = TRUE, ignore.stderr = TRUE)
+
+  ## Update design document, under a new name
+  tmp <- tempfile()
+  on.exit(try(unlink(tmp, recursive = TRUE)))
+  dir.create(tmp)
+  tmpfile <- file.path(tmp, "app-new.js")
+  system.file("app.js", package = packageName()) %>%
+    readLines() %>%
+    sub(pattern = "'_design/app'", replacement = "'_design/app-new'",
+        fixed = TRUE) %>%
+    writeLines(tmpfile)
+
+  ("couchapp push " %+% tmpfile %+% " " %+% couchdb_server(root = TRUE)) %>%
+    system()
+
+  ## Query DB to trigger indexing
+  couchdb_server(root = TRUE) %>%
+    paste0("/_design/app/_view/active?limit=5") %>%
+    httr::GET()
+
+  ## Update design document to its proper place
+  ("couchapp push " %+% system.file("app.js", package = packageName()) %+%
+     " " %+% couchdb_server(root = TRUE)) %>%
+    system()
+}
