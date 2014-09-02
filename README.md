@@ -407,43 +407,43 @@ DB("/-/pkgreleases?limit=3&descending=true", head = 20)
 ```
 ## [
 ## 	{
-## 		"date" : "2014-08-29T10:24:56+00:00",
-## 		"name" : "BayesFactor",
+## 		"date" : "2014-09-02T19:44:02+00:00",
+## 		"name" : "rappdirs",
+## 		"event" : "released",
 ## 		"package" : {
-## 			"Package" : "BayesFactor",
+## 			"Package" : "rappdirs",
 ## 			"Type" : "Package",
-## 			"Title" : "Computation of Bayes factors for common designs",
-## 			"Version" : "0.9.8",
-## 			"Date" : "2014-3-22",
-## 			"Author" : "Richard D. Morey, Jeffrey N. Rouder, Tahira Jamil",
-## 			"Maintainer" : "Richard D. Morey <richarddmorey@gmail.com>",
-## 			"Description" : "The BayesFactor package is a suite of functions for computing various Bayes factors for simple designs, including contingency tables, one- and two-sample designs, one-way designs, general ANOVA designs, and linear regression.",
-## 			"License" : "GPL-2",
-## 			"VignetteBuilder" : "knitr",
+## 			"Title" : "Application directories: determine where to save data, caches\u000aand logs.",
+## 			"Version" : "0.3",
+## 			"Authors@R" : "c(\u000aperson(\"Hadley\", \"Wickham\", email = \"h.wickham@gmail.com\",\u000arole = c(\"trl\", \"cre\", \"cph\")),\u000aperson(\"RStudio\", role = \"cph\"),\u000aperson(\"Sridhar\", \"Ratnakumar\", role = \"aut\"),\u000aperson(\"Trent\", \"Mick\", role = \"aut\"),\u000aperson(\"ActiveState\", role = \"cph\", comment =\u000a\"R/appdir.r, R/cache.r, R/data.r, R/log.r translated from appdirs\"),\u000aperson(\"Eddy\", \"Petrisor\", role = \"ctb\"),\u000aperson(\"Trevor\", \"Davis\", role = c(\"trl\", \"aut\")),\u000aperson(\"Gabor\", \"Csardi\", role = \"ctb\"),\u000aperson(\"Gregory\", \"Jefferis\", role = \"ctb\")\u000a)",
 ## 			"Depends" : {
-## 				"R" : ">= 3.0.0",
-## 				"coda" : "*",
+## 				"R" : ">= 2.14",
 ## 				"methods" : "*"
 ## 			},
+## 			"Suggests" : {
+## 				"testthat" : "*",
+## 				"roxygen2" : "*"
+## 			},
+## 			"Description" : "An easy way to determine which directories on the users computer\u000ayou should use to save data, caches and logs. A port of Python's Appdirs\u000a(\\url{https://github.com/ActiveState/appdirs}) to R.",
 ## 
-## ... not showing 79 lines ...
+## ... not showing 57 lines ...
 ## 
-## 				"mixtools" : "*"
-## 			},
-## 			"License" : "GPL-2 | GPL-3",
-## 			"Imports" : {
-## 				"Rcpp" : ">= 0.11.2"
-## 			},
-## 			"LinkingTo" : {
-## 				"Rcpp" : "*",
-## 				"RcppArmadillo" : "*"
-## 			},
-## 			"Packaged" : "2014-08-29 02:39:27 UTC; WINTER",
-## 			"NeedsCompilation" : "yes",
+## 		"package" : {
+## 			"Package" : "ica",
+## 			"Type" : "Package",
+## 			"Title" : "Independent Component Analysis",
+## 			"Version" : "1.0-0",
+## 			"Date" : "2014-09-02",
+## 			"Author" : "Nathaniel E. Helwig <helwig@umn.edu>",
+## 			"Maintainer" : "Nathaniel E. Helwig <helwig@umn.edu>",
+## 			"Description" : "Independent Component Analysis (ICA) using various algorithms: FastICA, Information-Maximization (Infomax), and Joint Approximate Diagonalization of Eigenmatrices (JADE).",
+## 			"License" : "GPL (>= 2)",
+## 			"Packaged" : "2014-09-02 16:26:17 UTC; Nate",
+## 			"NeedsCompilation" : "no",
 ## 			"Repository" : "CRAN",
-## 			"Date/Publication" : "2014-08-29 07:30:16",
-## 			"crandb_file_date" : "2014-08-29 09:21:47",
-## 			"date" : "2014-08-29T07:30:16+00:00",
+## 			"Date/Publication" : "2014-09-02 19:41:15",
+## 			"crandb_file_date" : "2014-09-02 14:36:34",
+## 			"date" : "2014-09-02T19:41:15+00:00",
 ## 			"releases" : []
 ## 		}
 ## 	}
@@ -465,42 +465,42 @@ DB("/-/archivals?limit=3&descending=true", head = 20)
 ```
 ## [
 ## 	{
-## 		"name" : "bilan",
+## 		"date" : "2014-09-02T13:31:18+00:00",
+## 		"name" : "MIfuns",
+## 		"event" : "archived",
 ## 		"package" : {
-## 			"Package" : "bilan",
+## 			"Package" : "MIfuns",
 ## 			"Type" : "Package",
-## 			"Title" : "Bilan water balance model",
-## 			"Version" : "2013.12",
-## 			"Date" : "2013.12",
-## 			"Author" : "T. G. Masaryk Water Research Institute, p.r.i.:\u000aLadislav Kasparek, Martin Hanel, Stanislav Horacek, Petr Maca, Adam Vizina",
-## 			"Maintainer" : "Stanislav Horacek <stanislav.horacek@gmail.com>",
-## 			"Description" : "The input data into the model are daily or monthly series of basin\u000aaverage precipitation and air temperature. The structure of the model\u000ais formed by a system of relationships describing basic principles of\u000awater balance on ground, in the zone of aeration, including the effect\u000aof vegetation cover, and in the saturated zone. Air temperature is used\u000aas an indicator of energy conditions, which affect significantly the water\u000abalance components, in particular the development and melting of snow cover.\u000aThe potential evapotranspiration is estimated either by a simple radiation\u000a-based method, which considers temperature, day of the year and latitude\u000aof the basin or by empirical relationships considering vegetation zone\u000aand relative humidity.",
-## 			"License" : "GPL (>= 2)",
-## 			"LazyLoad" : "yes",
+## 			"Title" : "Pharmacometric tools for data preparation, modeling, simulation,\u000aand reporting",
+## 			"Version" : "5.1",
+## 			"Date" : "2011-09-07",
+## 			"Author" : "Metrum Institute (http://metruminstitute.org): Bill Knebel,\u000aLeonid Gibianski, Tim Bergsma",
+## 			"Maintainer" : "Tim Bergsma <timb@metrumrg.com>",
 ## 			"Depends" : {
-## 				"Rcpp" : ">= 0.9.10"
-## 			},
-## 			"LinkingTo" : {
-## 				"Rcpp" : "*"
-## 			},
+## 				"reshape" : "*",
+## 				"methods" : "*",
+## 				"lattice" : "*",
+## 				"grid" : "*",
+## 				"XML" : "*",
+## 				"MASS" : "*"
 ## 
-## ... not showing 56 lines ...
+## ... not showing 74 lines ...
 ## 
-## 				"R" : ">= 2.0.0",
-## 				"rJava" : "*"
 ## 			},
-## 			"Description" : "Jena RDF and Apache HTTP Client libraries. Jena and HTTPClient are distributed under their original licenses.",
-## 			"License" : "AGPL-3",
-## 			"LazyLoad" : "yes",
-## 			"Packaged" : "2013-12-22 21:30:48 UTC; egonw",
+## 			"Description" : "A stub package to ease transition to 'parallel'.\u000aIt imports from 'parallel' or 'tools' and re-exports most of the\u000afunctionality formerly in package 'multicore'.\u000aThis will be removed from CRAN during 2014.",
+## 			"License" : "GPL-2",
+## 			"crandb_file_date" : "2014-05-17 05:43:01",
+## 			"OS_type" : "unix",
 ## 			"Repository" : "CRAN",
-## 			"Date/Publication" : "2013-12-23 11:47:22",
-## 			"crandb_file_date" : "2013-12-23 05:47:27",
+## 			"Date/Publication" : "2014-05-17 11:42:59",
+## 			"Imports" : {
+## 				"parallel" : "*",
+## 				"tools" : "*"
+## 			},
+## 			"Packaged" : "2014-05-17 09:39:13 UTC; ripley",
 ## 			"NeedsCompilation" : "no",
-## 			"date" : "2013-12-23T11:47:22+00:00",
+## 			"date" : "2014-05-17T11:42:59+00:00",
 ## 			"releases" : [
-## 				"3.0.3",
-## 				"3.1.0",
 ## 				"3.1.1"
 ## 			]
 ## 		}
@@ -521,43 +521,43 @@ DB("/-/events?limit=3&descending=true", head = 20)
 ```
 ## [
 ## 	{
-## 		"date" : "2014-08-29T10:24:56+00:00",
-## 		"name" : "BayesFactor",
+## 		"date" : "2014-09-02T19:44:02+00:00",
+## 		"name" : "rappdirs",
 ## 		"event" : "released",
 ## 		"package" : {
-## 			"Package" : "BayesFactor",
+## 			"Package" : "rappdirs",
 ## 			"Type" : "Package",
-## 			"Title" : "Computation of Bayes factors for common designs",
-## 			"Version" : "0.9.8",
-## 			"Date" : "2014-3-22",
-## 			"Author" : "Richard D. Morey, Jeffrey N. Rouder, Tahira Jamil",
-## 			"Maintainer" : "Richard D. Morey <richarddmorey@gmail.com>",
-## 			"Description" : "The BayesFactor package is a suite of functions for computing various Bayes factors for simple designs, including contingency tables, one- and two-sample designs, one-way designs, general ANOVA designs, and linear regression.",
-## 			"License" : "GPL-2",
-## 			"VignetteBuilder" : "knitr",
+## 			"Title" : "Application directories: determine where to save data, caches\u000aand logs.",
+## 			"Version" : "0.3",
+## 			"Authors@R" : "c(\u000aperson(\"Hadley\", \"Wickham\", email = \"h.wickham@gmail.com\",\u000arole = c(\"trl\", \"cre\", \"cph\")),\u000aperson(\"RStudio\", role = \"cph\"),\u000aperson(\"Sridhar\", \"Ratnakumar\", role = \"aut\"),\u000aperson(\"Trent\", \"Mick\", role = \"aut\"),\u000aperson(\"ActiveState\", role = \"cph\", comment =\u000a\"R/appdir.r, R/cache.r, R/data.r, R/log.r translated from appdirs\"),\u000aperson(\"Eddy\", \"Petrisor\", role = \"ctb\"),\u000aperson(\"Trevor\", \"Davis\", role = c(\"trl\", \"aut\")),\u000aperson(\"Gabor\", \"Csardi\", role = \"ctb\"),\u000aperson(\"Gregory\", \"Jefferis\", role = \"ctb\")\u000a)",
 ## 			"Depends" : {
-## 				"R" : ">= 3.0.0",
-## 				"coda" : "*",
+## 				"R" : ">= 2.14",
 ## 				"methods" : "*"
+## 			},
+## 			"Suggests" : {
+## 				"testthat" : "*",
+## 				"roxygen2" : "*"
+## 			},
+## 			"Description" : "An easy way to determine which directories on the users computer\u000ayou should use to save data, caches and logs. A port of Python's Appdirs\u000a(\\url{https://github.com/ActiveState/appdirs}) to R.",
 ## 
-## ... not showing 82 lines ...
+## ... not showing 57 lines ...
 ## 
-## 				"mixtools" : "*"
-## 			},
-## 			"License" : "GPL-2 | GPL-3",
-## 			"Imports" : {
-## 				"Rcpp" : ">= 0.11.2"
-## 			},
-## 			"LinkingTo" : {
-## 				"Rcpp" : "*",
-## 				"RcppArmadillo" : "*"
-## 			},
-## 			"Packaged" : "2014-08-29 02:39:27 UTC; WINTER",
-## 			"NeedsCompilation" : "yes",
+## 		"package" : {
+## 			"Package" : "ica",
+## 			"Type" : "Package",
+## 			"Title" : "Independent Component Analysis",
+## 			"Version" : "1.0-0",
+## 			"Date" : "2014-09-02",
+## 			"Author" : "Nathaniel E. Helwig <helwig@umn.edu>",
+## 			"Maintainer" : "Nathaniel E. Helwig <helwig@umn.edu>",
+## 			"Description" : "Independent Component Analysis (ICA) using various algorithms: FastICA, Information-Maximization (Infomax), and Joint Approximate Diagonalization of Eigenmatrices (JADE).",
+## 			"License" : "GPL (>= 2)",
+## 			"Packaged" : "2014-09-02 16:26:17 UTC; Nate",
+## 			"NeedsCompilation" : "no",
 ## 			"Repository" : "CRAN",
-## 			"Date/Publication" : "2014-08-29 07:30:16",
-## 			"crandb_file_date" : "2014-08-29 09:21:47",
-## 			"date" : "2014-08-29T07:30:16+00:00",
+## 			"Date/Publication" : "2014-09-02 19:41:15",
+## 			"crandb_file_date" : "2014-09-02 14:36:34",
+## 			"date" : "2014-09-02T19:41:15+00:00",
 ## 			"releases" : []
 ## 		}
 ## 	}
@@ -653,7 +653,7 @@ DB("/-/releasepkgs/2.15.3", head = 20)
 ## 		},
 ## 		"Packaged" : "2013-02-06 16:46:12 UTC; scott",
 ## 
-## ... not showing 167166 lines ...
+## ... not showing 167076 lines ...
 ## 
 ## 		"Depends" : {
 ## 			"R" : ">= 2.4.0",
@@ -709,7 +709,7 @@ DB("/-/release/2.15.3", head = 20)
 ## 	"ACNE" : "0.5.0",
 ## 	"acs" : "0.8",
 ## 
-## ... not showing 4921 lines ...
+## ... not showing 4918 lines ...
 ## 
 ## 	"YjdnJlp" : "0.9.8",
 ## 	"YourCast" : "1.5-1",
@@ -765,7 +765,7 @@ DB("/-/releasedesc/2.15.3", head = 20)
 ## 		"version" : "0.1-2",
 ## 		"title" : "Algorithms for ABC summary statistics selection"
 ## 
-## ... not showing 19778 lines ...
+## ... not showing 19766 lines ...
 ## 
 ## 		"version" : "1.1",
 ## 		"title" : "Zero-offset matrices"
@@ -802,64 +802,64 @@ DB("/-/topdeps/3.1.1")
 ```
 ## [
 ## 	{
-## 		"MASS" : 812
+## 		"MASS" : 805
 ## 	},
 ## 	{
 ## 		"lattice" : 414
 ## 	},
 ## 	{
-## 		"ggplot2" : 311
+## 		"ggplot2" : 310
 ## 	},
 ## 	{
-## 		"Matrix" : 290
+## 		"Matrix" : 289
 ## 	},
 ## 	{
-## 		"mvtnorm" : 282
+## 		"mvtnorm" : 280
 ## 	},
 ## 	{
-## 		"testthat" : 274
+## 		"testthat" : 272
 ## 	},
 ## 	{
-## 		"survival" : 263
+## 		"survival" : 261
 ## 	},
 ## 	{
-## 		"Rcpp" : 241
+## 		"Rcpp" : 238
 ## 	},
 ## 	{
-## 		"plyr" : 237
+## 		"plyr" : 235
 ## 	},
 ## 	{
-## 		"knitr" : 168
+## 		"knitr" : 166
 ## 	},
 ## 	{
-## 		"XML" : 163
+## 		"XML" : 162
 ## 	},
 ## 	{
-## 		"rgl" : 156
+## 		"rgl" : 155
 ## 	},
 ## 	{
-## 		"nlme" : 154
+## 		"nlme" : 152
 ## 	},
 ## 	{
 ## 		"sp" : 150
 ## 	},
 ## 	{
-## 		"igraph" : 144
+## 		"igraph" : 143
 ## 	},
 ## 	{
-## 		"coda" : 136
+## 		"coda" : 135
 ## 	},
 ## 	{
 ## 		"boot" : 133
 ## 	},
 ## 	{
-## 		"RCurl" : 130
+## 		"RCurl" : 128
 ## 	},
 ## 	{
 ## 		"RUnit" : 119
 ## 	},
 ## 	{
-## 		"RColorBrewer" : 118
+## 		"reshape2" : 117
 ## 	}
 ## ]
 ```
@@ -875,19 +875,19 @@ DB("/-/topdeps/devel")
 ```
 ## [
 ## 	{
-## 		"MASS" : 837
+## 		"MASS" : 835
 ## 	},
 ## 	{
-## 		"lattice" : 423
+## 		"lattice" : 421
 ## 	},
 ## 	{
-## 		"ggplot2" : 330
+## 		"ggplot2" : 328
 ## 	},
 ## 	{
-## 		"testthat" : 310
+## 		"Matrix" : 310
 ## 	},
 ## 	{
-## 		"Matrix" : 308
+## 		"testthat" : 308
 ## 	},
 ## 	{
 ## 		"mvtnorm" : 290
@@ -896,40 +896,40 @@ DB("/-/topdeps/devel")
 ## 		"survival" : 271
 ## 	},
 ## 	{
-## 		"Rcpp" : 266
+## 		"Rcpp" : 267
 ## 	},
 ## 	{
-## 		"plyr" : 257
+## 		"plyr" : 253
 ## 	},
 ## 	{
-## 		"knitr" : 208
+## 		"knitr" : 207
 ## 	},
 ## 	{
-## 		"XML" : 171
+## 		"XML" : 168
 ## 	},
 ## 	{
-## 		"sp" : 166
+## 		"sp" : 168
 ## 	},
 ## 	{
 ## 		"rgl" : 163
 ## 	},
 ## 	{
-## 		"nlme" : 157
+## 		"nlme" : 156
 ## 	},
 ## 	{
-## 		"igraph" : 149
-## 	},
-## 	{
-## 		"coda" : 143
+## 		"igraph" : 148
 ## 	},
 ## 	{
 ## 		"RCurl" : 142
 ## 	},
 ## 	{
-## 		"boot" : 137
+## 		"coda" : 142
 ## 	},
 ## 	{
-## 		"reshape2" : 132
+## 		"boot" : 138
+## 	},
+## 	{
+## 		"reshape2" : 129
 ## 	},
 ## 	{
 ## 		"stringr" : 123
@@ -948,7 +948,7 @@ DB("/-/deps/2.15.1", head = 20)
 
 ```
 ## {
-## 	"abind" : 39,
+## 	"abind" : 38,
 ## 	"accuracy" : 4,
 ## 	"acepack" : 2,
 ## 	"aCGH" : 2,
@@ -968,10 +968,10 @@ DB("/-/deps/2.15.1", head = 20)
 ## 	"adimpro" : 3,
 ## 	"adlift" : 1,
 ## 
-## ... not showing 1469 lines ...
+## ... not showing 1462 lines ...
 ## 
 ## 	"xlsxjars" : 1,
-## 	"XML" : 99,
+## 	"XML" : 98,
 ## 	"XMLRPC" : 1,
 ## 	"XMLSchema" : 3,
 ## 	"xpose4" : 1,
@@ -979,7 +979,7 @@ DB("/-/deps/2.15.1", head = 20)
 ## 	"xpose4data" : 4,
 ## 	"xpose4generic" : 3,
 ## 	"xpose4specific" : 2,
-## 	"xtable" : 73,
+## 	"xtable" : 72,
 ## 	"xtermStyle" : 1,
 ## 	"xts" : 25,
 ## 	"yacca" : 1,
