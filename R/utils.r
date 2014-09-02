@@ -56,11 +56,17 @@ rsync <- function(from, to, args = "-rtlzv --delete") {
   system(cmd, ignore.stdout = TRUE, ignore.stderr = TRUE)
 }
 
-query <- function(url, ...) {
-  url %>%
+query <- function(url, error = TRUE, ...) {
+
+  result <- url %>%
     GET() %>%
     content(as = "text", encoding = "UTF-8") %>%
     fromJSON(...)
+
+  error %&&% ("error" %in% names(result)) %&&%
+    stop("crandb query: ", result$reason, call. = FALSE)
+
+  result
 }
 
 add_class <- function(x, class_name) {
