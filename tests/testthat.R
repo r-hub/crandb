@@ -1,4 +1,6 @@
 library(testthat)
 library(crandb)
 
-test_check("crandb")
+if (Sys.getenv("NOT_CRAN") != "") {
+  test_check("crandb")
+}
