@@ -343,7 +343,7 @@ time_ago_short <- function(date) {
 cat_fill <- function(text) {
   assert_that(is.string(text))
   width <- getOption("width") - nchar(text) - 1
-  message(text, paste(rep("-", width, collapse = "")))
+  cat(text, paste(rep("-", width, collapse = "")), sep = "", "\n")
 }
 
 simple_date <- function(date) {
