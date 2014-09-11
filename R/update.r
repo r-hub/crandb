@@ -19,7 +19,6 @@ read_remote_rds <- function(URL) {
 last_mod <- function(new_value) {
 
   cache_dir <- cache_dir_var %>%
-    Sys.getenv() %>%
     Sys.getenv()
 
   if (missing(new_value)) {
