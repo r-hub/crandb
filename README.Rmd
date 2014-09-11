@@ -6,9 +6,14 @@ knitr::opts_chunk$set(
   error = FALSE,
   fig.width = 8,
   fig.height = 8)
+options(width = 90)
+options(max.print = 200)
 ```
 
 # The CRAN database
+
+[![Linux Build Status](https://travis-ci.org/metacran/crandb.png?branch=master)](https://travis-ci.org/metacran/crandb)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/ppju92n10cdaw5ti)](https://ci.appveyor.com/project/gaborcsardi/crandb)
 
 The CRAN database provides an API for programatically accessing all
 meta-data of CRAN R packages. This API can be used for various purposes,
@@ -20,10 +25,65 @@ here are three examples I am woking on right now:
   engine.
 * Creating an RSS feed for the new, updated or archived packages on CRAN.
 
+**Note that `crandb` is _NOT_ an official CRAN project, and is not supported
+by CRAN.**
+
 ## The `crandb` API
 
-This is the API provided in the `crandb` R package.
-This is still under planning and development.
+### Packages
+
+`package()` returns the latest version of a package:
+
+```{r}
+library(crandb)
+package("dotenv")
+```
+
+A given version can be queried as well:
+
+```{r}
+package("httr", version = "0.3")
+```
+
+Or all versions:
+
+```{r}
+package("httr", version = "all")
+```
+
+### List of all packages
+
+`list_packages()` lists all packages, in various formats, potentially including
+archived packages as well:
+
+```{r}
+list_packages(from = "falsy", limit = 10, archived = FALSE)
+```
+
+### CRAN events
+
+`events()` lists CRAN events, starting from the latest ones. New package
+releases and archival can both be included in the list. By default the last
+10 events are included:
+
+```{r}
+events()
+```
+
+### R and CRAN releases
+
+The `releases()` function lists recent R versions, with their release dates.
+
+```{r}
+releases()
+```
+
+The CRAN packages that were current at the time of an R releases can be listed
+with the `cran_releases()` function:
+
+```{r}
+cran_releases(version = "2.13.1")
+```
 
 ## The raw API
 

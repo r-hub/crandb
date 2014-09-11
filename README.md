@@ -3,6 +3,9 @@
 
 # The CRAN database
 
+[![Linux Build Status](https://travis-ci.org/metacran/crandb.png?branch=master)](https://travis-ci.org/metacran/crandb)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/ppju92n10cdaw5ti)](https://ci.appveyor.com/project/gaborcsardi/crandb)
+
 The CRAN database provides an API for programatically accessing all
 meta-data of CRAN R packages. This API can be used for various purposes,
 here are three examples I am woking on right now:
@@ -13,10 +16,293 @@ here are three examples I am woking on right now:
   engine.
 * Creating an RSS feed for the new, updated or archived packages on CRAN.
 
+**Note that `crandb` is _NOT_ an official CRAN project, and is not supported
+by CRAN.**
+
 ## The `crandb` API
 
-This is the API provided in the `crandb` R package.
-This is still under planning and development.
+### Packages
+
+`package()` returns the latest version of a package:
+
+
+```r
+library(crandb)
+package("dotenv")
+```
+
+```
+## CRAN package dotenv 1.0, 6 days ago
+## Title: Load environment variables from .env
+## Maintainer: "Gabor Csardi" <csardi.gabor@gmail.com>
+## Author: "Gabor Csardi" [aut, cre]
+## BugReports: https://github.com/gaborcsardi/dotenv/issues
+## Date/Publication: 2014-08-27 23:42:52
+## Description: Load configuration from a .env file, that is in the current working
+##     directory, into environment variables.
+## Imports: magrittr (*), falsy (*)
+## LazyData: true
+## License: MIT + file LICENSE
+## NeedsCompilation: no
+## Packaged: 2014-08-27 19:55:50 UTC; gaborcsardi
+## releases:
+## Repository: CRAN
+## URL: https://github.com/gaborcsardi/dotenv
+```
+
+A given version can be queried as well:
+
+
+```r
+package("httr", version = "0.3")
+```
+
+```
+## CRAN package httr 0.3, 5 months ago
+## Title: Tools for working with URLs and HTTP
+## Maintainer: Hadley Wickham <h.wickham@gmail.com>
+## Author: Hadley Wickham <h.wickham@gmail.com>
+## Date/Publication: 2014-03-20 03:03:51
+## Depends: R (>= 3.0.0)
+## Description: Provides useful tools for working with HTTP connections.  Is a
+##     simplified wrapper built on top of RCurl.  It is much much less configurable
+##     but because it only attempts to encompass the most common operations it is
+##     also much much simpler.
+## Imports: RCurl (>= 1.95-0), stringr (>= 0.6.1), digest (*), tools (*), methods
+##     (*)
+## License: MIT + file LICENSE
+## NeedsCompilation: no
+## Packaged: 2014-03-19 02:04:19 UTC; hadley
+## releases: 3.1.0, 3.1.1
+## Repository: CRAN
+## Roxygen: list(wrap = FALSE)
+## Suggests: jsonlite (*), XML (*), testthat (>= 0.8.0), png (*), jpeg (*), httpuv
+##     (*)
+## Type: Package
+```
+
+Or all versions:
+
+
+```r
+package("httr", version = "all")
+```
+
+```
+## CRAN package httr, latest: 0.5, 7 hours ago
+## ['0.5']:
+##   Title: Tools for working with URLs and HTTP
+##   Maintainer: Hadley Wickham <hadley@rstudio.com>
+##   Author: Hadley Wickham [cre, aut, cph], RStudio [cph]
+##   Date/Publication: 2014-09-02 18:15:25
+##   Depends: R (>= 3.0.0)
+##   Description: Provides useful tools for working with HTTP. The API is based
+##       around http verbs (GET(), POST(), etc) with pluggable components to
+##       control the request (authenticate(), add_headers() and so on).
+##   Imports: RCurl (>= 1.95-0), stringr (>= 0.6.1), digest (*), tools (*), methods
+##       (*), jsonlite (*)
+##   License: MIT + file LICENSE
+##   NeedsCompilation: yes
+##   Packaged: 2014-09-02 15:28:39 UTC; hadley
+##   releases:
+##   Repository: CRAN
+##   Suggests: XML (*), testthat (>= 0.8.0), png (*), jpeg (*), httpuv (*), knitr
+##       (*)
+##   Type: Package
+##   VignetteBuilder: knitr
+## Other versions: 0.4, 0.3, 0.2, 0.1.1, 0.1
+```
+
+### List of all packages
+
+`list_packages()` lists all packages, in various formats, potentially including
+archived packages as well:
+
+
+```r
+list_packages(from = "falsy", limit = 10, archived = FALSE)
+```
+
+```
+## CRAN packages (short)--------------------------------------------------------------------
+##  Package     Version Title                                                               
+##  falsy       1.0     Define truthy and falsy values                                      
+##  fame        2.18    Interface for FAME time series database                             
+##  Familias    2.1     Probabilities for Pedigrees given DNA data                          
+##  FAMT        2.5     Factor Analysis for Multiple Testing (FAMT) : simultaneous tests ...
+##  fanc        1.13    Penalized likelihood factor analysis via nonconvex penalty          
+##  fANCOVA     0.5-1   Nonparametric Analysis of Covariance                                
+##  fanovaGraph 1.4.7   Building Kriging models from FANOVA graphs                          
+##  fanplot     3.3     Visualisation of sequential probability distributions using fan c...
+##  FAOSTAT     1.6     A complementary package to the FAOSTAT database and the Statistic...
+##  faoutlier   0.4     Influential case detection methods for factor analysis and SEM
+```
+
+### CRAN events
+
+`events()` lists CRAN events, starting from the latest ones. New package
+releases and archival can both be included in the list. By default the last
+10 events are included:
+
+
+```r
+events()
+```
+
+```
+## CRAN events (events)---------------------------------------------------------------------
+##  . When   Package   Version Title                                                        
+##  + 3 hour easingr   1.0.1   Fetch and plot credit easing policy tool data.               
+##  + 3 hour rcbalance 1.0     Large, sparse optimal matching with refined covariate bala...
+##  + 3 hour DBI       0.3.0   R Database Interface                                         
+##  + 6 hour rappdirs  0.3     Application directories: determine where to save data, cac...
+##  + 6 hour rNOMADS   2.0.2   An interface to the NOAA Operational Model Archive and Dis...
+##  + 6 hour ica       1.0-0   Independent Component Analysis                               
+##  + 6 hour roxygen2  4.0.2   In-source documentation for R                                
+##  + 7 hour httr      0.5     Tools for working with URLs and HTTP                         
+##  + 7 hour nor1mix   1.2-0   Normal (1-d) Mixture Models (S3 Classes and Methods)         
+##  + 8 hour enviPick  1.2     Peak picking for high resolution mass spectrometry data
+```
+
+### R and CRAN releases
+
+The `releases()` function lists recent R versions, with their release dates.
+
+
+```r
+releases()
+```
+
+```
+## R releases-------------------------------------------------------------------------------
+##  Version Date      
+##  2.0.0   2004-10-04
+##  2.0.1   2004-11-15
+##  2.1.0   2005-04-18
+##  2.1.1   2005-06-20
+##  2.2.0   2005-10-06
+##  2.2.1   2005-12-20
+##  2.3.0   2006-04-24
+##  2.3.1   2006-06-01
+##  2.4.0   2006-10-03
+##  2.4.1   2006-12-18
+##  2.5.0   2007-04-24
+##  2.5.1   2007-06-28
+##  2.6.0   2007-10-03
+##  2.6.1   2007-11-26
+##  2.6.2   2008-02-08
+##  2.7.0   2008-04-22
+##  2.7.1   2008-06-23
+##  2.7.2   2008-08-25
+##  2.8.0   2008-10-20
+##  2.8.1   2008-12-22
+##  2.9.0   2009-04-17
+##  2.9.1   2009-06-26
+##  2.9.2   2009-08-24
+##  2.10.0  2009-10-26
+##  2.10.1  2009-12-14
+##  2.11.0  2010-04-22
+##  2.11.1  2010-05-31
+##  2.12.0  2010-10-15
+##  2.12.1  2010-12-16
+##  2.12.2  2011-02-25
+##  2.13.0  2011-04-13
+##  2.13.1  2011-07-08
+##  2.13.2  2011-09-30
+##  2.14.0  2011-10-31
+##  2.14.1  2011-12-22
+##  2.14.2  2012-02-29
+##  2.15.0  2012-03-30
+##  2.15.1  2012-06-22
+##  2.15.2  2012-10-26
+##  2.15.3  2013-03-01
+##  3.0.0   2013-04-03
+##  3.0.1   2013-05-16
+##  3.0.2   2013-09-25
+##  3.0.3   2014-03-06
+##  3.1.0   2014-04-10
+##  3.1.1   2014-07-10
+```
+
+The CRAN packages that were current at the time of an R releases can be listed
+with the `cran_releases()` function:
+
+
+```r
+cran_releases(version = "2.13.1")
+```
+
+```
+## CRAN release 2.13.1----------------------------------------------------------------------
+##   [1] "aaMI@1.0-1"               "abc@1.3"                  "abd@0.1-18"              
+##   [4] "abind@1.3-0"              "AcceptanceSampling@1.0-1" "accuracy@1.35"           
+##   [7] "acepack@1.3-3.0"          "aCGH.Spline@2.1"          "actuar@1.1-2"            
+##  [10] "ada@2.0-2"                "adabag@1.1"               "ADaCGH@1.5-3"            
+##  [13] "adapt@1.0-4"              "AdaptFit@0.2-1"           "adaptivetau@0.902"       
+##  [16] "adaptTest@1.0"            "ade4@1.4-17"              "ade4TkGUI@0.2-4"         
+##  [19] "adegenet@1.3-0"           "adehabitat@1.8.6"         "adehabitatHR@0.3.2"      
+##  [22] "adehabitatHS@0.3.1"       "adehabitatLT@0.3.2"       "adehabitatMA@0.3"        
+##  [25] "adephylo@1.1-1"           "ADGofTest@0.1"            "adimpro@0.7.5"           
+##  [28] "adk@1.0-1"                "adlift@0.9-6"             "ADM3@1.1"                
+##  [31] "AdMit@1-01.03.1"          "ads@1.2-10"               "AER@1.1-8"               
+##  [34] "afc@1.0"                  "afmtools@0.1.2"           "agce@1.2"                
+##  [37] "agilp@1.0"                "agreement@1.0-1"          "agricolae@1.0-9"         
+##  [40] "agridat@1.2"              "AGSDest@2.0"              "agsemisc@1.2-1"          
+##  [43] "ahaz@1.1"                 "AICcmodavg@1.17"          "AIGIS@1.0"               
+##  [46] "AIM@1.01"                 "AIS@1.0"                  "akima@0.5-4"             
+##  [49] "alabama@2011.3-1"         "AlgDesign@1.1-2"          "allan@1.0"               
+##  [52] "allelic@0.1"              "AllPossibleSpellings@1.0" "alphahull@0.2-0"         
+##  [55] "alr3@2.0.3"               "ALS@0.0.4"                "AMA@1.0.8"               
+##  [58] "amap@0.8-5"               "amba@0.3.0"               "amei@1.0-3"              
+##  [61] "Amelia@1.2-18"            "amer@0.6.10"              "AMORE@0.2-12"            
+##  [64] "anacor@1.0-1"             "analogue@0.7-0"           "AnalyzeFMRI@1.1-13"      
+##  [67] "AnalyzeIO@0.1.1"          "anapuce@2.1"              "anchors@3.0-7"           
+##  [70] "anesrake@0.65"            "Animal@1.02"              "animation@2.0-4"         
+##  [73] "anm@1.0-9"                "AnnotLists@1.0"           "ant@0.0-10"              
+##  [76] "aod@1.2"                  "apcluster@1.1.0"          "ape@2.7-2"               
+##  [79] "aplpack@1.2.3"            "approximator@1.2-2"       "apsrtable@0.8-6"         
+##  [82] "apt@1.0"                  "apTreeshape@1.4-3"        "aqfig@0.1"               
+##  [85] "aqp@0.99-1"               "AquaEnv@1.0-2"            "aratio@1.0"              
+##  [88] "archetypes@2.0-2"         "ArDec@1.2-3"              "ares@0.7.2"              
+##  [91] "ARES@1.2-3"               "arf3DS4@2.5-2"            "argosfilter@0.6"         
+##  [94] "arm@1.4-13"               "aroma.affymetrix@2.1.0"   "aroma.apd@0.1.8"         
+##  [97] "aroma.cn@0.7.3"           "aroma.core@2.1.0"         "arrayImpute@1.3"         
+## [100] "arrayMissPattern@1.3"     "ars@0.4"                  "arules@1.0-6"            
+## [103] "arulesNBMiner@0.1-1"      "arulesSequences@0.1-11"   "arulesViz@0.1-3"         
+## [106] "asbio@0.3-36"             "ascii@1.4"                "ash@1.0-12"              
+## [109] "aspace@3.0"               "aspect@1.0-0"             "assist@3.1.1"            
+## [112] "aster@0.7-7"              "aster2@0.1"               "asuR@0.08-24"            
+## [115] "asympTest@0.1.2"          "asypow@1.2.2"             "atm@0.1.0"               
+## [118] "atmi@1.0"                 "audio@0.1-4"              "automap@1.0-10"          
+## [121] "aws@1.6-2"                "aylmer@1.0-7"             "B2Z@1.3"                 
+## [124] "BaBooN@0.1-6"             "BACCO@2.0-2"              "backfitRichards@0.5.0"   
+## [127] "backtest@0.3-0"           "BaM@0.98.1"               "BAMD@3.4"                
+## [130] "barcode@1.0"              "BARD@1.24"                "bark@0.1-0"              
+## [133] "Barnard@1.0"              "BAS@0.92"                 "baseline@1.0-0"          
+## [136] "basicspace@0.02"          "batch@1.1-3"              "bats@0.1-2"              
+## [139] "bayesCGH@0.6"             "bayesclust@3.0"           "bayescount@0.9.9-1"      
+## [142] "BayesDA@1.0-1"            "bayesDem@1.3-0"           "bayesGARCH@1-00.10"      
+## [145] "bayesLife@0.2-0"          "bayesm@2.2-4"             "bayesmix@0.7-1"          
+## [148] "bayespack@1.0-2"          "BayesPanel@0.1-2"         "bayesQR@1.3"             
+## [151] "BayesQTLBIC@1.0-1"        "bayesSurv@0.6-2"          "bayesTFR@1.4-0"          
+## [154] "BayesTree@0.3-1.1"        "BayesValidate@0.0"        "BayesX@0.2-5"            
+## [157] "BayHap@1.0"               "BayHaz@0.0-6"             "baymvb@1.0.4"            
+## [160] "BAYSTAR@0.2-3"            "BB@2011.2-2"              "bbemkr@1.3"              
+## [163] "bbmle@1.0.0"              "BBMM@2.2"                 "BCA@0.1-1"               
+## [166] "BCE@1.3"                  "Bchron@3.1.4"             "bclust@1.2"              
+## [169] "bcp@2.2.0"                "bcv@1.0"                  "bdoc@1.1"                
+## [172] "bdsmatrix@1.0"            "beadarrayMSV@1.1.0"       "beanplot@1.1"            
+## [175] "bear@2.5.2"               "beeswarm@0.0.7"           "belief@1.0.1"            
+## [178] "benchden@1.0.4"           "benchmark@0.3-2"          "Benchmarking@0.19"       
+## [181] "bentcableAR@0.2.2"        "ber@2.0"                  "Bergm@1.4"               
+## [184] "Bessel@0.5-3"             "bestglm@0.31"             "betaper@1.0-0"           
+## [187] "betareg@2.3-0"            "bethel@0.1"               "bfast@1.2-1"             
+## [190] "bfp@0.0-19"               "bgmm@1.2"                 "Bhat@0.9-09"             
+## [193] "BHH2@1.0.3"               "BiasedUrn@1.03"           "bibtex@0.2-1"            
+## [196] "biclust@1.0.1"            "bicreduc@0.4-7"           "bifactorial@1.4.6"       
+## [199] "biganalytics@1.0.14"      "biglars@1.0.1"           
+##  [ reached getOption("max.print") -- omitted 2973 entries ]
+```
 
 ## The raw API
 
@@ -407,43 +693,43 @@ DB("/-/pkgreleases?limit=3&descending=true", head = 20)
 ```
 ## [
 ## 	{
-## 		"date" : "2014-08-29T10:24:56+00:00",
-## 		"name" : "BayesFactor",
+## 		"date" : "2014-09-02T22:20:10+00:00",
+## 		"name" : "easingr",
+## 		"event" : "released",
 ## 		"package" : {
-## 			"Package" : "BayesFactor",
-## 			"Type" : "Package",
-## 			"Title" : "Computation of Bayes factors for common designs",
-## 			"Version" : "0.9.8",
-## 			"Date" : "2014-3-22",
-## 			"Author" : "Richard D. Morey, Jeffrey N. Rouder, Tahira Jamil",
-## 			"Maintainer" : "Richard D. Morey <richarddmorey@gmail.com>",
-## 			"Description" : "The BayesFactor package is a suite of functions for computing various Bayes factors for simple designs, including contingency tables, one- and two-sample designs, one-way designs, general ANOVA designs, and linear regression.",
-## 			"License" : "GPL-2",
-## 			"VignetteBuilder" : "knitr",
-## 			"Depends" : {
-## 				"R" : ">= 3.0.0",
-## 				"coda" : "*",
-## 				"methods" : "*"
-## 			},
-## 
-## ... not showing 79 lines ...
-## 
-## 				"mixtools" : "*"
-## 			},
-## 			"License" : "GPL-2 | GPL-3",
+## 			"Package" : "easingr",
+## 			"Title" : "Fetch and plot credit easing policy tool data.",
+## 			"Version" : "1.0.1",
+## 			"Date" : "2014-09-02",
+## 			"Author" : "Matt Barry <mrb@softisms.com>",
+## 			"Maintainer" : "Matt Barry <mrb@softisms.com>",
+## 			"Description" : "Forms queries to submit to the Cleveland Federal Reserve Bank web\u000asite's credit easing policy tools data site.  Provides various query functions\u000aaccording to the easing data desired.  By default the download includes\u000aeasing tool weekly time series data starting January 2007.  The functions\u000areturn a class of type easing which contains a list of items related to the\u000aquery and its graphical presentation.  The list includes the time series\u000adata as an xts object.  The package provides two lattice time series plots\u000ato render the data in a manner similar to the bank's own presentation.",
+## 			"License" : "MIT + file LICENSE",
+## 			"URL" : "https://github.com/mrbcuda/easingr",
+## 			"BugReports" : "https://github.com/mrbcuda/easingr/issues",
 ## 			"Imports" : {
-## 				"Rcpp" : ">= 0.11.2"
+## 				"utils" : "*",
+## 				"xts" : "*",
+## 				"lattice" : "*",
+## 
+## ... not showing 54 lines ...
+## 
+## 				"testthat" : "*",
+## 				"RSQLite" : "*"
 ## 			},
-## 			"LinkingTo" : {
-## 				"Rcpp" : "*",
-## 				"RcppArmadillo" : "*"
-## 			},
-## 			"Packaged" : "2014-08-29 02:39:27 UTC; WINTER",
-## 			"NeedsCompilation" : "yes",
+## 			"Description" : "A database interface (DBI) definition for communication\u000abetween R and relational database management systems.  All\u000aclasses in this package are virtual and need to be extended by\u000athe various R/DBMS implementations.",
+## 			"License" : "LGPL (>= 2)",
+## 			"URL" : "https://github.com/rstats-db/DBI",
+## 			"BugReports" : "https://github.com/rstats-db/DBI/issues",
+## 			"Collate" : "'DBObject.R' 'DBConnection.R' 'DBDriver.R' 'DBResult.R'\u000a'compliance.R' 'keywords.R' 'quote.R' 'util.R'",
+## 			"Packaged" : "2014-09-02 17:43:27 UTC; hadley",
+## 			"NeedsCompilation" : "no",
+## 			"X-CRAN-Original-Maintainer" : "Hadley Wickham <hadley@rstudio.com>",
+## 			"X-CRAN-Comment" : "Orphaned on 2014-08-28 as the previous maintainer\u000aclaimed he was not the maintainer!",
 ## 			"Repository" : "CRAN",
-## 			"Date/Publication" : "2014-08-29 07:30:16",
-## 			"crandb_file_date" : "2014-08-29 09:21:47",
-## 			"date" : "2014-08-29T07:30:16+00:00",
+## 			"Date/Publication" : "2014-09-02 22:05:57",
+## 			"crandb_file_date" : "2014-09-02 18:01:36",
+## 			"date" : "2014-09-02T22:05:57+00:00",
 ## 			"releases" : []
 ## 		}
 ## 	}
@@ -465,42 +751,42 @@ DB("/-/archivals?limit=3&descending=true", head = 20)
 ```
 ## [
 ## 	{
-## 		"name" : "bilan",
+## 		"date" : "2014-09-02T13:31:18+00:00",
+## 		"name" : "MIfuns",
+## 		"event" : "archived",
 ## 		"package" : {
-## 			"Package" : "bilan",
+## 			"Package" : "MIfuns",
 ## 			"Type" : "Package",
-## 			"Title" : "Bilan water balance model",
-## 			"Version" : "2013.12",
-## 			"Date" : "2013.12",
-## 			"Author" : "T. G. Masaryk Water Research Institute, p.r.i.:\u000aLadislav Kasparek, Martin Hanel, Stanislav Horacek, Petr Maca, Adam Vizina",
-## 			"Maintainer" : "Stanislav Horacek <stanislav.horacek@gmail.com>",
-## 			"Description" : "The input data into the model are daily or monthly series of basin\u000aaverage precipitation and air temperature. The structure of the model\u000ais formed by a system of relationships describing basic principles of\u000awater balance on ground, in the zone of aeration, including the effect\u000aof vegetation cover, and in the saturated zone. Air temperature is used\u000aas an indicator of energy conditions, which affect significantly the water\u000abalance components, in particular the development and melting of snow cover.\u000aThe potential evapotranspiration is estimated either by a simple radiation\u000a-based method, which considers temperature, day of the year and latitude\u000aof the basin or by empirical relationships considering vegetation zone\u000aand relative humidity.",
-## 			"License" : "GPL (>= 2)",
-## 			"LazyLoad" : "yes",
+## 			"Title" : "Pharmacometric tools for data preparation, modeling, simulation,\u000aand reporting",
+## 			"Version" : "5.1",
+## 			"Date" : "2011-09-07",
+## 			"Author" : "Metrum Institute (http://metruminstitute.org): Bill Knebel,\u000aLeonid Gibianski, Tim Bergsma",
+## 			"Maintainer" : "Tim Bergsma <timb@metrumrg.com>",
 ## 			"Depends" : {
-## 				"Rcpp" : ">= 0.9.10"
-## 			},
-## 			"LinkingTo" : {
-## 				"Rcpp" : "*"
-## 			},
+## 				"reshape" : "*",
+## 				"methods" : "*",
+## 				"lattice" : "*",
+## 				"grid" : "*",
+## 				"XML" : "*",
+## 				"MASS" : "*"
 ## 
-## ... not showing 56 lines ...
+## ... not showing 74 lines ...
 ## 
-## 				"R" : ">= 2.0.0",
-## 				"rJava" : "*"
 ## 			},
-## 			"Description" : "Jena RDF and Apache HTTP Client libraries. Jena and HTTPClient are distributed under their original licenses.",
-## 			"License" : "AGPL-3",
-## 			"LazyLoad" : "yes",
-## 			"Packaged" : "2013-12-22 21:30:48 UTC; egonw",
+## 			"Description" : "A stub package to ease transition to 'parallel'.\u000aIt imports from 'parallel' or 'tools' and re-exports most of the\u000afunctionality formerly in package 'multicore'.\u000aThis will be removed from CRAN during 2014.",
+## 			"License" : "GPL-2",
+## 			"crandb_file_date" : "2014-05-17 05:43:01",
+## 			"OS_type" : "unix",
 ## 			"Repository" : "CRAN",
-## 			"Date/Publication" : "2013-12-23 11:47:22",
-## 			"crandb_file_date" : "2013-12-23 05:47:27",
+## 			"Date/Publication" : "2014-05-17 11:42:59",
+## 			"Imports" : {
+## 				"parallel" : "*",
+## 				"tools" : "*"
+## 			},
+## 			"Packaged" : "2014-05-17 09:39:13 UTC; ripley",
 ## 			"NeedsCompilation" : "no",
-## 			"date" : "2013-12-23T11:47:22+00:00",
+## 			"date" : "2014-05-17T11:42:59+00:00",
 ## 			"releases" : [
-## 				"3.0.3",
-## 				"3.1.0",
 ## 				"3.1.1"
 ## 			]
 ## 		}
@@ -521,43 +807,43 @@ DB("/-/events?limit=3&descending=true", head = 20)
 ```
 ## [
 ## 	{
-## 		"date" : "2014-08-29T10:24:56+00:00",
-## 		"name" : "BayesFactor",
+## 		"date" : "2014-09-02T22:20:10+00:00",
+## 		"name" : "easingr",
 ## 		"event" : "released",
 ## 		"package" : {
-## 			"Package" : "BayesFactor",
-## 			"Type" : "Package",
-## 			"Title" : "Computation of Bayes factors for common designs",
-## 			"Version" : "0.9.8",
-## 			"Date" : "2014-3-22",
-## 			"Author" : "Richard D. Morey, Jeffrey N. Rouder, Tahira Jamil",
-## 			"Maintainer" : "Richard D. Morey <richarddmorey@gmail.com>",
-## 			"Description" : "The BayesFactor package is a suite of functions for computing various Bayes factors for simple designs, including contingency tables, one- and two-sample designs, one-way designs, general ANOVA designs, and linear regression.",
-## 			"License" : "GPL-2",
-## 			"VignetteBuilder" : "knitr",
-## 			"Depends" : {
-## 				"R" : ">= 3.0.0",
-## 				"coda" : "*",
-## 				"methods" : "*"
-## 
-## ... not showing 82 lines ...
-## 
-## 				"mixtools" : "*"
-## 			},
-## 			"License" : "GPL-2 | GPL-3",
+## 			"Package" : "easingr",
+## 			"Title" : "Fetch and plot credit easing policy tool data.",
+## 			"Version" : "1.0.1",
+## 			"Date" : "2014-09-02",
+## 			"Author" : "Matt Barry <mrb@softisms.com>",
+## 			"Maintainer" : "Matt Barry <mrb@softisms.com>",
+## 			"Description" : "Forms queries to submit to the Cleveland Federal Reserve Bank web\u000asite's credit easing policy tools data site.  Provides various query functions\u000aaccording to the easing data desired.  By default the download includes\u000aeasing tool weekly time series data starting January 2007.  The functions\u000areturn a class of type easing which contains a list of items related to the\u000aquery and its graphical presentation.  The list includes the time series\u000adata as an xts object.  The package provides two lattice time series plots\u000ato render the data in a manner similar to the bank's own presentation.",
+## 			"License" : "MIT + file LICENSE",
+## 			"URL" : "https://github.com/mrbcuda/easingr",
+## 			"BugReports" : "https://github.com/mrbcuda/easingr/issues",
 ## 			"Imports" : {
-## 				"Rcpp" : ">= 0.11.2"
+## 				"utils" : "*",
+## 				"xts" : "*",
+## 				"lattice" : "*",
+## 
+## ... not showing 54 lines ...
+## 
+## 				"testthat" : "*",
+## 				"RSQLite" : "*"
 ## 			},
-## 			"LinkingTo" : {
-## 				"Rcpp" : "*",
-## 				"RcppArmadillo" : "*"
-## 			},
-## 			"Packaged" : "2014-08-29 02:39:27 UTC; WINTER",
-## 			"NeedsCompilation" : "yes",
+## 			"Description" : "A database interface (DBI) definition for communication\u000abetween R and relational database management systems.  All\u000aclasses in this package are virtual and need to be extended by\u000athe various R/DBMS implementations.",
+## 			"License" : "LGPL (>= 2)",
+## 			"URL" : "https://github.com/rstats-db/DBI",
+## 			"BugReports" : "https://github.com/rstats-db/DBI/issues",
+## 			"Collate" : "'DBObject.R' 'DBConnection.R' 'DBDriver.R' 'DBResult.R'\u000a'compliance.R' 'keywords.R' 'quote.R' 'util.R'",
+## 			"Packaged" : "2014-09-02 17:43:27 UTC; hadley",
+## 			"NeedsCompilation" : "no",
+## 			"X-CRAN-Original-Maintainer" : "Hadley Wickham <hadley@rstudio.com>",
+## 			"X-CRAN-Comment" : "Orphaned on 2014-08-28 as the previous maintainer\u000aclaimed he was not the maintainer!",
 ## 			"Repository" : "CRAN",
-## 			"Date/Publication" : "2014-08-29 07:30:16",
-## 			"crandb_file_date" : "2014-08-29 09:21:47",
-## 			"date" : "2014-08-29T07:30:16+00:00",
+## 			"Date/Publication" : "2014-09-02 22:05:57",
+## 			"crandb_file_date" : "2014-09-02 18:01:36",
+## 			"date" : "2014-09-02T22:05:57+00:00",
 ## 			"releases" : []
 ## 		}
 ## 	}
@@ -653,7 +939,7 @@ DB("/-/releasepkgs/2.15.3", head = 20)
 ## 		},
 ## 		"Packaged" : "2013-02-06 16:46:12 UTC; scott",
 ## 
-## ... not showing 167166 lines ...
+## ... not showing 167076 lines ...
 ## 
 ## 		"Depends" : {
 ## 			"R" : ">= 2.4.0",
@@ -709,7 +995,7 @@ DB("/-/release/2.15.3", head = 20)
 ## 	"ACNE" : "0.5.0",
 ## 	"acs" : "0.8",
 ## 
-## ... not showing 4921 lines ...
+## ... not showing 4918 lines ...
 ## 
 ## 	"YjdnJlp" : "0.9.8",
 ## 	"YourCast" : "1.5-1",
@@ -765,7 +1051,7 @@ DB("/-/releasedesc/2.15.3", head = 20)
 ## 		"version" : "0.1-2",
 ## 		"title" : "Algorithms for ABC summary statistics selection"
 ## 
-## ... not showing 19778 lines ...
+## ... not showing 19766 lines ...
 ## 
 ## 		"version" : "1.1",
 ## 		"title" : "Zero-offset matrices"
@@ -802,64 +1088,64 @@ DB("/-/topdeps/3.1.1")
 ```
 ## [
 ## 	{
-## 		"MASS" : 812
+## 		"MASS" : 805
 ## 	},
 ## 	{
-## 		"lattice" : 414
+## 		"lattice" : 413
 ## 	},
 ## 	{
-## 		"ggplot2" : 311
+## 		"ggplot2" : 310
 ## 	},
 ## 	{
-## 		"Matrix" : 290
+## 		"Matrix" : 289
 ## 	},
 ## 	{
-## 		"mvtnorm" : 282
+## 		"mvtnorm" : 280
 ## 	},
 ## 	{
-## 		"testthat" : 274
+## 		"testthat" : 272
 ## 	},
 ## 	{
-## 		"survival" : 263
+## 		"survival" : 261
 ## 	},
 ## 	{
-## 		"Rcpp" : 241
+## 		"Rcpp" : 238
 ## 	},
 ## 	{
-## 		"plyr" : 237
+## 		"plyr" : 235
 ## 	},
 ## 	{
-## 		"knitr" : 168
+## 		"knitr" : 166
 ## 	},
 ## 	{
-## 		"XML" : 163
+## 		"XML" : 162
 ## 	},
 ## 	{
-## 		"rgl" : 156
+## 		"rgl" : 155
 ## 	},
 ## 	{
-## 		"nlme" : 154
+## 		"nlme" : 152
 ## 	},
 ## 	{
 ## 		"sp" : 150
 ## 	},
 ## 	{
-## 		"igraph" : 144
+## 		"igraph" : 143
 ## 	},
 ## 	{
-## 		"coda" : 136
+## 		"coda" : 135
 ## 	},
 ## 	{
 ## 		"boot" : 133
 ## 	},
 ## 	{
-## 		"RCurl" : 130
+## 		"RCurl" : 128
 ## 	},
 ## 	{
 ## 		"RUnit" : 119
 ## 	},
 ## 	{
-## 		"RColorBrewer" : 118
+## 		"reshape2" : 117
 ## 	}
 ## ]
 ```
@@ -875,19 +1161,19 @@ DB("/-/topdeps/devel")
 ```
 ## [
 ## 	{
-## 		"MASS" : 837
+## 		"MASS" : 836
 ## 	},
 ## 	{
-## 		"lattice" : 423
+## 		"lattice" : 421
 ## 	},
 ## 	{
-## 		"ggplot2" : 330
+## 		"ggplot2" : 328
 ## 	},
 ## 	{
-## 		"testthat" : 310
+## 		"Matrix" : 310
 ## 	},
 ## 	{
-## 		"Matrix" : 308
+## 		"testthat" : 309
 ## 	},
 ## 	{
 ## 		"mvtnorm" : 290
@@ -896,40 +1182,40 @@ DB("/-/topdeps/devel")
 ## 		"survival" : 271
 ## 	},
 ## 	{
-## 		"Rcpp" : 266
+## 		"Rcpp" : 267
 ## 	},
 ## 	{
-## 		"plyr" : 257
+## 		"plyr" : 254
 ## 	},
 ## 	{
-## 		"knitr" : 208
+## 		"knitr" : 207
 ## 	},
 ## 	{
-## 		"XML" : 171
+## 		"XML" : 168
 ## 	},
 ## 	{
-## 		"sp" : 166
+## 		"sp" : 168
 ## 	},
 ## 	{
 ## 		"rgl" : 163
 ## 	},
 ## 	{
-## 		"nlme" : 157
+## 		"nlme" : 156
 ## 	},
 ## 	{
-## 		"igraph" : 149
-## 	},
-## 	{
-## 		"coda" : 143
+## 		"igraph" : 148
 ## 	},
 ## 	{
 ## 		"RCurl" : 142
 ## 	},
 ## 	{
-## 		"boot" : 137
+## 		"coda" : 142
 ## 	},
 ## 	{
-## 		"reshape2" : 132
+## 		"boot" : 138
+## 	},
+## 	{
+## 		"reshape2" : 129
 ## 	},
 ## 	{
 ## 		"stringr" : 123
@@ -948,7 +1234,7 @@ DB("/-/deps/2.15.1", head = 20)
 
 ```
 ## {
-## 	"abind" : 39,
+## 	"abind" : 38,
 ## 	"accuracy" : 4,
 ## 	"acepack" : 2,
 ## 	"aCGH" : 2,
@@ -968,10 +1254,10 @@ DB("/-/deps/2.15.1", head = 20)
 ## 	"adimpro" : 3,
 ## 	"adlift" : 1,
 ## 
-## ... not showing 1469 lines ...
+## ... not showing 1462 lines ...
 ## 
 ## 	"xlsxjars" : 1,
-## 	"XML" : 99,
+## 	"XML" : 98,
 ## 	"XMLRPC" : 1,
 ## 	"XMLSchema" : 3,
 ## 	"xpose4" : 1,
@@ -979,7 +1265,7 @@ DB("/-/deps/2.15.1", head = 20)
 ## 	"xpose4data" : 4,
 ## 	"xpose4generic" : 3,
 ## 	"xpose4specific" : 2,
-## 	"xtable" : 73,
+## 	"xtable" : 72,
 ## 	"xtermStyle" : 1,
 ## 	"xts" : 25,
 ## 	"yacca" : 1,

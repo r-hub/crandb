@@ -1,9 +1,10 @@
 Package: crandb
-Title: CRAN metadata in a CouchDB database
-Version: 0.1
+Title: Query the unofficial CRAN metadata database
+Version: 1.0.0
 Authors@R: "Gabor Csardi <csardi.gabor@gmail.com> [aut, cre]"
-Description: Build, update and query a CouchDB database
-    that contains CRAN metadata, about all versions of all packages.
+Description: The CRAN metadata database contains information about
+    CRAN packages. This package lets' you run simple queries against
+    this database. Note that this is _not_ a CRAN project.
 Imports:
     magrittr,
     rappdirs,
@@ -12,7 +13,8 @@ Imports:
     jsonlite,
     parsedate,
     httr,
-    assertthat
+    assertthat,
+    lubridate
 License: MIT + file LICENSE
 LazyData: true
 Collate:
@@ -29,4 +31,5 @@ Collate:
     'utils.r'
 Suggests:
     testthat
-SystemRequirements: node.js, couchapp
+URL: https://github.com/metacran/crandb
+BugReports: https://github.com/metacran/crandb/issues

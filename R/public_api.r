@@ -95,19 +95,21 @@ events <- function(limit = 10, releases = TRUE, archivals = TRUE) {
   assert_that(is.flag(archivals))
   assert_that(releases || archivals)
 
-  url <- if (releases && archivals) {
-    "/-/events"
+  mode <- if (releases && archivals) {
+    "events"
   } else if (releases) {
-    "/-/pkgreleases"
+    "pkgreleases"
   } else {
-    "/-/archivals"
+    "archivals"
   }
 
   couchdb_server() %>%
-    paste0(url) %>%
+    paste0("/-/") %>%
+    paste0(mode) %>%
     paste0("?limit=", limit) %>%
-    paste0("&descdending=true") %>%
+    paste0("&descending=true") %>%
     query(simplifyDataFrame = FALSE) %>%
+    add_attr("mode", mode) %>%
     add_class("cran_event_list")
 }
 
@@ -158,5 +160,6 @@ cran_releases <- function(version, format = c("version", "short",
     paste0(url) %>%
     paste0("/", version) %>%
     query() %>%
+    add_attr("release", version) %>%
     add_class("cran_releases")
 }

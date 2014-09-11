@@ -16,12 +16,58 @@ read_remote_rds <- function(URL) {
   readRDS(con)
 }
 
-crandb_update <- function() {
+last_mod <- function(new_value) {
+
+  cache_dir <- cache_dir_var %>%
+    Sys.getenv() %>%
+    Sys.getenv()
+
+  if (missing(new_value)) {
+
+    cache_dir %||% return(NULL)
+
+    cache_dir %>%
+      file.path("crandb_etag.txt") %>%
+      read_file() %>%
+      trim() %>%
+      list() %>%
+      set_names("etag")
+
+  } else {
+
+    cache_dir %||% return(FALSE)
+
+    cache_dir %>%
+      file.path("crandb_etag.txt") %>%
+      create_file_if_missing() %>%
+      cat(x = new_value, file = .)
+
+    TRUE
+  }
+}
+
+#' @importFrom httr HEAD headers
+
+crandb_update <- function(force = FALSE) {
+
   cran <- cran_site()
 
-  current <- current_rds_path_comps %>%
+  current_url <- current_rds_path_comps %>%
     paste(collapse = "/") %>%
-    paste(cran_site(), ., sep="/") %>%
+    paste(cran_site(), ., sep="/")
+
+  ## Check if we should update
+  etag <- last_mod()$etag
+  if (!force && !is.null(etag)) {
+    etag_new <- HEAD(current_url) %>%
+      headers() %>%
+      extract2("etag")
+
+    identical(etag_new, etag) %&&% return()
+    last_mod(etag_new)
+  }
+
+  current <- current_url %>%
     read_remote_rds()
 
   archive <- archive_rds_path_comps %>%

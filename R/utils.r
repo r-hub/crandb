@@ -48,6 +48,10 @@ NA_NULL <- function(x) {
   if (length(x) == 1 && is.na(x)) NULL else x
 }
 
+NULL_NA <- function(x) {
+  if (is.null(x)) NA else x
+}
+
 unboxx <- function(x) {
   if (inherits(x, "scalar") ||
       is.null(x) ||
@@ -65,7 +69,7 @@ query <- function(url, error = TRUE, ...) {
   result <- url %>%
     GET() %>%
     content(as = "text", encoding = "UTF-8") %>%
-    fromJSON(...)
+    fromJSON(unicode = TRUE, ...)
 
   error %&&% ("error" %in% names(result)) %&&%
     stop("crandb query: ", result$reason, call. = FALSE)
@@ -78,6 +82,11 @@ add_class <- function(x, class_name) {
     class(x) <- c(class_name, attr(x, "class"))
   }
   x
+}
+
+add_attr <- function(object, key, value) {
+  attr(object, key) <- value
+  object
 }
 
 contains <- function(x, y) y %in% x

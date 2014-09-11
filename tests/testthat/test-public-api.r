@@ -87,11 +87,11 @@ test_that("events() works", {
 
   r3 <- events(limit = 2, releases = FALSE)
   expect_equal(length(r3), 2)
-  expect_equal(names(r3[[1]]), c("name", "package"))
+  expect_equal(names(r3[[1]]), c("date", "name", "event", "package"))
 
   r4 <- events(limit = 2, archivals = FALSE)
   expect_equal(length(r4), 2)
-  expect_equal(names(r4[[1]]), c("date", "name", "package"))
+  expect_equal(names(r4[[1]]), c("date", "name", "event", "package"))
 
 })
 
