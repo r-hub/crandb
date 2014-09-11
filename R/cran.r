@@ -13,6 +13,8 @@ current_rds_path <- do.call(file.path, current_rds_path_comps)
 cran_dep_fields  <- c("Depends", "Imports", "Suggests", "Enhances",
                       "LinkingTo")
 
+cache_dir_var <- "CRANDB_CACHE_DIR"
+
 ## CRAN@github configuration
 
 cran_mirror_default <- NA_character_
