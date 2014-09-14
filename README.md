@@ -32,7 +32,7 @@ package("dotenv")
 ```
 
 ```
-## CRAN package dotenv 1.0, 6 days ago
+## CRAN package dotenv 1.0, 17 days ago
 ## Title: Load environment variables from .env
 ## Maintainer: "Gabor Csardi" <csardi.gabor@gmail.com>
 ## Author: "Gabor Csardi" [aut, cre]
@@ -89,7 +89,7 @@ package("httr", version = "all")
 ```
 
 ```
-## CRAN package httr, latest: 0.5, 7 hours ago
+## CRAN package httr, latest: 0.5, 11 days ago
 ## ['0.5']:
 ##   Title: Tools for working with URLs and HTTP
 ##   Maintainer: Hadley Wickham <hadley@rstudio.com>
@@ -151,17 +151,17 @@ events()
 
 ```
 ## CRAN events (events)---------------------------------------------------------------------
-##  . When   Package   Version Title                                                        
-##  + 3 hour easingr   1.0.1   Fetch and plot credit easing policy tool data.               
-##  + 3 hour rcbalance 1.0     Large, sparse optimal matching with refined covariate bala...
-##  + 3 hour DBI       0.3.0   R Database Interface                                         
-##  + 6 hour rappdirs  0.3     Application directories: determine where to save data, cac...
-##  + 6 hour rNOMADS   2.0.2   An interface to the NOAA Operational Model Archive and Dis...
-##  + 6 hour ica       1.0-0   Independent Component Analysis                               
-##  + 6 hour roxygen2  4.0.2   In-source documentation for R                                
-##  + 7 hour httr      0.5     Tools for working with URLs and HTTP                         
-##  + 7 hour nor1mix   1.2-0   Normal (1-d) Mixture Models (S3 Classes and Methods)         
-##  + 8 hour enviPick  1.2     Peak picking for high resolution mass spectrometry data
+##  . When    Package            Version Title                                              
+##  + 10 hour iBATCGH            1.1     Integrative Bayesian Analysis of Transcriptomic ...
+##  + 17 hour Lahman             3.0-1   Sean Lahman's Baseball Database                    
+##  + 1 day   HH                 3.1-5   Statistical Analysis and Data Display: Heiberger...
+##  + 1 day   geepack            1.2-0   Generalized Estimating Equation Package            
+##  + 1 day   recosystem         0.2.4   Recommender System using Matrix Factorization      
+##  + 1 day   seedy              0.2     Simulation of Evolutionary and Epidemiological D...
+##  + 1 day   referenceIntervals 1.1.1   Reference Intervals                                
+##  + 1 day   phyloland          1.3     Modelling Competitive Exclusion and Limited Disp...
+##  + 1 day   ONETr              1.0     Efficient authenticated interaction with the O*N...
+##  - 1 day   MASSI              1.1     MicroArray Sample Sex Identifier
 ```
 
 ### R and CRAN releases
@@ -269,39 +269,39 @@ cran_releases(version = "2.13.1")
 ##  [97] "aroma.cn@0.7.3"           "aroma.core@2.1.0"         "arrayImpute@1.3"         
 ## [100] "arrayMissPattern@1.3"     "ars@0.4"                  "arules@1.0-6"            
 ## [103] "arulesNBMiner@0.1-1"      "arulesSequences@0.1-11"   "arulesViz@0.1-3"         
-## [106] "asbio@0.3-36"             "ascii@1.4"                "ash@1.0-12"              
-## [109] "aspace@3.0"               "aspect@1.0-0"             "assist@3.1.1"            
-## [112] "aster@0.7-7"              "aster2@0.1"               "asuR@0.08-24"            
-## [115] "asympTest@0.1.2"          "asypow@1.2.2"             "atm@0.1.0"               
-## [118] "atmi@1.0"                 "audio@0.1-4"              "automap@1.0-10"          
-## [121] "aws@1.6-2"                "aylmer@1.0-7"             "B2Z@1.3"                 
-## [124] "BaBooN@0.1-6"             "BACCO@2.0-2"              "backfitRichards@0.5.0"   
-## [127] "backtest@0.3-0"           "BaM@0.98.1"               "BAMD@3.4"                
-## [130] "barcode@1.0"              "BARD@1.24"                "bark@0.1-0"              
-## [133] "Barnard@1.0"              "BAS@0.92"                 "baseline@1.0-0"          
-## [136] "basicspace@0.02"          "batch@1.1-3"              "bats@0.1-2"              
-## [139] "bayesCGH@0.6"             "bayesclust@3.0"           "bayescount@0.9.9-1"      
-## [142] "BayesDA@1.0-1"            "bayesDem@1.3-0"           "bayesGARCH@1-00.10"      
-## [145] "bayesLife@0.2-0"          "bayesm@2.2-4"             "bayesmix@0.7-1"          
-## [148] "bayespack@1.0-2"          "BayesPanel@0.1-2"         "bayesQR@1.3"             
-## [151] "BayesQTLBIC@1.0-1"        "bayesSurv@0.6-2"          "bayesTFR@1.4-0"          
-## [154] "BayesTree@0.3-1.1"        "BayesValidate@0.0"        "BayesX@0.2-5"            
-## [157] "BayHap@1.0"               "BayHaz@0.0-6"             "baymvb@1.0.4"            
-## [160] "BAYSTAR@0.2-3"            "BB@2011.2-2"              "bbemkr@1.3"              
-## [163] "bbmle@1.0.0"              "BBMM@2.2"                 "BCA@0.1-1"               
-## [166] "BCE@1.3"                  "Bchron@3.1.4"             "bclust@1.2"              
-## [169] "bcp@2.2.0"                "bcv@1.0"                  "bdoc@1.1"                
-## [172] "bdsmatrix@1.0"            "beadarrayMSV@1.1.0"       "beanplot@1.1"            
-## [175] "bear@2.5.2"               "beeswarm@0.0.7"           "belief@1.0.1"            
-## [178] "benchden@1.0.4"           "benchmark@0.3-2"          "Benchmarking@0.19"       
-## [181] "bentcableAR@0.2.2"        "ber@2.0"                  "Bergm@1.4"               
-## [184] "Bessel@0.5-3"             "bestglm@0.31"             "betaper@1.0-0"           
-## [187] "betareg@2.3-0"            "bethel@0.1"               "bfast@1.2-1"             
-## [190] "bfp@0.0-19"               "bgmm@1.2"                 "Bhat@0.9-09"             
-## [193] "BHH2@1.0.3"               "BiasedUrn@1.03"           "bibtex@0.2-1"            
-## [196] "biclust@1.0.1"            "bicreduc@0.4-7"           "bifactorial@1.4.6"       
-## [199] "biganalytics@1.0.14"      "biglars@1.0.1"           
-##  [ reached getOption("max.print") -- omitted 2973 entries ]
+## [106] "ascii@1.4"                "ash@1.0-12"               "aspace@3.0"              
+## [109] "aspect@1.0-0"             "assist@3.1.1"             "aster@0.7-7"             
+## [112] "aster2@0.1"               "asuR@0.08-24"             "asympTest@0.1.2"         
+## [115] "asypow@1.2.2"             "atm@0.1.0"                "atmi@1.0"                
+## [118] "audio@0.1-4"              "automap@1.0-10"           "aws@1.6-2"               
+## [121] "aylmer@1.0-7"             "B2Z@1.3"                  "BaBooN@0.1-6"            
+## [124] "BACCO@2.0-2"              "backfitRichards@0.5.0"    "backtest@0.3-0"          
+## [127] "BaM@0.98.1"               "BAMD@3.4"                 "barcode@1.0"             
+## [130] "BARD@1.24"                "bark@0.1-0"               "Barnard@1.0"             
+## [133] "BAS@0.92"                 "baseline@1.0-0"           "basicspace@0.02"         
+## [136] "batch@1.1-3"              "bats@0.1-2"               "bayesCGH@0.6"            
+## [139] "bayesclust@3.0"           "bayescount@0.9.9-1"       "BayesDA@1.0-1"           
+## [142] "bayesDem@1.3-0"           "bayesGARCH@1-00.10"       "bayesLife@0.2-0"         
+## [145] "bayesm@2.2-4"             "bayesmix@0.7-1"           "bayespack@1.0-2"         
+## [148] "BayesPanel@0.1-2"         "bayesQR@1.3"              "BayesQTLBIC@1.0-1"       
+## [151] "bayesSurv@0.6-2"          "bayesTFR@1.4-0"           "BayesTree@0.3-1.1"       
+## [154] "BayesValidate@0.0"        "BayesX@0.2-5"             "BayHap@1.0"              
+## [157] "BayHaz@0.0-6"             "baymvb@1.0.4"             "BAYSTAR@0.2-3"           
+## [160] "BB@2011.2-2"              "bbemkr@1.3"               "bbmle@1.0.0"             
+## [163] "BBMM@2.2"                 "BCA@0.1-1"                "BCE@1.3"                 
+## [166] "Bchron@3.1.4"             "bclust@1.2"               "bcp@2.2.0"               
+## [169] "bcv@1.0"                  "bdoc@1.1"                 "bdsmatrix@1.0"           
+## [172] "beadarrayMSV@1.1.0"       "beanplot@1.1"             "bear@2.5.2"              
+## [175] "beeswarm@0.0.7"           "belief@1.0.1"             "benchden@1.0.4"          
+## [178] "benchmark@0.3-2"          "Benchmarking@0.19"        "bentcableAR@0.2.2"       
+## [181] "ber@2.0"                  "Bergm@1.4"                "Bessel@0.5-3"            
+## [184] "bestglm@0.31"             "betaper@1.0-0"            "betareg@2.3-0"           
+## [187] "bethel@0.1"               "bfast@1.2-1"              "bfp@0.0-19"              
+## [190] "bgmm@1.2"                 "Bhat@0.9-09"              "BHH2@1.0.3"              
+## [193] "BiasedUrn@1.03"           "bibtex@0.2-1"             "biclust@1.0.1"           
+## [196] "bicreduc@0.4-7"           "bifactorial@1.4.6"        "biganalytics@1.0.14"     
+## [199] "biglars@1.0.1"            "biglm@0.7"               
+##  [ reached getOption("max.print") -- omitted 2961 entries ]
 ```
 
 ## The raw API
@@ -693,43 +693,43 @@ DB("/-/pkgreleases?limit=3&descending=true", head = 20)
 ```
 ## [
 ## 	{
-## 		"date" : "2014-09-02T22:20:10+00:00",
-## 		"name" : "easingr",
+## 		"date" : "2014-09-13T18:12:26+00:00",
+## 		"name" : "iBATCGH",
 ## 		"event" : "released",
 ## 		"package" : {
-## 			"Package" : "easingr",
-## 			"Title" : "Fetch and plot credit easing policy tool data.",
-## 			"Version" : "1.0.1",
+## 			"Package" : "iBATCGH",
+## 			"Type" : "Package",
+## 			"Title" : "Integrative Bayesian Analysis of Transcriptomic and CGH data",
+## 			"Version" : "1.1",
 ## 			"Date" : "2014-09-02",
-## 			"Author" : "Matt Barry <mrb@softisms.com>",
-## 			"Maintainer" : "Matt Barry <mrb@softisms.com>",
-## 			"Description" : "Forms queries to submit to the Cleveland Federal Reserve Bank web\u000asite's credit easing policy tools data site.  Provides various query functions\u000aaccording to the easing data desired.  By default the download includes\u000aeasing tool weekly time series data starting January 2007.  The functions\u000areturn a class of type easing which contains a list of items related to the\u000aquery and its graphical presentation.  The list includes the time series\u000adata as an xts object.  The package provides two lattice time series plots\u000ato render the data in a manner similar to the bank's own presentation.",
-## 			"License" : "MIT + file LICENSE",
-## 			"URL" : "https://github.com/mrbcuda/easingr",
-## 			"BugReports" : "https://github.com/mrbcuda/easingr/issues",
+## 			"Author" : "Alberto Cassese",
+## 			"Maintainer" : "Alberto Cassese <alberto.cassese@rice.edu>",
+## 			"Description" : "Bayesian integrative models of gene expression and comparative genomic hybridization data. The package provides inference on copy number variations and their association with gene expression",
+## 			"License" : "GPL-2",
 ## 			"Imports" : {
-## 				"utils" : "*",
-## 				"xts" : "*",
-## 				"lattice" : "*",
-## 
-## ... not showing 54 lines ...
-## 
-## 				"testthat" : "*",
-## 				"RSQLite" : "*"
+## 				"Rcpp" : ">= 0.11.2",
+## 				"msm" : "*"
 ## 			},
-## 			"Description" : "A database interface (DBI) definition for communication\u000abetween R and relational database management systems.  All\u000aclasses in this package are virtual and need to be extended by\u000athe various R/DBMS implementations.",
-## 			"License" : "LGPL (>= 2)",
-## 			"URL" : "https://github.com/rstats-db/DBI",
-## 			"BugReports" : "https://github.com/rstats-db/DBI/issues",
-## 			"Collate" : "'DBObject.R' 'DBConnection.R' 'DBDriver.R' 'DBResult.R'\u000a'compliance.R' 'keywords.R' 'quote.R' 'util.R'",
-## 			"Packaged" : "2014-09-02 17:43:27 UTC; hadley",
+## 			"LinkingTo" : {
+## 
+## ... not showing 85 lines ...
+## 
+## 			},
+## 			"Suggests" : {
+## 				"methods" : "*",
+## 				"abind" : "*",
+## 				"mvtnorm" : "*",
+## 				"car" : "*",
+## 				"RcmdrPlugin.HH" : "*"
+## 			},
+## 			"Description" : "Support software for Statistical Analysis and Data Display (First Edition, Springer, ISBN 0-387-40270-5, 2004) and (Second Edition, Springer, ISBN x-xxx-xxxxx-x, anticipated 2015) by Richard M. Heiberger and Burt Holland.  This contemporary presentation of statistical methods features extensive use of graphical displays for exploring data and for displaying the analysis.  The second edition includes redesigned graphics and additional chapters. The authors emphasize how to construct and interpret graphs, discuss principles of graphical design, and show how accompanying traditional tabular results are used to confirm the visual impressions derived directly from the graphs. Many of the graphical formats are novel and appear here for the first time in print.  All chapters have exercises.  All functions introduced in the book are in the package.  R code for all examples, both graphs and tables, in the book is included in the scripts directory of the package.",
+## 			"License" : "GPL (>= 2)",
+## 			"Packaged" : "2014-09-12 01:58:32 UTC; rmh",
 ## 			"NeedsCompilation" : "no",
-## 			"X-CRAN-Original-Maintainer" : "Hadley Wickham <hadley@rstudio.com>",
-## 			"X-CRAN-Comment" : "Orphaned on 2014-08-28 as the previous maintainer\u000aclaimed he was not the maintainer!",
 ## 			"Repository" : "CRAN",
-## 			"Date/Publication" : "2014-09-02 22:05:57",
-## 			"crandb_file_date" : "2014-09-02 18:01:36",
-## 			"date" : "2014-09-02T22:05:57+00:00",
+## 			"Date/Publication" : "2014-09-13 08:34:04",
+## 			"crandb_file_date" : "2014-09-13 02:36:50",
+## 			"date" : "2014-09-13T08:34:04+00:00",
 ## 			"releases" : []
 ## 		}
 ## 	}
@@ -751,42 +751,42 @@ DB("/-/archivals?limit=3&descending=true", head = 20)
 ```
 ## [
 ## 	{
-## 		"date" : "2014-09-02T13:31:18+00:00",
-## 		"name" : "MIfuns",
+## 		"date" : "2014-09-13T07:25:27+00:00",
+## 		"name" : "MASSI",
 ## 		"event" : "archived",
 ## 		"package" : {
-## 			"Package" : "MIfuns",
+## 			"Package" : "MASSI",
 ## 			"Type" : "Package",
-## 			"Title" : "Pharmacometric tools for data preparation, modeling, simulation,\u000aand reporting",
-## 			"Version" : "5.1",
-## 			"Date" : "2011-09-07",
-## 			"Author" : "Metrum Institute (http://metruminstitute.org): Bill Knebel,\u000aLeonid Gibianski, Tim Bergsma",
-## 			"Maintainer" : "Tim Bergsma <timb@metrumrg.com>",
+## 			"Title" : "MicroArray Sample Sex Identifier",
+## 			"Version" : "1.1",
+## 			"Date" : "2013-06-11",
+## 			"Author" : "Sam Buckberry",
+## 			"Maintainer" : "Sam Buckberry <sam.buckberry@adelaide.edu.au>",
+## 			"Description" : "Predicts sample sex information in gene expression microarray datasets",
+## 			"License" : "GPL-3",
+## 			"Collate" : "'massi.check.R' 'massi.cluster.R' 'massi.espresso.R'\u000a'massi.plot.R' 'massi.y.R'",
+## 			"LazyData" : "true",
 ## 			"Depends" : {
-## 				"reshape" : "*",
-## 				"methods" : "*",
-## 				"lattice" : "*",
-## 				"grid" : "*",
-## 				"XML" : "*",
-## 				"MASS" : "*"
+## 				"fpc" : "*",
+## 				"gplots" : "*"
 ## 
-## ... not showing 74 lines ...
+## ... not showing 56 lines ...
 ## 
+## 			"Collate" : "main.R zzz.R",
+## 			"Encoding" : "latin1",
+## 			"Suggests" : {
+## 				"RUnit" : "*",
+## 				"rbenchmark" : "*"
 ## 			},
-## 			"Description" : "A stub package to ease transition to 'parallel'.\u000aIt imports from 'parallel' or 'tools' and re-exports most of the\u000afunctionality formerly in package 'multicore'.\u000aThis will be removed from CRAN during 2014.",
-## 			"License" : "GPL-2",
-## 			"crandb_file_date" : "2014-05-17 05:43:01",
-## 			"OS_type" : "unix",
+## 			"Packaged" : "2013-12-11 07:09:15 UTC; bernardo",
 ## 			"Repository" : "CRAN",
-## 			"Date/Publication" : "2014-05-17 11:42:59",
-## 			"Imports" : {
-## 				"parallel" : "*",
-## 				"tools" : "*"
-## 			},
-## 			"Packaged" : "2014-05-17 09:39:13 UTC; ripley",
-## 			"NeedsCompilation" : "no",
-## 			"date" : "2014-05-17T11:42:59+00:00",
+## 			"Date/Publication" : "2013-12-11 15:32:26",
+## 			"crandb_file_date" : "2013-12-11 09:32:26",
+## 			"NeedsCompilation" : "yes",
+## 			"date" : "2013-12-11T15:32:26+00:00",
 ## 			"releases" : [
+## 				"3.0.3",
+## 				"3.1.0",
 ## 				"3.1.1"
 ## 			]
 ## 		}
@@ -807,43 +807,43 @@ DB("/-/events?limit=3&descending=true", head = 20)
 ```
 ## [
 ## 	{
-## 		"date" : "2014-09-02T22:20:10+00:00",
-## 		"name" : "easingr",
+## 		"date" : "2014-09-13T18:12:26+00:00",
+## 		"name" : "iBATCGH",
 ## 		"event" : "released",
 ## 		"package" : {
-## 			"Package" : "easingr",
-## 			"Title" : "Fetch and plot credit easing policy tool data.",
-## 			"Version" : "1.0.1",
+## 			"Package" : "iBATCGH",
+## 			"Type" : "Package",
+## 			"Title" : "Integrative Bayesian Analysis of Transcriptomic and CGH data",
+## 			"Version" : "1.1",
 ## 			"Date" : "2014-09-02",
-## 			"Author" : "Matt Barry <mrb@softisms.com>",
-## 			"Maintainer" : "Matt Barry <mrb@softisms.com>",
-## 			"Description" : "Forms queries to submit to the Cleveland Federal Reserve Bank web\u000asite's credit easing policy tools data site.  Provides various query functions\u000aaccording to the easing data desired.  By default the download includes\u000aeasing tool weekly time series data starting January 2007.  The functions\u000areturn a class of type easing which contains a list of items related to the\u000aquery and its graphical presentation.  The list includes the time series\u000adata as an xts object.  The package provides two lattice time series plots\u000ato render the data in a manner similar to the bank's own presentation.",
-## 			"License" : "MIT + file LICENSE",
-## 			"URL" : "https://github.com/mrbcuda/easingr",
-## 			"BugReports" : "https://github.com/mrbcuda/easingr/issues",
+## 			"Author" : "Alberto Cassese",
+## 			"Maintainer" : "Alberto Cassese <alberto.cassese@rice.edu>",
+## 			"Description" : "Bayesian integrative models of gene expression and comparative genomic hybridization data. The package provides inference on copy number variations and their association with gene expression",
+## 			"License" : "GPL-2",
 ## 			"Imports" : {
-## 				"utils" : "*",
-## 				"xts" : "*",
-## 				"lattice" : "*",
-## 
-## ... not showing 54 lines ...
-## 
-## 				"testthat" : "*",
-## 				"RSQLite" : "*"
+## 				"Rcpp" : ">= 0.11.2",
+## 				"msm" : "*"
 ## 			},
-## 			"Description" : "A database interface (DBI) definition for communication\u000abetween R and relational database management systems.  All\u000aclasses in this package are virtual and need to be extended by\u000athe various R/DBMS implementations.",
-## 			"License" : "LGPL (>= 2)",
-## 			"URL" : "https://github.com/rstats-db/DBI",
-## 			"BugReports" : "https://github.com/rstats-db/DBI/issues",
-## 			"Collate" : "'DBObject.R' 'DBConnection.R' 'DBDriver.R' 'DBResult.R'\u000a'compliance.R' 'keywords.R' 'quote.R' 'util.R'",
-## 			"Packaged" : "2014-09-02 17:43:27 UTC; hadley",
+## 			"LinkingTo" : {
+## 
+## ... not showing 85 lines ...
+## 
+## 			},
+## 			"Suggests" : {
+## 				"methods" : "*",
+## 				"abind" : "*",
+## 				"mvtnorm" : "*",
+## 				"car" : "*",
+## 				"RcmdrPlugin.HH" : "*"
+## 			},
+## 			"Description" : "Support software for Statistical Analysis and Data Display (First Edition, Springer, ISBN 0-387-40270-5, 2004) and (Second Edition, Springer, ISBN x-xxx-xxxxx-x, anticipated 2015) by Richard M. Heiberger and Burt Holland.  This contemporary presentation of statistical methods features extensive use of graphical displays for exploring data and for displaying the analysis.  The second edition includes redesigned graphics and additional chapters. The authors emphasize how to construct and interpret graphs, discuss principles of graphical design, and show how accompanying traditional tabular results are used to confirm the visual impressions derived directly from the graphs. Many of the graphical formats are novel and appear here for the first time in print.  All chapters have exercises.  All functions introduced in the book are in the package.  R code for all examples, both graphs and tables, in the book is included in the scripts directory of the package.",
+## 			"License" : "GPL (>= 2)",
+## 			"Packaged" : "2014-09-12 01:58:32 UTC; rmh",
 ## 			"NeedsCompilation" : "no",
-## 			"X-CRAN-Original-Maintainer" : "Hadley Wickham <hadley@rstudio.com>",
-## 			"X-CRAN-Comment" : "Orphaned on 2014-08-28 as the previous maintainer\u000aclaimed he was not the maintainer!",
 ## 			"Repository" : "CRAN",
-## 			"Date/Publication" : "2014-09-02 22:05:57",
-## 			"crandb_file_date" : "2014-09-02 18:01:36",
-## 			"date" : "2014-09-02T22:05:57+00:00",
+## 			"Date/Publication" : "2014-09-13 08:34:04",
+## 			"crandb_file_date" : "2014-09-13 02:36:50",
+## 			"date" : "2014-09-13T08:34:04+00:00",
 ## 			"releases" : []
 ## 		}
 ## 	}
@@ -939,7 +939,7 @@ DB("/-/releasepkgs/2.15.3", head = 20)
 ## 		},
 ## 		"Packaged" : "2013-02-06 16:46:12 UTC; scott",
 ## 
-## ... not showing 167076 lines ...
+## ... not showing 166559 lines ...
 ## 
 ## 		"Depends" : {
 ## 			"R" : ">= 2.4.0",
@@ -995,7 +995,7 @@ DB("/-/release/2.15.3", head = 20)
 ## 	"ACNE" : "0.5.0",
 ## 	"acs" : "0.8",
 ## 
-## ... not showing 4918 lines ...
+## ... not showing 4903 lines ...
 ## 
 ## 	"YjdnJlp" : "0.9.8",
 ## 	"YourCast" : "1.5-1",
@@ -1051,7 +1051,7 @@ DB("/-/releasedesc/2.15.3", head = 20)
 ## 		"version" : "0.1-2",
 ## 		"title" : "Algorithms for ABC summary statistics selection"
 ## 
-## ... not showing 19766 lines ...
+## ... not showing 19706 lines ...
 ## 
 ## 		"version" : "1.1",
 ## 		"title" : "Zero-offset matrices"
@@ -1088,64 +1088,64 @@ DB("/-/topdeps/3.1.1")
 ```
 ## [
 ## 	{
-## 		"MASS" : 805
+## 		"MASS" : 788
 ## 	},
 ## 	{
-## 		"lattice" : 413
+## 		"lattice" : 405
 ## 	},
 ## 	{
-## 		"ggplot2" : 310
+## 		"ggplot2" : 303
 ## 	},
 ## 	{
-## 		"Matrix" : 289
+## 		"Matrix" : 284
 ## 	},
 ## 	{
-## 		"mvtnorm" : 280
+## 		"mvtnorm" : 272
 ## 	},
 ## 	{
-## 		"testthat" : 272
+## 		"testthat" : 265
 ## 	},
 ## 	{
-## 		"survival" : 261
+## 		"survival" : 257
 ## 	},
 ## 	{
-## 		"Rcpp" : 238
+## 		"plyr" : 231
 ## 	},
 ## 	{
-## 		"plyr" : 235
+## 		"Rcpp" : 228
 ## 	},
 ## 	{
-## 		"knitr" : 166
+## 		"knitr" : 161
 ## 	},
 ## 	{
-## 		"XML" : 162
+## 		"XML" : 159
 ## 	},
 ## 	{
-## 		"rgl" : 155
+## 		"rgl" : 152
 ## 	},
 ## 	{
-## 		"nlme" : 152
+## 		"nlme" : 148
 ## 	},
 ## 	{
-## 		"sp" : 150
+## 		"sp" : 147
 ## 	},
 ## 	{
-## 		"igraph" : 143
+## 		"igraph" : 142
 ## 	},
 ## 	{
 ## 		"coda" : 135
 ## 	},
 ## 	{
-## 		"boot" : 133
+## 		"boot" : 132
 ## 	},
 ## 	{
-## 		"RCurl" : 128
+## 		"RCurl" : 124
 ## 	},
 ## 	{
-## 		"RUnit" : 119
+## 		"RUnit" : 118
 ## 	},
 ## 	{
-## 		"reshape2" : 117
+## 		"RColorBrewer" : 114
 ## 	}
 ## ]
 ```
@@ -1164,61 +1164,61 @@ DB("/-/topdeps/devel")
 ## 		"MASS" : 836
 ## 	},
 ## 	{
-## 		"lattice" : 421
+## 		"lattice" : 422
 ## 	},
 ## 	{
-## 		"ggplot2" : 328
+## 		"ggplot2" : 336
 ## 	},
 ## 	{
-## 		"Matrix" : 310
+## 		"testthat" : 317
 ## 	},
 ## 	{
-## 		"testthat" : 309
+## 		"Matrix" : 309
 ## 	},
 ## 	{
-## 		"mvtnorm" : 290
+## 		"mvtnorm" : 291
 ## 	},
 ## 	{
-## 		"survival" : 271
+## 		"Rcpp" : 274
 ## 	},
 ## 	{
-## 		"Rcpp" : 267
+## 		"survival" : 273
 ## 	},
 ## 	{
-## 		"plyr" : 254
+## 		"plyr" : 257
 ## 	},
 ## 	{
-## 		"knitr" : 207
+## 		"knitr" : 214
 ## 	},
 ## 	{
-## 		"XML" : 168
+## 		"XML" : 173
 ## 	},
 ## 	{
 ## 		"sp" : 168
 ## 	},
 ## 	{
-## 		"rgl" : 163
+## 		"rgl" : 164
 ## 	},
 ## 	{
-## 		"nlme" : 156
+## 		"nlme" : 157
 ## 	},
 ## 	{
-## 		"igraph" : 148
+## 		"igraph" : 151
 ## 	},
 ## 	{
-## 		"RCurl" : 142
+## 		"RCurl" : 144
 ## 	},
 ## 	{
-## 		"coda" : 142
+## 		"coda" : 143
 ## 	},
 ## 	{
-## 		"boot" : 138
+## 		"boot" : 142
 ## 	},
 ## 	{
-## 		"reshape2" : 129
+## 		"reshape2" : 133
 ## 	},
 ## 	{
-## 		"stringr" : 123
+## 		"stringr" : 126
 ## 	}
 ## ]
 ```
@@ -1234,7 +1234,7 @@ DB("/-/deps/2.15.1", head = 20)
 
 ```
 ## {
-## 	"abind" : 38,
+## 	"abind" : 36,
 ## 	"accuracy" : 4,
 ## 	"acepack" : 2,
 ## 	"aCGH" : 2,
@@ -1250,14 +1250,14 @@ DB("/-/deps/2.15.1", head = 20)
 ## 	"adehabitatLT" : 2,
 ## 	"adehabitatMA" : 3,
 ## 	"adephylo" : 1,
-## 	"ADGofTest" : 4,
+## 	"ADGofTest" : 3,
 ## 	"adimpro" : 3,
 ## 	"adlift" : 1,
 ## 
-## ... not showing 1462 lines ...
+## ... not showing 1457 lines ...
 ## 
 ## 	"xlsxjars" : 1,
-## 	"XML" : 98,
+## 	"XML" : 96,
 ## 	"XMLRPC" : 1,
 ## 	"XMLSchema" : 3,
 ## 	"xpose4" : 1,
@@ -1274,6 +1274,6 @@ DB("/-/deps/2.15.1", head = 20)
 ## 	"yaml" : 1,
 ## 	"Zelig" : 5,
 ## 	"zipfR" : 2,
-## 	"zoo" : 76
+## 	"zoo" : 75
 ## }
 ```
