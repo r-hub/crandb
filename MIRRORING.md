@@ -35,5 +35,7 @@ but not on the IP address.
    replication. It is the easiest to create this from Futon or Fauxton.
    Obviously, the name of the new replicated database should be `cran`.
 
-   
-
+Then query something that triggers indexing, e.g.
+http://localhost:5984/-/events?limit=10&descending=true (or replace
+`localhost:5984` with your server). Indexing can be slow, actually, and
+may take several minutes.
