@@ -1,4 +1,11 @@
 
+config <- list()
+
+.onAttach <- function(libname, pkgname) {
+  ub <- unlockBinding
+  ub("config", asNamespace(pkgname))
+}
+
 #' @include cran.r
 
 appname <- (function() {
@@ -11,20 +18,7 @@ appname <- (function() {
   }
 })()
 
-#' @importFrom rappdirs user_config_dir
-
-get_config_file <- function() {
-  appname() %>%
-    rappdirs::user_config_dir() %>%
-    file.path("config.yaml")
-}
-
-#' @importFrom yaml yaml.load_file
-
 get_config <- function(key) {
-  config <- get_config_file() %>%
-    yaml.load_file()
-
   if (missing(key)) {
     config
   } else {
@@ -32,18 +26,8 @@ get_config <- function(key) {
   }
 }
 
-#' @importFrom yaml yaml.load_file as.yaml
-
 set_config <- function(key, value) {
-  config_file <- get_config_file()
-
-  create_file_if_missing(config_file)
-
-  yaml.load_file(config_file) %>%
-    as.list() %>%
-    replace(key, value) %>%
-    as.yaml() %>%
-    cat(file = config_file)
+  config[[key]] <<- value
 }
 
 #' @importFrom falsy try_quietly "%||%"

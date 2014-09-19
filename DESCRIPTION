@@ -7,8 +7,6 @@ Description: The CRAN metadata database contains information about
     this database. Note that this is _not_ a CRAN project.
 Imports:
     magrittr,
-    rappdirs,
-    yaml,
     falsy,
     jsonlite,
     parsedate,
