@@ -282,16 +282,13 @@ print.cran_releases <- function(x, ...) {
 ## ----------------------------------------------------------------------
 ## Utilities
 
-#' @importFrom lubridate as.duration now
-
 time_ago <- function(date) {
 
   if (length(date) > 1) return(sapply(date, time_ago))
 
-  seconds <- now() %>%
-    subtract(date) %>%
-    as.duration() %>%
-    unclass()
+  seconds <- Sys.time() %>%
+    difftime(date, units = "secs") %>%
+    as.vector()
 
   minutes <- seconds / 60
   hours <- minutes / 60
@@ -316,10 +313,9 @@ time_ago_short <- function(date) {
 
   if (length(date) > 1) return(sapply(date, time_ago_short))
 
-  seconds <- now() %>%
-    subtract(date) %>%
-    as.duration() %>%
-    unclass()
+  seconds <- Sys.time() %>%
+    difftime(date, units = "secs") %>%
+    as.vector()
 
   minutes <- seconds / 60
   hours <- minutes / 60
