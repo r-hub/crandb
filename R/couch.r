@@ -175,10 +175,13 @@ create_empty_db <- function() {
     system(ignore.stdout = TRUE, ignore.stderr = TRUE)
 }
 
+#' @importFrom httr authenticate
+
 couch_add <- function(id, json) {
+  auth <- authenticate(couchdb_user(), couchdb_password())
   couchdb_server(root = TRUE) %>%
     paste(sep = "/", id) %>%
-    httr::PUT(body = json, httr::content_type_json()) %>%
+    httr::PUT(body = json, httr::content_type_json(), auth) %>%
     httr::stop_for_status()
 }
 
@@ -187,9 +190,12 @@ couch_exists <- function() {
     httr::url_ok()
 }
 
+#' @importFrom httr authenticate
+
 couch_create_db <- function() {
+  auth <- authenticate(couchdb_user(), couchdb_password())
   couchdb_server(root = TRUE) %>%
-    httr::PUT() %>%
+    httr::PUT(auth) %>%
     httr::stop_for_status()
 
   TRUE
