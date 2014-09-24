@@ -11,7 +11,8 @@ Imports:
     jsonlite,
     parsedate,
     httr,
-    assertthat
+    assertthat,
+    pretty
 License: MIT + file LICENSE
 LazyData: true
 Collate:

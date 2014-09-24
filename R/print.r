@@ -15,6 +15,7 @@ summary.cran_package <- function(object, ...) {
 }
 
 #' @importFrom parsedate parse_date
+#' @importFrom pretty time_ago
 
 summary_cran_package_single <- function(object, ...) {
   cat('CRAN package ' %+% object$Package %+% " " %+% object$Version %+%
@@ -181,14 +182,14 @@ summary.cran_event_list <- function(object, ...) {
 ## ----------------------------------------------------------------------
 #' @method print cran_event_list
 #' @export
-
+#' @importFrom pretty time_ago
 
 print.cran_event_list <- function(x, ...) {
   cat_fill("CRAN events (" %+% attr(x, "mode") %+% ")")
   pkgs <- data.frame(
     stringsAsFactors = FALSE, check.names = FALSE,
     "." = ifelse(sapply(x, "[[", "event") == "released", "+", "-"),
-    When = sapply(x, "[[", "date") %>% parse_date() %>% time_ago_short(),
+    When = sapply(x, "[[", "date") %>% parse_date() %>% time_ago(format = "short"),
     Package = sapply(x, "[[", "name"),
     Version = sapply(x, function(xx) xx$package$Version),
     RTitle = sapply(x, function(xx) xx$package$Title) %>%
@@ -281,58 +282,6 @@ print.cran_releases <- function(x, ...) {
 
 ## ----------------------------------------------------------------------
 ## Utilities
-
-time_ago <- function(date) {
-
-  if (length(date) > 1) return(sapply(date, time_ago))
-
-  seconds <- Sys.time() %>%
-    difftime(date, units = "secs") %>%
-    as.vector()
-
-  minutes <- seconds / 60
-  hours <- minutes / 60
-  days <- hours / 24
-  years <- days / 365.25
-
-  (seconds < 10)  %&&% return("moments ago")
-  (seconds < 45)  %&&% return("less than a minute ago")
-  (seconds < 90)  %&&% return("about a minute ago")
-  (minutes < 45)  %&&% return("%d minutes ago" %s% trunc(minutes))
-  (minutes < 90)  %&&% return("about an hour ago")
-  (hours   < 24)  %&&% return("%d hours ago" %s% trunc(hours))
-  (hours   < 42)  %&&% return("a day ago")
-  (days    < 30)  %&&% return("%d days ago" %s% trunc(days))
-  (days    < 45)  %&&% return("about a month ago")
-  (days    < 365) %&&% return("%d months ago" %s% trunc(days / 30))
-  (years   < 1.5) %&&% return("about a year ago")
-  "%d years ago" %s% trunc(years)
-}
-
-time_ago_short <- function(date) {
-
-  if (length(date) > 1) return(sapply(date, time_ago_short))
-
-  seconds <- Sys.time() %>%
-    difftime(date, units = "secs") %>%
-    as.vector()
-
-  minutes <- seconds / 60
-  hours <- minutes / 60
-  days <- hours / 24
-  years <- days / 365.25
-
-  (seconds < 50)  %&&% return("<1 min")
-  (minutes < 50)  %&&% return("%d min" %s% trunc(minutes))
-  (hours   < 1.2) %&&% return("1 hour")
-  (hours   < 18)  %&&% return("%d hour" %s% trunc(hours))
-  (hours   < 42)  %&&% return("1 day")
-  (days    < 30)  %&&% return("%d day" %s% trunc(days))
-  (days    < 45)  %&&% return("1 mon")
-  (days    < 365) %&&% return("%d mon" %s% trunc(days / 30))
-  (years   < 1.5) %&&% return("1 year")
-  "%d years" %s% trunc(years)
-}
 
 #' @importFrom assertthat assert_that is.string
 
