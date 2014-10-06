@@ -209,6 +209,7 @@ back_to_json <- function(object, pretty = FALSE) {
   object[["archived"]] <- unboxx(object[["archived"]])
   object[["timeline"]] <- lapply(object[["timeline"]], unboxx)
   object[["versions"]] <- lapply(object[["versions"]], back_to_json_version)
+  object[["revdeps"]] <- unboxx(object[["revdeps"]])
   toJSON(object, pretty = pretty)
 }
 
@@ -264,4 +265,25 @@ cran_versions <- function(pkg, archive, current) {
     ver_from_tarname() %>%
     unname()
 
+}
+
+update_revdeps <- function(which = "devel") {
+  assert_that(is.string(which))
+  couchdb_server() %>%
+    paste0("/-/deps/") %>%
+    paste0(which) %>%
+    query(simplifyDataFrame = FALSE) %>%
+    mapply(FUN=update_revdep, pkg = names(.), no = .)
+}
+
+#' @importFrom falsy %&&%
+
+update_revdep <- function(pkg, no) {
+  current <- get_package(pkg)
+  current$error %&&% return(FALSE)
+  current$revdeps %&&% (current$revdeps == no) %&&% return(FALSE)
+  current$revdeps <- no
+  current %>%
+    back_to_json() %>%
+    couch_add(id = pkg)
 }
