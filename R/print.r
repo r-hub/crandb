@@ -15,7 +15,7 @@ summary.cran_package <- function(object, ...) {
 }
 
 #' @importFrom parsedate parse_date
-#' @importFrom pretty time_ago
+#' @importFrom prettyunits time_ago
 
 summary_cran_package_single <- function(object, ...) {
   cat('CRAN package ' %+% object$Package %+% " " %+% object$Version %+%
@@ -182,7 +182,7 @@ summary.cran_event_list <- function(object, ...) {
 ## ----------------------------------------------------------------------
 #' @method print cran_event_list
 #' @export
-#' @importFrom pretty time_ago
+#' @importFrom prettyunits time_ago
 
 print.cran_event_list <- function(x, ...) {
   cat_fill("CRAN events (" %+% attr(x, "mode") %+% ")")

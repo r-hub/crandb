@@ -12,7 +12,7 @@ Imports:
     parsedate,
     httr,
     assertthat,
-    pretty
+    prettyunits
 License: MIT + file LICENSE
 LazyData: true
 Collate:
