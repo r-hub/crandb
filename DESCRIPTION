@@ -12,13 +12,15 @@ Imports:
     parsedate,
     httr,
     assertthat,
-    prettyunits
+    prettyunits,
+    spareserver
 License: MIT + file LICENSE
 LazyData: true
 Collate:
     'api.r'
     'assert.r'
     'build.r'
+    'utils.r'
     'cran.r'
     'config.r'
     'couch.r'
@@ -26,7 +28,6 @@ Collate:
     'print.r'
     'public_api.r'
     'update.r'
-    'utils.r'
 Suggests:
     testthat
 URL: https://github.com/metacran/crandb

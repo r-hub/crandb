@@ -18,7 +18,17 @@ cache_dir_var <- "CRANDB_CACHE_DIR"
 ## CRAN@github configuration
 
 cran_mirror_default <- NA_character_
-couchdb_uri_default <- "http://db.r-pkg.org/"
+couchdb_uris <- list(
+  list(uri = "http://db.r-pkg.org/", priority = 10),
+  list(uri = "http://db2.r-pkg.org:5984/", priority = 1)
+)
+
+#' @importFrom spareserver add_service add_server server
+#' @include utils.r
+service <- "crandb-" %+% make_id()
+add_service(service,
+            server(couchdb_uris[[1]]$uri, priority = couchdb_uris[[1]]$priority),
+            server(couchdb_uris[[2]]$uri, priority = couchdb_uris[[2]]$priority))
 
 ## R release dates
 

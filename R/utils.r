@@ -64,10 +64,12 @@ rsync <- function(from, to, args = "-rtlzv --delete") {
   system(cmd, ignore.stdout = TRUE, ignore.stderr = TRUE)
 }
 
+#' @importFrom spareserver spare_q
+
 query <- function(url, error = TRUE, ...) {
 
   result <- url %>%
-    GET() %>%
+    spare_q(service = service, GET, ...) %>%
     content(as = "text", encoding = "UTF-8") %>%
     fromJSON(unicode = TRUE, ...)
 
@@ -122,4 +124,9 @@ pluck <- function(list, idx) list[[idx]]
   list(lhs) %>%
     c(as.list(rhs)) %>%
     do.call(what = sprintf)
+}
+
+make_id <- function(length = 8) {
+  sample(c(letters, LETTERS, 0:9), length, replace = TRUE) %>%
+    paste(collapse = "")
 }

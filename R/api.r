@@ -5,7 +5,7 @@
 #' @importFrom jsonlite fromJSON
 
 api <- function(page) {
-  couchdb_server() %>%
+  couchdb_server()[[1]]$uri %>%
     paste0("/", page) %>%
     GET() %>%
     content(as = "text", encoding = "UTF-8") %>%
@@ -23,7 +23,7 @@ versions <- function(pkg) {
 #' @importFrom httr url_ok
 
 exists <- function(pkg) {
-  couchdb_server() %>%
+  couchdb_server()[[1]]$uri %>%
     paste0("/", pkg) %>%
     url_ok()
 }

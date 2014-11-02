@@ -9,9 +9,9 @@ oldserver <- NA
 
 test_that("Oh, nothing, just setting up", {
 
-  oldserver <<- couchdb_server()
+  oldserver <<- couchdb_server()[[1]]$uri
   couchdb_server("http://127.0.0.1:5984/cran-test")
-  httr::DELETE(couchdb_server())
+  httr::DELETE(couchdb_server()[[1]]$uri)
 
 })
 
@@ -37,10 +37,10 @@ test_that("API: /:pkg", {
 
   `%>%` <- magrittr::`%>%`
     
-  expect_true(httr::url_ok(couchdb_server()))
-  expect_true(httr::url_ok(paste0(couchdb_server(), "igraph0")))
-  expect_true(httr::url_ok(paste0(couchdb_server(), "assertthat")))
-  expect_true(httr::url_ok(paste0(couchdb_server(), "testthat")))
+  expect_true(httr::url_ok(couchdb_server()[[1]]$uri))
+  expect_true(httr::url_ok(paste0(couchdb_server()[[1]]$uri, "igraph0")))
+  expect_true(httr::url_ok(paste0(couchdb_server()[[1]]$uri, "assertthat")))
+  expect_true(httr::url_ok(paste0(couchdb_server()[[1]]$uri, "testthat")))
 
 })
 
@@ -50,7 +50,7 @@ test_that("API: /-/all", {
 
   `%>%` <- magrittr::`%>%`
 
-  js <- couchdb_server() %>%
+  js <- couchdb_server()[[1]]$uri %>%
     paste0("-/all") %>%
     httr::GET() %>%
     httr::content(as = "text") %>%
@@ -67,7 +67,7 @@ test_that("API: /-/desc", {
   `%>%` <- magrittr::`%>%`
 
   ## /-/desc
-  js <- couchdb_server() %>%
+  js <- couchdb_server()[[1]]$uri %>%
     paste0("-/desc") %>%
     httr::GET() %>%
     httr::content(as = "text") %>%        
@@ -105,7 +105,7 @@ test_that("API: /-/desc", {
 test_that("UTF-8 (and other special) characters go through", {
   get <- function(pkg) {
     pkg %>%
-      paste0(couchdb_server(), .) %>%
+      paste0(couchdb_server()[[1]]$uri, .) %>%
       httr::GET() %>%
       httr::content(as = "text", encoding = "UTF-8")
   }
@@ -118,6 +118,6 @@ test_that("UTF-8 (and other special) characters go through", {
 })
 
 test_that("Teardown", {
-  httr::DELETE(couchdb_server())
+  httr::DELETE(couchdb_server()[[1]]$uri)
   couchdb_server(oldserver)
 })

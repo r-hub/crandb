@@ -18,10 +18,8 @@ package <- function(name, version) {
   assert_that(is_package_name(name))
   missing(version) %||% assert_that(is_package_version(version))
 
-  url <- paste0(couchdb_server(), "/", name)
-  if (! missing(version)) {
-    url <- paste0(url, "/", version)
-  }
+  url <- name
+  if (! missing(version)) url <- paste0(url, "/", version)
   query(url) %>%
     remove_special() %>%
     add_class("cran_package")
@@ -66,8 +64,7 @@ list_packages <- function(from = "", limit = 10,
                 "full" = "/-/all")
   if (archived) url <- "/-/allall"
 
-  couchdb_server() %>%
-    paste0(url) %>%
+  url %>%
     paste0('?start_key="', from, '"') %>%
     paste0("&limit=", limit) %>%
     query() %>%
@@ -103,8 +100,7 @@ events <- function(limit = 10, releases = TRUE, archivals = TRUE) {
     "archivals"
   }
 
-  couchdb_server() %>%
-    paste0("/-/") %>%
+  "/-/" %>%
     paste0(mode) %>%
     paste0("?limit=", limit) %>%
     paste0("&descending=true") %>%
@@ -124,8 +120,7 @@ events <- function(limit = 10, releases = TRUE, archivals = TRUE) {
 
 releases <- function() {
 
-  couchdb_server() %>%
-    paste0("/-/releases") %>%
+  "/-/releases" %>%
     query() %>%
     add_class("r_releases")
 }
@@ -156,8 +151,7 @@ cran_releases <- function(version, format = c("version", "short",
          "short" = "/-/releasedesc",
          "full" = "/-/releasepkgs")
 
-  couchdb_server() %>%
-    paste0(url) %>%
+  url %>%
     paste0("/", version) %>%
     query() %>%
     add_attr("release", version) %>%

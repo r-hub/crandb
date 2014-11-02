@@ -171,7 +171,7 @@ create_empty_db <- function() {
 
   paste("couchapp push",
         system.file("app.js", package = packageName()),
-        couchdb_server(root = TRUE)) %>%
+        couchdb_server(root = TRUE))[[1]]$uri %>%
     system(ignore.stdout = TRUE, ignore.stderr = TRUE)
 }
 
@@ -179,14 +179,14 @@ create_empty_db <- function() {
 
 couch_add <- function(id, json) {
   auth <- authenticate(couchdb_user(), couchdb_password())
-  couchdb_server(root = TRUE) %>%
+  couchdb_server(root = TRUE)[[1]]$uri %>%
     paste(sep = "/", id) %>%
     httr::PUT(body = json, httr::content_type_json(), auth) %>%
     httr::stop_for_status()
 }
 
 couch_exists <- function() {
-  couchdb_server() %>%
+  couchdb_server()[[1]]$uri %>%
     httr::url_ok()
 }
 
@@ -194,7 +194,7 @@ couch_exists <- function() {
 
 couch_create_db <- function() {
   auth <- authenticate(couchdb_user(), couchdb_password())
-  couchdb_server(root = TRUE) %>%
+  couchdb_server(root = TRUE)[[1]]$uri %>%
     httr::PUT(auth) %>%
     httr::stop_for_status()
 
@@ -221,7 +221,7 @@ update_design <- function() {
   check_curl()
 
   ## Copy design document
-  ("curl -X COPY " %+% couchdb_server(root = TRUE) %+%
+  ("curl -X COPY " %+% couchdb_server(root = TRUE)[[1]]$uri %+%
      '/_design/app -H "Destination: _design/app-old"') %>%
     system(ignore.stdout = TRUE, ignore.stderr = TRUE)
 
@@ -236,16 +236,16 @@ update_design <- function() {
         fixed = TRUE) %>%
     writeLines(tmpfile)
 
-  ("couchapp push " %+% tmpfile %+% " " %+% couchdb_server(root = TRUE)) %>%
+  ("couchapp push " %+% tmpfile %+% " " %+% couchdb_server(root = TRUE)[[1]]$uri) %>%
     system()
 
   ## Query DB to trigger indexing
-  couchdb_server(root = TRUE) %>%
+  couchdb_server(root = TRUE)[[1]]$uri %>%
     paste0("/_design/app/_view/active?limit=5") %>%
     httr::GET()
 
   ## Update design document to its proper place
   ("couchapp push " %+% system.file("app.js", package = packageName()) %+%
-     " " %+% couchdb_server(root = TRUE)) %>%
+     " " %+% couchdb_server(root = TRUE)[[1]]$uri) %>%
     system()
 }
