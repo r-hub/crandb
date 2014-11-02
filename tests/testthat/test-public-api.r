@@ -22,7 +22,7 @@ test_that("package() works", {
 
   r3 <- package("igraph", "all")
 
-  expect_equal(sort(names(r3)), c("archived", "latest", "name",
+  expect_equal(sort(names(r3)), c("archived", "latest", "name", "revdeps",
     "timeline", "title", "versions"))
 
 })
