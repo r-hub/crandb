@@ -74,7 +74,7 @@ crandb_update <- function(force = FALSE) {
     paste(cran_site(), ., sep="/") %>%
     read_remote_rds()
 
-  current_db <- couchdb_server() %>%
+  current_db <- couchdb_server()[[1]]$uri %>%
     paste0("/-/desc") %>%
     httr::GET() %>%
     httr::content(as = "text", encoding = "UTF-8") %>%
@@ -269,7 +269,7 @@ cran_versions <- function(pkg, archive, current) {
 
 update_revdeps <- function(which = "devel") {
   assert_that(is.string(which))
-  couchdb_server() %>%
+  couchdb_server()[[1]]$uri %>%
     paste0("/-/deps/") %>%
     paste0(which) %>%
     query(simplifyDataFrame = FALSE) %>%

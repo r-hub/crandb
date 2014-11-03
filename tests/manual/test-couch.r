@@ -9,7 +9,7 @@ oldserver <- NA
 
 test_that("Oh, nothing, just setting up", {
 
-  oldserver <<- couchdb_server()[[1]]$uri
+  oldserver <<- couchdb_server()
   couchdb_server("http://127.0.0.1:5984/cran-test")
   httr::DELETE(couchdb_server()[[1]]$uri)
 
