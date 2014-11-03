@@ -29,6 +29,8 @@ service <- NA
 #' @include utils.r
 
 .onLoad <- function(libname, pkgname) {
+  lib <- library
+  lib(methods)
   service <<- "crandb-" %+% make_id()
   add_service(service,
               server(couchdb_uris[[1]]$uri, priority = couchdb_uris[[1]]$priority),
