@@ -23,12 +23,17 @@ couchdb_uris <- list(
   list(uri = "http://db2.r-pkg.org:5984/", priority = 1)
 )
 
+service <- NA
+
 #' @importFrom spareserver add_service add_server server
 #' @include utils.r
-service <- "crandb-" %+% make_id()
-add_service(service,
-            server(couchdb_uris[[1]]$uri, priority = couchdb_uris[[1]]$priority),
-            server(couchdb_uris[[2]]$uri, priority = couchdb_uris[[2]]$priority))
+
+.onLoad <- function(libname, pkgname) {
+  service <<- "crandb-" %+% make_id()
+  add_service(service,
+              server(couchdb_uris[[1]]$uri, priority = couchdb_uris[[1]]$priority),
+              server(couchdb_uris[[2]]$uri, priority = couchdb_uris[[2]]$priority))
+}
 
 ## R release dates
 
