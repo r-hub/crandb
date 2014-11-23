@@ -40,8 +40,8 @@ service <- NA
 crandb_dev <- function() {
   nonroot <- list(list(uri = "http://db-dev.r-pkg.org/",
                        priority = 10))
-  root <- list(list(uri = "http://db-dev-admin.r-pkg.org/cran",
-                    priority = 10))
+  uri <- "https://db.r-pkg.org:6984/cran-dev"
+  root <- list(list(uri = uri, priority = 10))
   crandb:::couchdb_server(nonroot, root = FALSE)
   crandb:::couchdb_server(root, root = TRUE)
   try(remove_service(service), silent = TRUE)
@@ -54,8 +54,9 @@ crandb_dev <- function() {
 #' @importFrom spareserver remove_service add_service server
 
 crandb_production <- function() {
-  root <- list(list(uri = "https://db.r-pkg.org:6984/cran",
-                    priority = 10))
+  uri <- "https://" %+% couchdb_user() %+% ":" %+% couchdb_password() %+%
+    "@" %+% "db.r-pkg.org:6984/cran"
+  root <- list(list(uri = uri, priority = 10))
   crandb:::couchdb_server(couchdb_uris, root = FALSE)
   crandb:::couchdb_server(root, root = TRUE)
   try(remove_service(service), silent = TRUE)
