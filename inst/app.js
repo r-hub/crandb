@@ -310,16 +310,25 @@ ddoc.shows.package = function(doc, req) {
       , body = null
     
     var ver = req.query.version
-    if (!req.query.version) ver = doc.latest
-    if (ver != "all") {
-	body = doc.versions[ver]
-	if (!body) {
-	    code = 404
-	    body = {"error" : "version not found: " + req.query.version}
-	}
-    } else {
+
+    if (doc.type && doc.type != "package") {
+	// not a package, it is a version or sg else
 	body = doc
 	delete body._revisions
+
+    } else {
+	// package
+	if (!req.query.version) ver = doc.latest
+	if (ver != "all") {
+	    body = doc.versions[ver]
+	    if (!body) {
+		code = 404
+		body = {"error" : "version not found: " + req.query.version}
+	    }
+	} else {
+	    body = doc
+	    delete body._revisions
+	}
     }
     
     body = req.query.jsonp
