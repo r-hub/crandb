@@ -269,8 +269,7 @@ cran_versions <- function(pkg, archive, current) {
 
 update_revdeps <- function(which = "devel") {
   assert_that(is.string(which))
-  couchdb_server()[[1]]$uri %>%
-    paste0("/-/deps/") %>%
+  "/-/deps/" %>%
     paste0(which) %>%
     query(simplifyDataFrame = FALSE) %>%
     mapply(FUN=update_revdep, pkg = names(.), no = .)
