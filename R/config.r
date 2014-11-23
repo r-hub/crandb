@@ -50,7 +50,8 @@ couchdb_server <- function(uri, root = FALSE) {
 }
 
 couchdb_user <- function(username) {
-  getset_config("couchdb_user", username, default = "admin")
+  getset_config("couchdb_user", username, default = "",
+                environment = "COUCHDB_USER")
 }
 
 couchdb_password <- function(password) {

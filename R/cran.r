@@ -20,7 +20,7 @@ cache_dir_var <- "CRANDB_CACHE_DIR"
 cran_mirror_default <- NA_character_
 couchdb_uris <- list(
   list(uri = "http://db.r-pkg.org/", priority = 10),
-  list(uri = "http://db2.r-pkg.org:5984/", priority = 1)
+  list(uri = "http://db2.r-pkg.org/", priority = 5)
 )
 
 service <- NA
