@@ -32,6 +32,33 @@ service <- NA
   lib <- library
   lib(methods)
   service <<- "crandb-" %+% make_id()
+  crandb_production()
+}
+
+#' @importFrom spareserver remove_service add_service server
+
+crandb_dev <- function() {
+  nonroot <- list(list(uri = "http://db-dev.r-pkg.org/",
+                       priority = 10))
+  root <- list(list(uri = "http://db-dev-admin.r-pkg.org/cran",
+                    priority = 10))
+  crandb:::couchdb_server(nonroot, root = FALSE)
+  crandb:::couchdb_server(root, root = TRUE)
+  try(remove_service(service), silent = TRUE)
+  add_service(
+    service,
+    server("http://db-dev.r-pkg.org/", priority = 10)
+  )
+}
+
+#' @importFrom spareserver remove_service add_service server
+
+crandb_production <- function() {
+  root <- list(list(uri = "https://db.r-pkg.org:6984/cran",
+                    priority = 10))
+  crandb:::couchdb_server(couchdb_uris, root = FALSE)
+  crandb:::couchdb_server(root, root = TRUE)
+  try(remove_service(service), silent = TRUE)
   add_service(service,
               server(couchdb_uris[[1]]$uri, priority = couchdb_uris[[1]]$priority),
               server(couchdb_uris[[2]]$uri, priority = couchdb_uris[[2]]$priority))
