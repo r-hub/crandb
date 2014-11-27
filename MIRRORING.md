@@ -8,7 +8,7 @@ to mirror CRANDB locally. The server that runs CouchDB is created by packer,
 and the packer template is included in the
 [Cranny project](https://github.com/metacran/cranny). In particular,
 CouchDB is installed and configured with a
-[provisioner script](https://github.com/metacran/cranny/blob/master/db.rpkg.org/script/couchdb.sh).
+[provisioner script](https://github.com/metacran/cranny/blob/master/crandb.rpkg.org/script/couchdb.sh).
 
 ## Rewriting
 

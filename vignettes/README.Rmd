@@ -109,7 +109,7 @@ skip_lines <- function(text, head = 1e6, tail = 1e6) {
 		paste(collapse = "\n")
 }
 DB <- function(api, head = 1e6, tail = head) {
-  paste0("http://db.r-pkg.org", "/", api) %>%
+  paste0("http://crandb.r-pkg.org", "/", api) %>%
     httr::GET() %>%
 	httr::content(as = "text", encoding = "UTF-8") %>%
 	jsonlite::prettify() %>%

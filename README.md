@@ -32,7 +32,7 @@ package("dotenv")
 ```
 
 ```
-## CRAN package dotenv 1.0, 17 days ago
+## CRAN package dotenv 1.0, 3 months ago
 ## Title: Load environment variables from .env
 ## Maintainer: "Gabor Csardi" <csardi.gabor@gmail.com>
 ## Author: "Gabor Csardi" [aut, cre]
@@ -58,16 +58,16 @@ package("httr", version = "0.3")
 ```
 
 ```
-## CRAN package httr 0.3, 5 months ago
+## CRAN package httr 0.3, 8 months ago
 ## Title: Tools for working with URLs and HTTP
 ## Maintainer: Hadley Wickham <h.wickham@gmail.com>
 ## Author: Hadley Wickham <h.wickham@gmail.com>
 ## Date/Publication: 2014-03-20 03:03:51
 ## Depends: R (>= 3.0.0)
-## Description: Provides useful tools for working with HTTP connections.  Is a
-##     simplified wrapper built on top of RCurl.  It is much much less configurable
-##     but because it only attempts to encompass the most common operations it is
-##     also much much simpler.
+## Description: Provides useful tools for working with HTTP connections.  Is
+##     a<U+000a>simplified wrapper built on top of RCurl.  It is much much less
+##     configurable<U+000a>but because it only attempts to encompass the most
+##     common operations it is<U+000a>also much much simpler.
 ## Imports: RCurl (>= 1.95-0), stringr (>= 0.6.1), digest (*), tools (*), methods
 ##     (*)
 ## License: MIT + file LICENSE
@@ -89,16 +89,17 @@ package("httr", version = "all")
 ```
 
 ```
-## CRAN package httr, latest: 0.5, 11 days ago
+## CRAN package httr, latest: 0.5, 3 months ago
 ## ['0.5']:
 ##   Title: Tools for working with URLs and HTTP
 ##   Maintainer: Hadley Wickham <hadley@rstudio.com>
-##   Author: Hadley Wickham [cre, aut, cph], RStudio [cph]
+##   Author: Hadley Wickham [cre, aut, cph],<U+000a>RStudio [cph]
 ##   Date/Publication: 2014-09-02 18:15:25
 ##   Depends: R (>= 3.0.0)
-##   Description: Provides useful tools for working with HTTP. The API is based
-##       around http verbs (GET(), POST(), etc) with pluggable components to
-##       control the request (authenticate(), add_headers() and so on).
+##   Description: Provides useful tools for working with HTTP. The API is
+##       based<U+000a>around http verbs (GET(), POST(), etc) with pluggable
+##       components to control<U+000a>the request (authenticate(), add_headers()
+##       and so on).
 ##   Imports: RCurl (>= 1.95-0), stringr (>= 0.6.1), digest (*), tools (*), methods
 ##       (*), jsonlite (*)
 ##   License: MIT + file LICENSE
@@ -129,13 +130,13 @@ list_packages(from = "falsy", limit = 10, archived = FALSE)
 ##  falsy       1.0     Define truthy and falsy values                                      
 ##  fame        2.18    Interface for FAME time series database                             
 ##  Familias    2.1     Probabilities for Pedigrees given DNA data                          
+##  FAMILY      0.1.18  A Convex Formulation for Modeling Interactions with Strong Heredi...
 ##  FAMT        2.5     Factor Analysis for Multiple Testing (FAMT) : simultaneous tests ...
 ##  fanc        1.13    Penalized likelihood factor analysis via nonconvex penalty          
 ##  fANCOVA     0.5-1   Nonparametric Analysis of Covariance                                
 ##  fanovaGraph 1.4.7   Building Kriging models from FANOVA graphs                          
-##  fanplot     3.3     Visualisation of sequential probability distributions using fan c...
-##  FAOSTAT     1.6     A complementary package to the FAOSTAT database and the Statistic...
-##  faoutlier   0.4     Influential case detection methods for factor analysis and SEM
+##  fanplot     3.3     Visualisation of sequential probability distributions using fan<U...
+##  FAOSTAT     1.9     A complementary package to the FAOSTAT database and the Statistic...
 ```
 
 ### CRAN events
@@ -151,17 +152,17 @@ events()
 
 ```
 ## CRAN events (events)---------------------------------------------------------------------
-##  . When    Package            Version Title                                              
-##  + 10 hour iBATCGH            1.1     Integrative Bayesian Analysis of Transcriptomic ...
-##  + 17 hour Lahman             3.0-1   Sean Lahman's Baseball Database                    
-##  + 1 day   HH                 3.1-5   Statistical Analysis and Data Display: Heiberger...
-##  + 1 day   geepack            1.2-0   Generalized Estimating Equation Package            
-##  + 1 day   recosystem         0.2.4   Recommender System using Matrix Factorization      
-##  + 1 day   seedy              0.2     Simulation of Evolutionary and Epidemiological D...
-##  + 1 day   referenceIntervals 1.1.1   Reference Intervals                                
-##  + 1 day   phyloland          1.3     Modelling Competitive Exclusion and Limited Disp...
-##  + 1 day   ONETr              1.0     Efficient authenticated interaction with the O*N...
-##  - 1 day   MASSI              1.1     MicroArray Sample Sex Identifier
+##  . When    Package               Version Title                                           
+##  + 1 hour  secrdesign            2.2.1   Sampling Design for Spatially Explicit Captur...
+##  + 1 hour  MiClip                1.3     A Model-based Approach to Identify Binding Si...
+##  + 1 hour  miRtest               1.8     combined miRNA- and mRNA-testing                
+##  + 5 hours gridGraphics          0.1-2   Redraw Base Graphics Using grid Graphics        
+##  + 5 hours secr                  2.9.2   Spatially explicit capture-recapture            
+##  + 5 hours rowr                  1.1.1   Row-based functions for R objects.              
+##  + 8 hours mixPHM                0.7-1   Mixtures of proportional hazard models.         
+##  + 8 hours aspect                1.0-3   Aspects of Multivariables                       
+##  + 8 hours RaschSampler          0.8-7   Rasch Sampler                                   
+##  + 8 hours BayesianAnimalTracker 1.0     Bayesian Melding of GPS and DR Path for Anima...
 ```
 
 ### R and CRAN releases
@@ -248,60 +249,60 @@ cran_releases(version = "2.13.1")
 ##  [34] "afc@1.0"                  "afmtools@0.1.2"           "agce@1.2"                
 ##  [37] "agilp@1.0"                "agreement@1.0-1"          "agricolae@1.0-9"         
 ##  [40] "agridat@1.2"              "AGSDest@2.0"              "agsemisc@1.2-1"          
-##  [43] "ahaz@1.1"                 "AICcmodavg@1.17"          "AIGIS@1.0"               
-##  [46] "AIM@1.01"                 "AIS@1.0"                  "akima@0.5-4"             
-##  [49] "alabama@2011.3-1"         "AlgDesign@1.1-2"          "allan@1.0"               
-##  [52] "allelic@0.1"              "AllPossibleSpellings@1.0" "alphahull@0.2-0"         
-##  [55] "alr3@2.0.3"               "ALS@0.0.4"                "AMA@1.0.8"               
-##  [58] "amap@0.8-5"               "amba@0.3.0"               "amei@1.0-3"              
-##  [61] "Amelia@1.2-18"            "amer@0.6.10"              "AMORE@0.2-12"            
-##  [64] "anacor@1.0-1"             "analogue@0.7-0"           "AnalyzeFMRI@1.1-13"      
-##  [67] "AnalyzeIO@0.1.1"          "anapuce@2.1"              "anchors@3.0-7"           
-##  [70] "anesrake@0.65"            "Animal@1.02"              "animation@2.0-4"         
-##  [73] "anm@1.0-9"                "AnnotLists@1.0"           "ant@0.0-10"              
-##  [76] "aod@1.2"                  "apcluster@1.1.0"          "ape@2.7-2"               
-##  [79] "aplpack@1.2.3"            "approximator@1.2-2"       "apsrtable@0.8-6"         
-##  [82] "apt@1.0"                  "apTreeshape@1.4-3"        "aqfig@0.1"               
-##  [85] "aqp@0.99-1"               "AquaEnv@1.0-2"            "aratio@1.0"              
-##  [88] "archetypes@2.0-2"         "ArDec@1.2-3"              "ares@0.7.2"              
-##  [91] "ARES@1.2-3"               "arf3DS4@2.5-2"            "argosfilter@0.6"         
-##  [94] "arm@1.4-13"               "aroma.affymetrix@2.1.0"   "aroma.apd@0.1.8"         
-##  [97] "aroma.cn@0.7.3"           "aroma.core@2.1.0"         "arrayImpute@1.3"         
-## [100] "arrayMissPattern@1.3"     "ars@0.4"                  "arules@1.0-6"            
-## [103] "arulesNBMiner@0.1-1"      "arulesSequences@0.1-11"   "arulesViz@0.1-3"         
-## [106] "ascii@1.4"                "ash@1.0-12"               "aspace@3.0"              
-## [109] "aspect@1.0-0"             "assist@3.1.1"             "aster@0.7-7"             
-## [112] "aster2@0.1"               "asuR@0.08-24"             "asympTest@0.1.2"         
-## [115] "asypow@1.2.2"             "atm@0.1.0"                "atmi@1.0"                
-## [118] "audio@0.1-4"              "automap@1.0-10"           "aws@1.6-2"               
-## [121] "aylmer@1.0-7"             "B2Z@1.3"                  "BaBooN@0.1-6"            
-## [124] "BACCO@2.0-2"              "backfitRichards@0.5.0"    "backtest@0.3-0"          
-## [127] "BaM@0.98.1"               "BAMD@3.4"                 "barcode@1.0"             
-## [130] "BARD@1.24"                "bark@0.1-0"               "Barnard@1.0"             
-## [133] "BAS@0.92"                 "baseline@1.0-0"           "basicspace@0.02"         
-## [136] "batch@1.1-3"              "bats@0.1-2"               "bayesCGH@0.6"            
-## [139] "bayesclust@3.0"           "bayescount@0.9.9-1"       "BayesDA@1.0-1"           
-## [142] "bayesDem@1.3-0"           "bayesGARCH@1-00.10"       "bayesLife@0.2-0"         
-## [145] "bayesm@2.2-4"             "bayesmix@0.7-1"           "bayespack@1.0-2"         
-## [148] "BayesPanel@0.1-2"         "bayesQR@1.3"              "BayesQTLBIC@1.0-1"       
-## [151] "bayesSurv@0.6-2"          "bayesTFR@1.4-0"           "BayesTree@0.3-1.1"       
-## [154] "BayesValidate@0.0"        "BayesX@0.2-5"             "BayHap@1.0"              
-## [157] "BayHaz@0.0-6"             "baymvb@1.0.4"             "BAYSTAR@0.2-3"           
-## [160] "BB@2011.2-2"              "bbemkr@1.3"               "bbmle@1.0.0"             
-## [163] "BBMM@2.2"                 "BCA@0.1-1"                "BCE@1.3"                 
-## [166] "Bchron@3.1.4"             "bclust@1.2"               "bcp@2.2.0"               
-## [169] "bcv@1.0"                  "bdoc@1.1"                 "bdsmatrix@1.0"           
-## [172] "beadarrayMSV@1.1.0"       "beanplot@1.1"             "bear@2.5.2"              
-## [175] "beeswarm@0.0.7"           "belief@1.0.1"             "benchden@1.0.4"          
-## [178] "benchmark@0.3-2"          "Benchmarking@0.19"        "bentcableAR@0.2.2"       
-## [181] "ber@2.0"                  "Bergm@1.4"                "Bessel@0.5-3"            
-## [184] "bestglm@0.31"             "betaper@1.0-0"            "betareg@2.3-0"           
-## [187] "bethel@0.1"               "bfast@1.2-1"              "bfp@0.0-19"              
-## [190] "bgmm@1.2"                 "Bhat@0.9-09"              "BHH2@1.0.3"              
-## [193] "BiasedUrn@1.03"           "bibtex@0.2-1"             "biclust@1.0.1"           
-## [196] "bicreduc@0.4-7"           "bifactorial@1.4.6"        "biganalytics@1.0.14"     
-## [199] "biglars@1.0.1"            "biglm@0.7"               
-##  [ reached getOption("max.print") -- omitted 2961 entries ]
+##  [43] "ahaz@1.1"                 "AIGIS@1.0"                "AIM@1.01"                
+##  [46] "AIS@1.0"                  "akima@0.5-4"              "alabama@2011.3-1"        
+##  [49] "AlgDesign@1.1-2"          "allan@1.0"                "allelic@0.1"             
+##  [52] "AllPossibleSpellings@1.0" "alphahull@0.2-0"          "alr3@2.0.3"              
+##  [55] "ALS@0.0.4"                "AMA@1.0.8"                "amap@0.8-5"              
+##  [58] "amba@0.3.0"               "amei@1.0-3"               "Amelia@1.2-18"           
+##  [61] "amer@0.6.10"              "AMORE@0.2-12"             "anacor@1.0-1"            
+##  [64] "analogue@0.7-0"           "AnalyzeFMRI@1.1-13"       "AnalyzeIO@0.1.1"         
+##  [67] "anapuce@2.1"              "anchors@3.0-7"            "anesrake@0.65"           
+##  [70] "Animal@1.02"              "animation@2.0-4"          "anm@1.0-9"               
+##  [73] "AnnotLists@1.0"           "ant@0.0-10"               "aod@1.2"                 
+##  [76] "apcluster@1.1.0"          "ape@2.7-2"                "aplpack@1.2.3"           
+##  [79] "approximator@1.2-2"       "apsrtable@0.8-6"          "apt@1.0"                 
+##  [82] "apTreeshape@1.4-3"        "aqfig@0.1"                "aqp@0.99-1"              
+##  [85] "AquaEnv@1.0-2"            "aratio@1.0"               "archetypes@2.0-2"        
+##  [88] "ArDec@1.2-3"              "ares@0.7.2"               "ARES@1.2-3"              
+##  [91] "arf3DS4@2.5-2"            "argosfilter@0.6"          "arm@1.4-13"              
+##  [94] "aroma.affymetrix@2.1.0"   "aroma.apd@0.1.8"          "aroma.cn@0.7.3"          
+##  [97] "aroma.core@2.1.0"         "arrayImpute@1.3"          "arrayMissPattern@1.3"    
+## [100] "ars@0.4"                  "arules@1.0-6"             "arulesNBMiner@0.1-1"     
+## [103] "arulesSequences@0.1-11"   "arulesViz@0.1-3"          "ascii@1.4"               
+## [106] "ash@1.0-12"               "aspace@3.0"               "aspect@1.0-0"            
+## [109] "assist@3.1.1"             "aster@0.7-7"              "aster2@0.1"              
+## [112] "asuR@0.08-24"             "asympTest@0.1.2"          "asypow@1.2.2"            
+## [115] "atm@0.1.0"                "atmi@1.0"                 "audio@0.1-4"             
+## [118] "automap@1.0-10"           "aws@1.6-2"                "aylmer@1.0-7"            
+## [121] "B2Z@1.3"                  "BaBooN@0.1-6"             "BACCO@2.0-2"             
+## [124] "backfitRichards@0.5.0"    "backtest@0.3-0"           "BaM@0.98.1"              
+## [127] "BAMD@3.4"                 "barcode@1.0"              "BARD@1.24"               
+## [130] "bark@0.1-0"               "Barnard@1.0"              "BAS@0.92"                
+## [133] "baseline@1.0-0"           "basicspace@0.02"          "batch@1.1-3"             
+## [136] "bats@0.1-2"               "bayesCGH@0.6"             "bayesclust@3.0"          
+## [139] "bayescount@0.9.9-1"       "BayesDA@1.0-1"            "bayesDem@1.3-0"          
+## [142] "bayesGARCH@1-00.10"       "bayesLife@0.2-0"          "bayesm@2.2-4"            
+## [145] "bayesmix@0.7-1"           "bayespack@1.0-2"          "BayesPanel@0.1-2"        
+## [148] "bayesQR@1.3"              "BayesQTLBIC@1.0-1"        "bayesSurv@0.6-2"         
+## [151] "BayesTree@0.3-1.1"        "BayesValidate@0.0"        "BayesX@0.2-5"            
+## [154] "BayHap@1.0"               "BayHaz@0.0-6"             "baymvb@1.0.4"            
+## [157] "BAYSTAR@0.2-3"            "bbemkr@1.3"               "bbmle@1.0.0"             
+## [160] "BBMM@2.2"                 "BCA@0.1-1"                "BCE@1.3"                 
+## [163] "Bchron@3.1.4"             "bclust@1.2"               "bcp@2.2.0"               
+## [166] "bcv@1.0"                  "bdoc@1.1"                 "bdsmatrix@1.0"           
+## [169] "beadarrayMSV@1.1.0"       "beanplot@1.1"             "bear@2.5.2"              
+## [172] "beeswarm@0.0.7"           "belief@1.0.1"             "benchden@1.0.4"          
+## [175] "benchmark@0.3-2"          "bentcableAR@0.2.2"        "ber@2.0"                 
+## [178] "Bergm@1.4"                "Bessel@0.5-3"             "bestglm@0.31"            
+## [181] "betaper@1.0-0"            "betareg@2.3-0"            "bethel@0.1"              
+## [184] "bfast@1.2-1"              "bfp@0.0-19"               "bgmm@1.2"                
+## [187] "Bhat@0.9-09"              "BHH2@1.0.3"               "BiasedUrn@1.03"          
+## [190] "bibtex@0.2-1"             "biclust@1.0.1"            "bicreduc@0.4-7"          
+## [193] "bifactorial@1.4.6"        "biganalytics@1.0.14"      "biglars@1.0.1"           
+## [196] "biglm@0.7"                "bigmemory@4.2.3"          "biGraph@0.9-3"           
+## [199] "bigtabulate@1.0.13"       "bild@1.0"                
+##  [ reached getOption("max.print") -- omitted 2906 entries ]
 ```
 
 ## The raw API
@@ -329,7 +330,7 @@ skip_lines <- function(text, head = 1e6, tail = 1e6) {
 		paste(collapse = "\n")
 }
 DB <- function(api, head = 1e6, tail = head) {
-  paste0("http://db.r-pkg.org", "/", api) %>%
+  paste0("http://crandb.r-pkg.org", "/", api) %>%
     httr::GET() %>%
 	httr::content(as = "text", encoding = "UTF-8") %>%
 	jsonlite::prettify() %>%
@@ -358,27 +359,25 @@ DB("/magrittr")
 ## {
 ## 	"Package" : "magrittr",
 ## 	"Type" : "Package",
-## 	"Title" : "magrittr - a forward-pipe operator for R",
-## 	"Version" : "1.0.1",
-## 	"Date" : "2014-05-14",
-## 	"Author" : "Stefan Milton Bache <stefan@stefanbache.dk> and\u000aHadley Wickham <h.wickham@gmail.com>",
+## 	"Title" : "A Forward-Pipe Operator for R",
+## 	"Version" : "1.5",
+## 	"Author" : "Stefan Milton Bache <stefan@stefanbache.dk> and<U+000a>Hadley Wickham <h.wickham@gmail.com>",
 ## 	"Maintainer" : "Stefan Milton Bache <stefan@stefanbache.dk>",
-## 	"Description" : "Provides a mechanism for chaining commands with a\u000anew forward-pipe operator. Ceci n'est pas un pipe.",
+## 	"Description" : "Provides a mechanism for chaining commands with a<U+000a>new forward-pipe operator, %>%. This operator will forward a<U+000a>value, or the result of an expression, into the next function<U+000a>call/expression. There is flexible support for the type<U+000a>of right-hand side expressions. For more information, see<U+000a>package vignette.<U+000a>To quote Rene Magritte, \"Ceci n'est pas un pipe.\"",
 ## 	"Suggests" : {
 ## 		"testthat" : "*",
 ## 		"knitr" : "*"
 ## 	},
 ## 	"VignetteBuilder" : "knitr",
 ## 	"License" : "MIT + file LICENSE",
-## 	"Packaged" : "2014-05-15 18:49:49 UTC; shb",
+## 	"ByteCompile" : "Yes",
+## 	"Packaged" : "2014-11-22 08:50:53 UTC; shb",
 ## 	"NeedsCompilation" : "no",
 ## 	"Repository" : "CRAN",
-## 	"Date/Publication" : "2014-05-15 21:12:27",
-## 	"crandb_file_date" : "2014-05-15 15:12:29",
-## 	"date" : "2014-05-15T21:12:27+00:00",
-## 	"releases" : [
-## 		"3.1.1"
-## 	]
+## 	"Date/Publication" : "2014-11-22 19:15:57",
+## 	"crandb_file_date" : "2014-11-22 13:18:28",
+## 	"date" : "2014-11-22T19:15:57+00:00",
+## 	"releases" : []
 ## }
 ```
 
@@ -398,9 +397,9 @@ DB("/magrittr/1.0.0")
 ## 	"Title" : "magrittr - a forward-pipe operator for R",
 ## 	"Version" : "1.0.0",
 ## 	"Date" : "2014-01-19",
-## 	"Author" : "Stefan Milton Bache <stefan@stefanbache.dk> and\u000aHadley Wickham <h.wickham@gmail.com>",
+## 	"Author" : "Stefan Milton Bache <stefan@stefanbache.dk> and<U+000a>Hadley Wickham <h.wickham@gmail.com>",
 ## 	"Maintainer" : "Stefan <stefan@stefanbache.dk>",
-## 	"Description" : "Provides a mechanism for chaining commands with a\u000anew forward-pipe operator. Ceci n'est pas un pipe.",
+## 	"Description" : "Provides a mechanism for chaining commands with a<U+000a>new forward-pipe operator. Ceci n'est pas un pipe.",
 ## 	"Suggests" : {
 ## 		"testthat" : "*",
 ## 		"knitr" : "*"
@@ -438,7 +437,7 @@ DB("/magrittr/all")
 ```
 ## {
 ## 	"_id" : "magrittr",
-## 	"_rev" : "1-a8d52d0e409af456cc4c5eac957b5609",
+## 	"_rev" : "3-b350e6efe6dd5b246cf98a1339ff3361",
 ## 	"name" : "magrittr",
 ## 	"versions" : {
 ## 		"1.0.0" : {
@@ -447,9 +446,9 @@ DB("/magrittr/all")
 ## 			"Title" : "magrittr - a forward-pipe operator for R",
 ## 			"Version" : "1.0.0",
 ## 			"Date" : "2014-01-19",
-## 			"Author" : "Stefan Milton Bache <stefan@stefanbache.dk> and\u000aHadley Wickham <h.wickham@gmail.com>",
+## 			"Author" : "Stefan Milton Bache <stefan@stefanbache.dk> and<U+000a>Hadley Wickham <h.wickham@gmail.com>",
 ## 			"Maintainer" : "Stefan <stefan@stefanbache.dk>",
-## 			"Description" : "Provides a mechanism for chaining commands with a\u000anew forward-pipe operator. Ceci n'est pas un pipe.",
+## 			"Description" : "Provides a mechanism for chaining commands with a<U+000a>new forward-pipe operator. Ceci n'est pas un pipe.",
 ## 			"Suggests" : {
 ## 				"testthat" : "*",
 ## 				"knitr" : "*"
@@ -473,9 +472,9 @@ DB("/magrittr/all")
 ## 			"Title" : "magrittr - a forward-pipe operator for R",
 ## 			"Version" : "1.0.1",
 ## 			"Date" : "2014-05-14",
-## 			"Author" : "Stefan Milton Bache <stefan@stefanbache.dk> and\u000aHadley Wickham <h.wickham@gmail.com>",
+## 			"Author" : "Stefan Milton Bache <stefan@stefanbache.dk> and<U+000a>Hadley Wickham <h.wickham@gmail.com>",
 ## 			"Maintainer" : "Stefan Milton Bache <stefan@stefanbache.dk>",
-## 			"Description" : "Provides a mechanism for chaining commands with a\u000anew forward-pipe operator. Ceci n'est pas un pipe.",
+## 			"Description" : "Provides a mechanism for chaining commands with a<U+000a>new forward-pipe operator. Ceci n'est pas un pipe.",
 ## 			"Suggests" : {
 ## 				"testthat" : "*",
 ## 				"knitr" : "*"
@@ -488,18 +487,41 @@ DB("/magrittr/all")
 ## 			"Date/Publication" : "2014-05-15 21:12:27",
 ## 			"crandb_file_date" : "2014-05-15 15:12:29",
 ## 			"date" : "2014-05-15T21:12:27+00:00",
-## 			"releases" : [
-## 				"3.1.1"
-## 			]
+## 			"releases" : "3.1.1"
+## 		},
+## 		"1.5" : {
+## 			"Package" : "magrittr",
+## 			"Type" : "Package",
+## 			"Title" : "A Forward-Pipe Operator for R",
+## 			"Version" : "1.5",
+## 			"Author" : "Stefan Milton Bache <stefan@stefanbache.dk> and<U+000a>Hadley Wickham <h.wickham@gmail.com>",
+## 			"Maintainer" : "Stefan Milton Bache <stefan@stefanbache.dk>",
+## 			"Description" : "Provides a mechanism for chaining commands with a<U+000a>new forward-pipe operator, %>%. This operator will forward a<U+000a>value, or the result of an expression, into the next function<U+000a>call/expression. There is flexible support for the type<U+000a>of right-hand side expressions. For more information, see<U+000a>package vignette.<U+000a>To quote Rene Magritte, \"Ceci n'est pas un pipe.\"",
+## 			"Suggests" : {
+## 				"testthat" : "*",
+## 				"knitr" : "*"
+## 			},
+## 			"VignetteBuilder" : "knitr",
+## 			"License" : "MIT + file LICENSE",
+## 			"ByteCompile" : "Yes",
+## 			"Packaged" : "2014-11-22 08:50:53 UTC; shb",
+## 			"NeedsCompilation" : "no",
+## 			"Repository" : "CRAN",
+## 			"Date/Publication" : "2014-11-22 19:15:57",
+## 			"crandb_file_date" : "2014-11-22 13:18:28",
+## 			"date" : "2014-11-22T19:15:57+00:00",
+## 			"releases" : []
 ## 		}
 ## 	},
 ## 	"timeline" : {
 ## 		"1.0.0" : "2014-02-25T18:01:09+00:00",
-## 		"1.0.1" : "2014-05-15T21:12:27+00:00"
+## 		"1.0.1" : "2014-05-15T21:12:27+00:00",
+## 		"1.5" : "2014-11-22T19:15:57+00:00"
 ## 	},
-## 	"latest" : "1.0.1",
-## 	"title" : "magrittr - a forward-pipe operator for R",
-## 	"archived" : false
+## 	"latest" : "1.5",
+## 	"title" : "A Forward-Pipe Operator for R",
+## 	"archived" : false,
+## 	"revdeps" : 13
 ## }
 ```
 
@@ -538,7 +560,7 @@ DB("/-/all?limit=3", head = 20)
 ## 					"pbapply" : "*"
 ## 				},
 ## 
-## ... not showing 459 lines ...
+## ... not showing 460 lines ...
 ## 
 ## 					"3.0.0",
 ## 					"3.0.1",
@@ -693,43 +715,43 @@ DB("/-/pkgreleases?limit=3&descending=true", head = 20)
 ```
 ## [
 ## 	{
-## 		"date" : "2014-09-13T18:12:26+00:00",
-## 		"name" : "iBATCGH",
+## 		"date" : "2014-11-27T01:58:45+00:00",
+## 		"name" : "secrdesign",
 ## 		"event" : "released",
 ## 		"package" : {
-## 			"Package" : "iBATCGH",
+## 			"Package" : "secrdesign",
 ## 			"Type" : "Package",
-## 			"Title" : "Integrative Bayesian Analysis of Transcriptomic and CGH data",
-## 			"Version" : "1.1",
-## 			"Date" : "2014-09-02",
-## 			"Author" : "Alberto Cassese",
-## 			"Maintainer" : "Alberto Cassese <alberto.cassese@rice.edu>",
-## 			"Description" : "Bayesian integrative models of gene expression and comparative genomic hybridization data. The package provides inference on copy number variations and their association with gene expression",
-## 			"License" : "GPL-2",
-## 			"Imports" : {
-## 				"Rcpp" : ">= 0.11.2",
-## 				"msm" : "*"
-## 			},
-## 			"LinkingTo" : {
-## 
-## ... not showing 85 lines ...
-## 
+## 			"Title" : "Sampling Design for Spatially Explicit Capture-Recapture",
+## 			"Version" : "2.2.1",
+## 			"Depends" : {
+## 				"R" : ">= 3.0.0",
+## 				"secr" : ">= 2.9.1"
 ## 			},
 ## 			"Suggests" : {
-## 				"methods" : "*",
-## 				"abind" : "*",
-## 				"mvtnorm" : "*",
-## 				"car" : "*",
-## 				"RcmdrPlugin.HH" : "*"
+## 				"knitr" : "*"
 ## 			},
-## 			"Description" : "Support software for Statistical Analysis and Data Display (First Edition, Springer, ISBN 0-387-40270-5, 2004) and (Second Edition, Springer, ISBN x-xxx-xxxxx-x, anticipated 2015) by Richard M. Heiberger and Burt Holland.  This contemporary presentation of statistical methods features extensive use of graphical displays for exploring data and for displaying the analysis.  The second edition includes redesigned graphics and additional chapters. The authors emphasize how to construct and interpret graphs, discuss principles of graphical design, and show how accompanying traditional tabular results are used to confirm the visual impressions derived directly from the graphs. Many of the graphical formats are novel and appear here for the first time in print.  All chapters have exercises.  All functions introduced in the book are in the package.  R code for all examples, both graphs and tables, in the book is included in the scripts directory of the package.",
-## 			"License" : "GPL (>= 2)",
-## 			"Packaged" : "2014-09-12 01:58:32 UTC; rmh",
+## 			"Imports" : {
+## 				"parallel" : "*",
+## 				"abind" : "*"
+## 
+## ... not showing 63 lines ...
+## 
+## 				"corpcor" : "*",
+## 				"MASS" : "*"
+## 			},
+## 			"Imports" : {
+## 				"globaltest" : "*",
+## 				"GlobalAncova" : "*",
+## 				"limma" : "*",
+## 				"RepeatedHighDim" : "*"
+## 			},
+## 			"Collate" : "'miRtest.R'",
+## 			"Packaged" : "2014-11-26 23:25:02 UTC; me",
 ## 			"NeedsCompilation" : "no",
 ## 			"Repository" : "CRAN",
-## 			"Date/Publication" : "2014-09-13 08:34:04",
-## 			"crandb_file_date" : "2014-09-13 02:36:50",
-## 			"date" : "2014-09-13T08:34:04+00:00",
+## 			"Date/Publication" : "2014-11-27 01:46:34",
+## 			"crandb_file_date" : "2014-11-26 19:47:19",
+## 			"date" : "2014-11-27T01:46:34+00:00",
 ## 			"releases" : []
 ## 		}
 ## 	}
@@ -751,44 +773,44 @@ DB("/-/archivals?limit=3&descending=true", head = 20)
 ```
 ## [
 ## 	{
-## 		"date" : "2014-09-13T07:25:27+00:00",
-## 		"name" : "MASSI",
+## 		"date" : "2014-11-26T10:17:56+00:00",
+## 		"name" : "icomp",
 ## 		"event" : "archived",
 ## 		"package" : {
-## 			"Package" : "MASSI",
+## 			"Package" : "icomp",
 ## 			"Type" : "Package",
-## 			"Title" : "MicroArray Sample Sex Identifier",
-## 			"Version" : "1.1",
-## 			"Date" : "2013-06-11",
-## 			"Author" : "Sam Buckberry",
-## 			"Maintainer" : "Sam Buckberry <sam.buckberry@adelaide.edu.au>",
-## 			"Description" : "Predicts sample sex information in gene expression microarray datasets",
-## 			"License" : "GPL-3",
-## 			"Collate" : "'massi.check.R' 'massi.cluster.R' 'massi.espresso.R'\u000a'massi.plot.R' 'massi.y.R'",
-## 			"LazyData" : "true",
-## 			"Depends" : {
-## 				"fpc" : "*",
-## 				"gplots" : "*"
-## 
-## ... not showing 56 lines ...
-## 
-## 			"Collate" : "main.R zzz.R",
-## 			"Encoding" : "latin1",
-## 			"Suggests" : {
-## 				"RUnit" : "*",
-## 				"rbenchmark" : "*"
-## 			},
-## 			"Packaged" : "2013-12-11 07:09:15 UTC; bernardo",
+## 			"Title" : "ICOMP criterion",
+## 			"Version" : "0.1",
+## 			"Date" : "2008-07-03",
+## 			"Author" : "Jake Ferguson",
+## 			"Maintainer" : "Jake Ferguson <troutinthemilk@gmail.com>",
+## 			"Description" : "Calculates the ICOMP criterion and its variations",
+## 			"License" : "GPL (>= 2)",
+## 			"URL" : "http://taper-linux.msu.montana.edu/",
+## 			"Packaged" : "2012-10-29 08:59:00 UTC; ripley",
 ## 			"Repository" : "CRAN",
-## 			"Date/Publication" : "2013-12-11 15:32:26",
-## 			"crandb_file_date" : "2013-12-11 09:32:26",
-## 			"NeedsCompilation" : "yes",
-## 			"date" : "2013-12-11T15:32:26+00:00",
-## 			"releases" : [
-## 				"3.0.3",
-## 				"3.1.0",
-## 				"3.1.1"
-## 			]
+## 			"Date/Publication" : "2012-10-29 08:59:00",
+## 			"crandb_file_date" : "2012-10-29 03:59:00",
+## 
+## ... not showing 64 lines ...
+## 
+## 				"igraph" : "*",
+## 				"metrumrg" : "*",
+## 				"methods" : "*"
+## 			},
+## 			"Suggests" : {
+## 				"xlsx" : "*",
+## 				"rJava" : "*"
+## 			},
+## 			"Description" : "Classifies a data.frame such that row deletions and<U+000a>additions are tracked.  A mechanism exists to give formal names to the row<U+000a>subsets that are coming or going.  These names are used to populate a<U+000a>directed graph giving an account of all the transactions contributing to<U+000a>the state of the data.frame.  The generic as.audited() has a<U+000a>method for keyed data.frames that creates an audited data.frame.<U+000a>Methods exist that track row count changes for the generics: Ops, !, ^, |,<U+000a>[, subset, head, tail, unique, cast, melt, aggregate, and merge.<U+000a>audit() extracts the transaction table from the audited object, while<U+000a>write.audit() and read.audit() control exchange with the<U+000a>file system. An audit method for as.igraph() creates a graph object that<U+000a>can be displayed with the corresponding plot method.  Use options(audit= )<U+000a>to provide an extra level of classification. Use options(artifact=TRUE)<U+000a>and as.xlsx() to save dropped records to file.",
+## 			"License" : "GPL",
+## 			"Packaged" : "2014-09-20 16:05:24 UTC; timb",
+## 			"NeedsCompilation" : "no",
+## 			"Repository" : "CRAN",
+## 			"Date/Publication" : "2014-09-20 22:03:15",
+## 			"crandb_file_date" : "2014-09-20 16:07:22",
+## 			"date" : "2014-09-20T22:03:15+00:00",
+## 			"releases" : []
 ## 		}
 ## 	}
 ## ]
@@ -807,43 +829,43 @@ DB("/-/events?limit=3&descending=true", head = 20)
 ```
 ## [
 ## 	{
-## 		"date" : "2014-09-13T18:12:26+00:00",
-## 		"name" : "iBATCGH",
+## 		"date" : "2014-11-27T01:58:45+00:00",
+## 		"name" : "secrdesign",
 ## 		"event" : "released",
 ## 		"package" : {
-## 			"Package" : "iBATCGH",
+## 			"Package" : "secrdesign",
 ## 			"Type" : "Package",
-## 			"Title" : "Integrative Bayesian Analysis of Transcriptomic and CGH data",
-## 			"Version" : "1.1",
-## 			"Date" : "2014-09-02",
-## 			"Author" : "Alberto Cassese",
-## 			"Maintainer" : "Alberto Cassese <alberto.cassese@rice.edu>",
-## 			"Description" : "Bayesian integrative models of gene expression and comparative genomic hybridization data. The package provides inference on copy number variations and their association with gene expression",
-## 			"License" : "GPL-2",
-## 			"Imports" : {
-## 				"Rcpp" : ">= 0.11.2",
-## 				"msm" : "*"
-## 			},
-## 			"LinkingTo" : {
-## 
-## ... not showing 85 lines ...
-## 
+## 			"Title" : "Sampling Design for Spatially Explicit Capture-Recapture",
+## 			"Version" : "2.2.1",
+## 			"Depends" : {
+## 				"R" : ">= 3.0.0",
+## 				"secr" : ">= 2.9.1"
 ## 			},
 ## 			"Suggests" : {
-## 				"methods" : "*",
-## 				"abind" : "*",
-## 				"mvtnorm" : "*",
-## 				"car" : "*",
-## 				"RcmdrPlugin.HH" : "*"
+## 				"knitr" : "*"
 ## 			},
-## 			"Description" : "Support software for Statistical Analysis and Data Display (First Edition, Springer, ISBN 0-387-40270-5, 2004) and (Second Edition, Springer, ISBN x-xxx-xxxxx-x, anticipated 2015) by Richard M. Heiberger and Burt Holland.  This contemporary presentation of statistical methods features extensive use of graphical displays for exploring data and for displaying the analysis.  The second edition includes redesigned graphics and additional chapters. The authors emphasize how to construct and interpret graphs, discuss principles of graphical design, and show how accompanying traditional tabular results are used to confirm the visual impressions derived directly from the graphs. Many of the graphical formats are novel and appear here for the first time in print.  All chapters have exercises.  All functions introduced in the book are in the package.  R code for all examples, both graphs and tables, in the book is included in the scripts directory of the package.",
-## 			"License" : "GPL (>= 2)",
-## 			"Packaged" : "2014-09-12 01:58:32 UTC; rmh",
+## 			"Imports" : {
+## 				"parallel" : "*",
+## 				"abind" : "*"
+## 
+## ... not showing 63 lines ...
+## 
+## 				"corpcor" : "*",
+## 				"MASS" : "*"
+## 			},
+## 			"Imports" : {
+## 				"globaltest" : "*",
+## 				"GlobalAncova" : "*",
+## 				"limma" : "*",
+## 				"RepeatedHighDim" : "*"
+## 			},
+## 			"Collate" : "'miRtest.R'",
+## 			"Packaged" : "2014-11-26 23:25:02 UTC; me",
 ## 			"NeedsCompilation" : "no",
 ## 			"Repository" : "CRAN",
-## 			"Date/Publication" : "2014-09-13 08:34:04",
-## 			"crandb_file_date" : "2014-09-13 02:36:50",
-## 			"date" : "2014-09-13T08:34:04+00:00",
+## 			"Date/Publication" : "2014-11-27 01:46:34",
+## 			"crandb_file_date" : "2014-11-26 19:47:19",
+## 			"date" : "2014-11-27T01:46:34+00:00",
 ## 			"releases" : []
 ## 		}
 ## 	}
@@ -939,7 +961,7 @@ DB("/-/releasepkgs/2.15.3", head = 20)
 ## 		},
 ## 		"Packaged" : "2013-02-06 16:46:12 UTC; scott",
 ## 
-## ... not showing 166559 lines ...
+## ... not showing 164526 lines ...
 ## 
 ## 		"Depends" : {
 ## 			"R" : ">= 2.4.0",
@@ -995,7 +1017,7 @@ DB("/-/release/2.15.3", head = 20)
 ## 	"ACNE" : "0.5.0",
 ## 	"acs" : "0.8",
 ## 
-## ... not showing 4903 lines ...
+## ... not showing 4838 lines ...
 ## 
 ## 	"YjdnJlp" : "0.9.8",
 ## 	"YourCast" : "1.5-1",
@@ -1051,7 +1073,7 @@ DB("/-/releasedesc/2.15.3", head = 20)
 ## 		"version" : "0.1-2",
 ## 		"title" : "Algorithms for ABC summary statistics selection"
 ## 
-## ... not showing 19706 lines ...
+## ... not showing 19445 lines ...
 ## 
 ## 		"version" : "1.1",
 ## 		"title" : "Zero-offset matrices"
@@ -1062,7 +1084,7 @@ DB("/-/releasedesc/2.15.3", head = 20)
 ## 	},
 ## 	"zoo" : {
 ## 		"version" : "1.7-9",
-## 		"title" : "S3 Infrastructure for Regular and Irregular Time Series (Z's\u000aordered observations)"
+## 		"title" : "S3 Infrastructure for Regular and Irregular Time Series (Z's<U+000a>ordered observations)"
 ## 	},
 ## 	"zooimage" : {
 ## 		"version" : "3.0-3",
@@ -1088,64 +1110,64 @@ DB("/-/topdeps/3.1.1")
 ```
 ## [
 ## 	{
-## 		"MASS" : 788
+## 		"MASS" : 736
 ## 	},
 ## 	{
-## 		"lattice" : 405
+## 		"lattice" : 374
 ## 	},
 ## 	{
-## 		"ggplot2" : 303
+## 		"ggplot2" : 273
 ## 	},
 ## 	{
-## 		"Matrix" : 284
+## 		"Matrix" : 260
 ## 	},
 ## 	{
-## 		"mvtnorm" : 272
+## 		"mvtnorm" : 256
 ## 	},
 ## 	{
-## 		"testthat" : 265
+## 		"survival" : 231
 ## 	},
 ## 	{
-## 		"survival" : 257
+## 		"testthat" : 224
 ## 	},
 ## 	{
-## 		"plyr" : 231
+## 		"plyr" : 207
 ## 	},
 ## 	{
-## 		"Rcpp" : 228
+## 		"Rcpp" : 200
 ## 	},
 ## 	{
-## 		"knitr" : 161
+## 		"XML" : 144
 ## 	},
 ## 	{
-## 		"XML" : 159
+## 		"rgl" : 138
 ## 	},
 ## 	{
-## 		"rgl" : 152
+## 		"sp" : 130
 ## 	},
 ## 	{
-## 		"nlme" : 148
+## 		"nlme" : 130
 ## 	},
 ## 	{
-## 		"sp" : 147
+## 		"knitr" : 128
 ## 	},
 ## 	{
-## 		"igraph" : 142
+## 		"igraph" : 128
 ## 	},
 ## 	{
-## 		"coda" : 135
+## 		"coda" : 126
 ## 	},
 ## 	{
-## 		"boot" : 132
+## 		"boot" : 121
 ## 	},
 ## 	{
-## 		"RCurl" : 124
+## 		"RUnit" : 112
 ## 	},
 ## 	{
-## 		"RUnit" : 118
+## 		"RColorBrewer" : 106
 ## 	},
 ## 	{
-## 		"RColorBrewer" : 114
+## 		"RCurl" : 104
 ## 	}
 ## ]
 ```
@@ -1161,64 +1183,64 @@ DB("/-/topdeps/devel")
 ```
 ## [
 ## 	{
-## 		"MASS" : 836
+## 		"MASS" : 868
 ## 	},
 ## 	{
-## 		"lattice" : 422
+## 		"lattice" : 434
 ## 	},
 ## 	{
-## 		"ggplot2" : 336
+## 		"testthat" : 378
 ## 	},
 ## 	{
-## 		"testthat" : 317
+## 		"ggplot2" : 368
 ## 	},
 ## 	{
-## 		"Matrix" : 309
+## 		"Matrix" : 319
 ## 	},
 ## 	{
-## 		"mvtnorm" : 291
+## 		"Rcpp" : 304
 ## 	},
 ## 	{
-## 		"Rcpp" : 274
+## 		"mvtnorm" : 302
 ## 	},
 ## 	{
-## 		"survival" : 273
+## 		"survival" : 290
 ## 	},
 ## 	{
-## 		"plyr" : 257
+## 		"knitr" : 282
 ## 	},
 ## 	{
-## 		"knitr" : 214
+## 		"plyr" : 271
 ## 	},
 ## 	{
-## 		"XML" : 173
+## 		"XML" : 183
 ## 	},
 ## 	{
-## 		"sp" : 168
+## 		"sp" : 180
 ## 	},
 ## 	{
-## 		"rgl" : 164
+## 		"rgl" : 169
 ## 	},
 ## 	{
-## 		"nlme" : 157
+## 		"nlme" : 163
 ## 	},
 ## 	{
-## 		"igraph" : 151
+## 		"igraph" : 155
 ## 	},
 ## 	{
-## 		"RCurl" : 144
+## 		"boot" : 150
 ## 	},
 ## 	{
-## 		"coda" : 143
+## 		"RCurl" : 146
 ## 	},
 ## 	{
-## 		"boot" : 142
+## 		"coda" : 146
 ## 	},
 ## 	{
-## 		"reshape2" : 133
+## 		"stringr" : 139
 ## 	},
 ## 	{
-## 		"stringr" : 126
+## 		"reshape2" : 139
 ## 	}
 ## ]
 ```
@@ -1234,7 +1256,7 @@ DB("/-/deps/2.15.1", head = 20)
 
 ```
 ## {
-## 	"abind" : 36,
+## 	"abind" : 35,
 ## 	"accuracy" : 4,
 ## 	"acepack" : 2,
 ## 	"aCGH" : 2,
@@ -1242,7 +1264,7 @@ DB("/-/deps/2.15.1", head = 20)
 ## 	"ada" : 3,
 ## 	"adabag" : 1,
 ## 	"adapt" : 2,
-## 	"ade4" : 25,
+## 	"ade4" : 24,
 ## 	"ade4TkGUI" : 1,
 ## 	"adegenet" : 4,
 ## 	"adehabitat" : 4,
@@ -1254,26 +1276,26 @@ DB("/-/deps/2.15.1", head = 20)
 ## 	"adimpro" : 3,
 ## 	"adlift" : 1,
 ## 
-## ... not showing 1457 lines ...
+## ... not showing 1435 lines ...
 ## 
+## 	"XLConnectJars.1" : 1,
 ## 	"xlsxjars" : 1,
-## 	"XML" : 96,
+## 	"XML" : 92,
 ## 	"XMLRPC" : 1,
 ## 	"XMLSchema" : 3,
 ## 	"xpose4" : 1,
-## 	"xpose4classic" : 1,
-## 	"xpose4data" : 4,
-## 	"xpose4generic" : 3,
-## 	"xpose4specific" : 2,
-## 	"xtable" : 72,
+## 	"xpose4data" : 3,
+## 	"xpose4generic" : 2,
+## 	"xpose4specific" : 1,
+## 	"xtable" : 67,
 ## 	"xtermStyle" : 1,
-## 	"xts" : 25,
+## 	"xts" : 24,
 ## 	"yacca" : 1,
 ## 	"yaImpute" : 1,
 ## 	"YaleToolkit" : 2,
 ## 	"yaml" : 1,
 ## 	"Zelig" : 5,
 ## 	"zipfR" : 2,
-## 	"zoo" : 75
+## 	"zoo" : 73
 ## }
 ```
