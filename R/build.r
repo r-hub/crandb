@@ -45,10 +45,27 @@ archive_rds <- function() {
     readRDS()
 }
 
+packages_rds <- function() {
+  rds <- cran_mirror() %>%
+    file.path(packages_rds_path) %>%
+    readRDS()
+  rownames(rds) <- rds[, "Package"]
+  rds
+}
+
 current_rds <- function() {
-  cran_mirror() %>%
+  current <- cran_mirror() %>%
     file.path(current_rds_path) %>%
     readRDS()
+
+  packages <- packages_rds()
+
+  current <- current[rownames(current) %in% rownames(packages),, drop = FALSE ]
+  packages <- packages[rownames(current), , drop = FALSE]
+
+  rownames(current) <- paste0(rownames(current), "_",
+                              packages[, "Version"], ".tar.gz")
+  current
 }
 
 add_package <- function(pkg, archived = FALSE) {

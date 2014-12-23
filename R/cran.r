@@ -9,6 +9,8 @@ archive_rds_path_comps <- list("src", "contrib", "Meta", "archive.rds")
 archive_rds_path <- do.call(file.path, archive_rds_path_comps)
 current_rds_path_comps <- list("src", "contrib", "Meta", "current.rds")
 current_rds_path <- do.call(file.path, current_rds_path_comps)
+packages_rds_path_comps <- list("web", "packages", "packages.rds")
+packages_rds_path <- do.call(file.path, packages_rds_path_comps)
 
 cran_dep_fields  <- c("Depends", "Imports", "Suggests", "Enhances",
                       "LinkingTo")

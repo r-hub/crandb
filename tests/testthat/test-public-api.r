@@ -58,7 +58,7 @@ test_that("list_packages() works", {
   expect_equal(length(r5), 2)
   expect_true(names(r5)[1] != "igraph0")
   expect_equal(sort(names(r5[[1]])), c("archived", "latest", "name",
-    "timeline", "title", "versions"))
+    "revdeps", "timeline", "title", "versions"))
 
   r6 <- list_packages(format = "full", from = "igraph0", archived = TRUE,
                       limit = 2)

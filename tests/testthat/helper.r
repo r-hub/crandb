@@ -34,11 +34,12 @@ download_from_cran <- function(file, dest_dir, suffix = "",
 create_test_mirror <- function(path = test_mirror_dir) {
 
   c(pkg_path, archive_path, dirname(archive_rds_path),
-      dirname(current_rds_path)) %>%
+      dirname(current_rds_path), dirname(packages_rds_path)) %>%
     file.path(path, .) %>%
     sapply(dir.create, recursive = TRUE, showWarnings = FALSE)
 
-  list(archive_rds_path_comps, current_rds_path_comps) %>%
+  list(archive_rds_path_comps, current_rds_path_comps,
+       packages_rds_path_comps) %>%
     sapply(download_from_cran, dest = test_mirror_dir, suffix = "-full")
 }
 
@@ -46,6 +47,19 @@ create_test_mirror <- function(path = test_mirror_dir) {
 #' and also update the RDS files
 
 need_pkgs <- function(pkgs) {
+
+  extract_if_exists <- function(x, idx, ...) {
+    idx <- intersect(idx, rownames(x))
+    extract(x, idx, ...)
+  }
+  
+  ## packages.rds
+  packages_rds_new <- file.path(test_mirror_dir, packages_rds_path)
+  packages_rds_full <- paste0(packages_rds_new, "-full")
+  readRDS(packages_rds_full) %>%
+    (function(x) { rownames(x) <- x[, "Package"]; x }) %>%
+    extract_if_exists(pkgs, , drop = FALSE) %>%
+    saveRDS(packages_rds_new)
 
   ## archive.rds
   archive_rds_new <- file.path(test_mirror_dir, archive_rds_path)
@@ -68,8 +82,22 @@ need_pkgs <- function(pkgs) {
 
 get_pkgs_from_cran <- function() {
 
+  packages <- file.path(test_mirror_dir, packages_rds_path) %>%
+    readRDS()
+  rownames(packages) <- packages[, "Package"]
+  
   current <- file.path(test_mirror_dir, current_rds_path) %>%
-    readRDS() %>%
+    readRDS()
+
+  current <- current[rownames(current) %in%
+                     rownames(packages), , drop = FALSE ]
+  packages <- packages[rownames(current), , drop = FALSE ]
+  if (nrow(current)) {
+    rownames(current) <- paste0(rownames(current), "_",
+                                packages[, "Version"], ".tar.gz")
+  }
+
+  current <- current %>%
     rownames() %>%
     file.path(pkg_path, .)
 
