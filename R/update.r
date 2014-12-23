@@ -51,6 +51,10 @@ crandb_update <- function(force = FALSE) {
 
   cran <- cran_site()
 
+  packages_url <- packages_rds_path_comps %>%
+    paste(collapse = "/") %>%
+    paste(cran_site(), ., sep = "/")
+  
   current_url <- current_rds_path_comps %>%
     paste(collapse = "/") %>%
     paste(cran_site(), ., sep="/")
@@ -66,9 +70,19 @@ crandb_update <- function(force = FALSE) {
     last_mod(etag_new)
   }
 
+  packages <- packages_url %>%
+    read_remote_rds()
+  rownames(packages) <- packages[, "Package"]
+
   current <- current_url %>%
     read_remote_rds()
 
+  current <- current[rownames(current) %in% rownames(packages),, drop = FALSE ]
+  packages <- packages[rownames(current), , drop = FALSE]
+
+  rownames(current) <- paste0(rownames(current), "_",
+                              packages[, "Version"], ".tar.gz")
+  
   archive <- archive_rds_path_comps %>%
     paste(collapse = "/") %>%
     paste(cran_site(), ., sep="/") %>%
