@@ -3,12 +3,12 @@
 \alias{package}
 \title{Metadata about a CRAN package}
 \usage{
-package(name, version)
+package(name, version = NULL)
 }
 \arguments{
 \item{name}{Name of the package.}
 
-\item{version}{The package version to query. If missing, the latest
+\item{version}{The package version to query. If \code{NULL}, the latest
 version if returned. If it is \sQuote{\code{all}}, then all versions
 are returned. Otherwise it should be a version number.}
 }

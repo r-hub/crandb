@@ -5,7 +5,7 @@
 #' Metadata about a CRAN package
 #'
 #' @param name Name of the package.
-#' @param version The package version to query. If missing, the latest
+#' @param version The package version to query. If \code{NULL}, the latest
 #'   version if returned. If it is \sQuote{\code{all}}, then all versions
 #'   are returned. Otherwise it should be a version number.
 #' @return The package metadata.
@@ -13,13 +13,13 @@
 #' @export
 #' @importFrom assertthat assert_that
 
-package <- function(name, version) {
+package <- function(name, version = NULL) {
 
   assert_that(is_package_name(name))
-  missing(version) %||% assert_that(is_package_version(version))
+  is.null(version) %||% assert_that(is_package_version(version))
 
   url <- name
-  if (! missing(version)) url <- paste0(url, "/", version)
+  if (! is.null(version)) url <- paste0(url, "/", version)
   query(url) %>%
     remove_special() %>%
     add_class("cran_package")
