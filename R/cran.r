@@ -40,7 +40,7 @@ service <- NA
 #' @importFrom spareserver remove_service add_service server
 
 crandb_dev <- function() {
-  nonroot <- list(list(uri = "http://db-dev.r-pkg.org/",
+  nonroot <- list(list(uri = "http://crandb-dev.r-pkg.org/",
                        priority = 10))
   uri <- "https://crandb.r-pkg.org:6984/cran-dev"
   root <- list(list(uri = uri, priority = 10))
@@ -49,7 +49,7 @@ crandb_dev <- function() {
   try(remove_service(service), silent = TRUE)
   add_service(
     service,
-    server("http://db-dev.r-pkg.org/", priority = 10)
+    server("http://crandb-dev.r-pkg.org/", priority = 10)
   )
 }
 
