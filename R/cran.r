@@ -42,14 +42,17 @@ service <- NA
 crandb_dev <- function() {
   nonroot <- list(list(uri = "http://crandb-dev.r-pkg.org/",
                        priority = 10))
-  uri <- "https://crandb.r-pkg.org:6984/cran-dev"
+  user <- couchdb_user()
+  passwd <- couchdb_password()
+  uri <- "https://" %+% user %+% ":" %+% passwd %+% "@" %+%
+    "crandb.r-pkg.org:6984/cran-dev"
   root <- list(list(uri = uri, priority = 10))
   crandb:::couchdb_server(nonroot, root = FALSE)
   crandb:::couchdb_server(root, root = TRUE)
   try(remove_service(service), silent = TRUE)
   add_service(
     service,
-    server("http://crandb-dev.r-pkg.org/", priority = 10)
+    server("http://crandb.r-pkg.org/", priority = 10)
   )
 }
 
