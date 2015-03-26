@@ -54,6 +54,7 @@ ddoc = {
     , { from: '/-/all', to: '_list/id/active' }
     , { from: '/-/desc', to: '_list/desc/active' }
     , { from: '/-/latest', to: '_list/latest/active' }
+    , { from: '/-/versions', to: '_list/id/versions' }
     , { from: '/-/allall', to: '_list/id/packages' }
     , { from: '/-/pkgreleases', to: '_list/il/pkgreleases' }
     , { from: '/-/archivals', to: '_list/il/archivals' }
@@ -92,6 +93,19 @@ ddoc.views.active = {
     map: function(doc) {
 	if (doc.type && doc.type != "package") return
 	if (!doc.archived) { emit(doc._id, doc); }
+    }
+}
+
+ddoc.views.versions = {
+    map: function(doc) {
+	if (doc.type && doc.type != "package") return
+	if (doc.archived) return
+	if (!doc.versions) return
+	for (var v in doc.versions) {
+	    var ver = doc.versions[v]
+	    emit(doc.name + "-" + v, ver)
+	}
+	emit(doc.name, doc.versions[doc.latest])
     }
 }
 
