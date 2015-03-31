@@ -60,6 +60,7 @@ ddoc = {
     , { from: '/-/archivals', to: '_list/il/archivals' }
     , { from: '/-/events', to: '_list/il/events' }
     , { from: '/-/releases', to: '_list/il/releases' }
+    , { from: '/-/sysreqs', to: '_list/id/sysreqs' }
     , { from: '/-/releasepkgs/:version', to: '_list/id1/releasepkgs',
 	query: { "start_key":[":version"],
 		 "end_key":[":version",{}] } }
@@ -106,6 +107,24 @@ ddoc.views.versions = {
 	    emit(doc.name + "-" + v, ver)
 	}
 	emit(doc.name, doc.versions[doc.latest])
+    }
+}
+
+ddoc.views.sysreqs = {
+    map: function(doc) {
+	if (doc.type && doc.typ != "package") return
+	if (doc.archived) return
+	if (!doc.versions) return
+	for (var v in doc.versions) {
+	    var ver = doc.versions[v]
+	    if ('SystemRequirements' in ver) {
+		emit(doc.name + "-" + v, ver.SystemRequirements)
+	    }
+	}
+	var latest = doc.versions[doc.latest]
+	if ('SystemRequirements' in latest) {
+	    emit(doc.name, latest.SystemRequirements)
+	}
     }
 }
 
