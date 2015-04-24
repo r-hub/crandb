@@ -3,7 +3,7 @@
 
 # The CRAN database
 
-[![Linux Build Status](https://travis-ci.org/metacran/crandb.scg?branch=master)](https://travis-ci.org/metacran/crandb)
+[![Linux Build Status](https://travis-ci.org/metacran/crandb.svg?branch=master)](https://travis-ci.org/metacran/crandb)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/github/metacran/crandb?svg=true)](https://ci.appveyor.com/project/gaborcsardi/crandb)
 
 The CRAN database provides an API for programatically accessing all
