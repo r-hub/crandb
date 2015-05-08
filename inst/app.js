@@ -76,6 +76,8 @@ ddoc = {
     , { from: '/-/deps/:version', to: '_list/id1/topdeps',
         query: { "group_level": "2", "start_key":[":version"],
 		 "end_key":[":version",{}] } }
+    , { from: '/-/revdeps/:pkg', to: '_list/revdeps/revdeps',
+	query: { "keys": [":pkg"] } },
     , { from: '/:pkg', to: '_show/package/:pkg' }
     , { from: '/:pkg/:version', to: '_show/package/:pkg' }
     ]
@@ -258,6 +260,35 @@ ddoc.views.topdeps = {
     reduce: '_sum'
 }
 
+ddoc.views.revdeps = {
+    map: function(doc) {
+	if (doc.type && doc.type != "package") return
+	if (doc.archived) return
+	if (!doc.versions) return
+
+	var base=["base", "compiler", "datasets", "graphics", "grDevices",
+		  "grid", "methods", "parallel", "splines", "stats",
+		  "stats4", "tcltk", "utils"]
+	var dep_fields = [ "Depends", "Imports", "Suggests", "Enhances",
+			   "LinkingTo" ]
+
+	var ver = doc.versions[doc.latest]
+	var reported = []
+	for (var f in dep_fields) {
+	    var ff = dep_fields[f]
+	    if (ff in ver) {
+		for (var p in ver[ff]) {
+		    if (p != 'R' && reported.indexOf(p) < 0 &&
+			base.indexOf(p) < 0) {
+			emit(p, [ff, doc._id])
+			reported.push(p)
+		    }
+		}
+	    }
+	}
+    }
+}
+
 ddoc.lists.il = function(doc, req) {
     var row, first=true
     send('[ ')
@@ -334,6 +365,18 @@ ddoc.lists.latest = function(doc, req) {
 	     JSON.stringify(row.value.versions[latest]))
     }
     send(" }")
+}
+
+ddoc.lists.revdeps = function(doc, req) {
+    var row;
+    var rd = { }
+    while (row = getRow()) {
+	if (! (row.key in rd)) { rd[row.key] = { } }
+	var type = row.value[0]
+	if (! (type in rd[row.key])) { rd[row.key][type] = [ ] }
+	rd[row.key][type].push(row.value[1])
+    }
+    send(JSON.stringify(rd))
 }
 
 ddoc.shows.package = function(doc, req) {
