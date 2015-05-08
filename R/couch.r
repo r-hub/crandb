@@ -215,6 +215,8 @@ add_release <- function(rec) {
     couch_add(id = rec[[1]])
 }
 
+#' @importFrom httr status_code
+
 update_design <- function() {
 
   ## Check if we have command line curl
@@ -239,10 +241,15 @@ update_design <- function() {
   ("couchapp push " %+% tmpfile %+% " " %+% couchdb_server(root = TRUE)[[1]]$uri) %>%
     system()
 
-  ## Query DB to trigger indexing
-  couchdb_server(root = TRUE)[[1]]$uri %>%
-    paste0("/_design/app/_view/active?limit=5") %>%
-    httr::GET()
+  ## Query DB to trigger indexing. Indexing will take a while,
+  ## so we make sure that we wait until it is done
+  repeat {
+    status <- couchdb_server(root = TRUE)[[1]]$uri %>%
+      paste0("/_design/app-new/_view/active?limit=5") %>%
+      httr::GET() %>%
+      httr::status_code()
+    if (status == 200) break
+  }
 
   ## Update design document to its proper place
   ("couchapp push " %+% system.file("app.js", package = packageName()) %+%
