@@ -61,6 +61,7 @@ ddoc = {
     , { from: '/-/events', to: '_list/il/events' }
     , { from: '/-/releases', to: '_list/il/releases' }
     , { from: '/-/sysreqs', to: '_list/id/sysreqs' }
+    , { from: '/-/numactive', to: '_list/const/numactive' }
     , { from: '/-/releasepkgs/:version', to: '_list/id1/releasepkgs',
 	query: { "start_key":[":version"],
 		 "end_key":[":version",{}] } }
@@ -97,6 +98,14 @@ ddoc.views.active = {
 	if (doc.type && doc.type != "package") return
 	if (!doc.archived) { emit(doc._id, doc); }
     }
+}
+
+ddoc.views.numactive = {
+    map: function(doc) {
+	if (doc.type && doc.type != "package") return
+	if (!doc.archived) { emit('foo', 1); }
+    },
+    reduce: '_sum'
 }
 
 ddoc.views.versions = {
@@ -377,6 +386,11 @@ ddoc.lists.revdeps = function(doc, req) {
 	rd[row.key][type].push(row.value[1])
     }
     send(JSON.stringify(rd))
+}
+
+ddoc.lists.const = function(doc, req) {
+    var row = getRow()
+    send(JSON.stringify(row.value))
 }
 
 ddoc.shows.package = function(doc, req) {
