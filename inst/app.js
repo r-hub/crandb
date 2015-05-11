@@ -56,12 +56,19 @@ ddoc = {
     , { from: '/-/latest', to: '_list/latest/active' }
     , { from: '/-/versions', to: '_list/id/versions' }
     , { from: '/-/allall', to: '_list/id/packages' }
-    , { from: '/-/pkgreleases', to: '_list/il/pkgreleases' }
+    , { from: '/-/pkgreleases', to: '_list/il/pkgreleases',
+	query: { 'reduce': 'false' } }
+    , { from: '/-/numpkgreleases', to: '_list/const/pkgreleases',
+	query: { 'reduce': 'true', 'group': 'false' } }
     , { from: '/-/archivals', to: '_list/il/archivals' }
-    , { from: '/-/events', to: '_list/il/events' }
+    , { from: '/-/events', to: '_list/il/events',
+	query: { 'reduce': 'false' } }
+    , { from: '/-/numevents', to: '_list/const/events',
+	query: { 'reduce': 'true', 'group': 'false' } }
     , { from: '/-/releases', to: '_list/il/releases' }
     , { from: '/-/sysreqs', to: '_list/id/sysreqs' }
     , { from: '/-/numactive', to: '_list/const/numactive' }
+    , { from: '/-/maintainer', to: '_list/ilk/maintainer' }
     , { from: '/-/releasepkgs/:version', to: '_list/id1/releasepkgs',
 	query: { "start_key":[":version"],
 		 "end_key":[":version",{}] } }
@@ -78,7 +85,8 @@ ddoc = {
         query: { "group_level": "2", "start_key":[":version"],
 		 "end_key":[":version",{}] } }
     , { from: '/-/revdeps/:pkg', to: '_list/revdeps/revdeps',
-	query: { "keys": [":pkg"] } },
+	query: { "keys": [":pkg"] } }
+    , { from: '/-/nummaint', to: '_show/package/num-maint' }
     , { from: '/:pkg', to: '_show/package/:pkg' }
     , { from: '/:pkg/:version', to: '_show/package/:pkg' }
     ]
@@ -121,6 +129,16 @@ ddoc.views.versions = {
     }
 }
 
+ddoc.views.maintainer = {
+    map: function(doc) {
+	if (doc.type && doc.type != "package") return
+	if (doc.archived) return
+	var maint = doc.versions[doc.latest].Maintainer
+	var email = maint.replace(/^[^<]*<([^>]+@[^>]+)>.*$/, '$1')
+	emit(email, doc.name)
+    }
+}
+
 ddoc.views.sysreqs = {
     map: function(doc) {
 	if (doc.type && doc.typ != "package") return
@@ -150,7 +168,8 @@ ddoc.views.pkgreleases = {
 		       "event": "released", "package": doc.versions[t] })
 	    }
 	}
-    }
+    },
+    reduce: '_count'
 }
 
 ddoc.views.events = {
@@ -166,7 +185,8 @@ ddoc.views.events = {
 		       "package": doc.versions[ver] })
 	    }
 	}
-    }
+    },
+    reduce: '_count'
 }
 
 ddoc.views.archivals = {
@@ -305,6 +325,18 @@ ddoc.lists.il = function(doc, req) {
 	if (!row.id) continue
 	if (first) first=false; else send(",")
 	send(JSON.stringify(row.value))
+    }
+    send(" ]")
+}
+
+ddoc.lists.ilk = function(doc, req) {
+    var row, first=true
+    send('[ ')
+    while (row = getRow()) {
+	if (!row.id) continue
+	if (first) first=false; else send(",")
+	send('[' + JSON.stringify(row.key) + ', ' +
+	     JSON.stringify(row.value) + ']')
     }
     send(" ]")
 }
