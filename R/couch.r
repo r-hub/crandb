@@ -251,8 +251,12 @@ update_design <- function() {
     if (status == 200) break
   }
 
-  ## Update design document to its proper place
-  ("couchapp push " %+% system.file("app.js", package = packageName()) %+%
-     " " %+% couchdb_server(root = TRUE)[[1]]$uri) %>%
-    system()
+  message("The new design seems indexed now. Should I activate it?")
+  message("Note: you can try it at ", couchdb_server()[[1]]$uri %>%
+            paste0('/_design/app-new/_view/active?limit=5'))
+  if (menu(c("Yes", "No")) == 1) {
+    ("curl -X COPY " %+% couchdb_server(root = TRUE)[[1]]$uri %+%
+       '/_design/app-new -H "Destination: _design/app"') %>%
+         system(ignore.stdout = TRUE, ignore.stderr = TRUE)
+  }
 }

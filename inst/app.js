@@ -69,6 +69,7 @@ ddoc = {
     , { from: '/-/sysreqs', to: '_list/id/sysreqs' }
     , { from: '/-/numactive', to: '_list/const/numactive' }
     , { from: '/-/maintainer', to: '_list/ilk/maintainer' }
+    , { from: '/-/maintainernames', to: '_list/ilk/maintainernames' }
     , { from: '/-/releasepkgs/:version', to: '_list/id1/releasepkgs',
 	query: { "start_key":[":version"],
 		 "end_key":[":version",{}] } }
@@ -137,6 +138,23 @@ ddoc.views.maintainer = {
 	var email = maint.replace(/^[^<]*<([^>]+@[^>]+)>.*$/, '$1')
 	emit(email, doc.name)
     }
+}
+
+ddoc.views.maintainernames = {
+    map: function(doc) {
+	if (doc.type && doc.type != "package") return
+	if (doc.archived) return
+	var maint = doc.versions[doc.latest].Maintainer
+	var name = maint
+	    .replace(/^\s*([^<]*).*$/, '$1')
+	    .trim()
+	    .replace(/^['"](.*)['"]/, '$1')
+	    .trim()
+	var email = maint.replace(/^[^<]*<([^>]+@[^>]+)>.*$/, '$1')
+	if (name == "") { name = email }
+	emit([name, email], 1)
+    },
+    reduce: "_sum"
 }
 
 ddoc.views.sysreqs = {
@@ -333,7 +351,6 @@ ddoc.lists.ilk = function(doc, req) {
     var row, first=true
     send('[ ')
     while (row = getRow()) {
-	if (!row.id) continue
 	if (first) first=false; else send(",")
 	send('[' + JSON.stringify(row.key) + ', ' +
 	     JSON.stringify(row.value) + ']')
