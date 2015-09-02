@@ -71,7 +71,7 @@ query <- function(url, error = TRUE, ...) {
   result <- url %>%
     spare_q(service = service, GET, ...) %>%
     content(as = "text", encoding = "UTF-8") %>%
-    fromJSON(unicode = TRUE, ...)
+    fromJSON(...)
 
   error %&&% ("error" %in% names(result)) %&&%
     stop("crandb query: ", result$reason, call. = FALSE)
