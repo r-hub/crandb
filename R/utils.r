@@ -130,3 +130,7 @@ make_id <- function(length = 8) {
   sample(c(letters, LETTERS, 0:9), length, replace = TRUE) %>%
     paste(collapse = "")
 }
+
+download_method <- function() {
+  if (is.na(capabilities()["libcurl"])) "internal" else "libcurl"
+}

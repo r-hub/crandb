@@ -50,7 +50,7 @@ test_that("list_packages() works", {
   expect_false(names(r4)[1] == "igraph0")
   r4[[1]] %>%
     names() %>%
-    contains(c("Package", "Title", "Date", "Author", "date", "releases")) %>%
+    contains(c("Package", "Title", "Author", "date", "releases")) %>%
     all() %>%
     expect_true()
 

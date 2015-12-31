@@ -210,7 +210,7 @@ download_dcf <- function(pkg, versions, archive, current) {
 get_desc_from_url <- function(url, pkg) {
   tmp <- paste0(tempfile(), ".tar.gz")
   on.exit(try(silent = TRUE, unlink(tmp)))
-  download.file(url, destfile = tmp)
+  download.file(url, destfile = tmp, method = download_method())
   get_desc_from_file(tmp, pkg)
 }
 
