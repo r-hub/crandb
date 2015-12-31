@@ -119,6 +119,12 @@ crandb_update <- function(force = FALSE) {
     setdiff(names(cran_versions))
 
   archive_packages(archived_pkgs, archive = archive, current = current)
+
+  list(
+    new = new_pkgs,
+    updated = updated_pkgs,
+    archived = archived_pkgs
+  )
 }
 
 ver_from_tarname <- function(tarnames) {
