@@ -157,6 +157,7 @@ add_date <- function(rec) {
 normalize_date <- function(date) {
   date %>%
     parse_date() %>%
+    subtract(as.difftime(1, units = "hours")) %>% # CRAN is in CET?
     format_iso_8601()
 }
 
