@@ -6,6 +6,7 @@ Description: The CRAN metadata database contains information about
     CRAN packages. This package lets' you run simple queries against
     this database. Note that this is _not_ a CRAN project.
 Imports:
+    dotenv,
     magrittr,
     falsy,
     jsonlite,
