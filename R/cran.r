@@ -31,7 +31,7 @@ service <- NA
 #' @include utils.r
 
 .onLoad <- function(libname, pkgname) {
-  dotenv::load_dot_env()
+  if (file.exists(".env")) dotenv::load_dot_env()
   lib <- library
   lib(methods)
   service <<- "crandb-" %+% make_id()
