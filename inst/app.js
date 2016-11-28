@@ -14,6 +14,7 @@ var couchapp = require('couchapp')
 // - packages, all package documents, ordered by package name
 // - active, active (non-archived) package documents, ordered by 
 //   release date
+// - deps, package dependencies, for active packages
 // - pkgreleases, package versions, ordered by release date
 // - archivals, last package versions for archived packages,
 //   ordered by archival date
@@ -55,6 +56,7 @@ ddoc = {
     , { from: '/-/desc', to: '_list/desc/active' }
     , { from: '/-/latest', to: '_list/latest/active' }
     , { from: '/-/versions', to: '_list/id/versions' }
+    , { from: '/-/deps', to: '_list/id/deps' }
     , { from: '/-/allall', to: '_list/id/packages' }
     , { from: '/-/pkgreleases', to: '_list/il/pkgreleases',
 	query: { 'reduce': 'false' } }
@@ -127,6 +129,24 @@ ddoc.views.versions = {
 	    emit(doc.name + "-" + v, ver)
 	}
 	emit(doc.name, doc.versions[doc.latest])
+    }
+}
+
+ddoc.views.deps = {
+    map: function(doc) {
+	if (doc.type && doc.type != "package") return
+	if (doc.archived) return
+	var dep_fields = [ "Depends", "Imports", "Suggests", "Enhances",
+			   "LinkingTo" ]
+	var res = { }
+	var latest = doc.versions[doc.latest]
+	for (f in dep_fields) {
+	    var ff = dep_fields[f]
+	    if (ff in latest) {
+		res[ff] = latest[ff]
+	    }
+	}
+	emit(doc._id, res)
     }
 }
 
