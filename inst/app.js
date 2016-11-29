@@ -70,7 +70,7 @@ ddoc = {
     , { from: '/-/numactive', to: '_list/const/numactive' }
     , { from: '/-/maintainer', to: '_list/ilk/maintainer' }
     , { from: '/-/maintainernames', to: '_list/ilk/maintainernames' }
-    , { from: '/-/needscompilation', to: '_list/const/needscompilation' }
+    , { from: '/-/needscompilation', to: '_list/il/needscompilation' }
     , { from: '/-/releasepkgs/:version', to: '_list/id1/releasepkgs',
 	query: { "start_key":[":version"],
 		 "end_key":[":version",{}] } }
