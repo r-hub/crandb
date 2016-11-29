@@ -72,6 +72,7 @@ ddoc = {
     , { from: '/-/numactive', to: '_list/const/numactive' }
     , { from: '/-/maintainer', to: '_list/ilk/maintainer' }
     , { from: '/-/maintainernames', to: '_list/ilk/maintainernames' }
+    , { from: '/-/needscompilation', to: '_list/const/needscompilation' }
     , { from: '/-/releasepkgs/:version', to: '_list/id1/releasepkgs',
 	query: { "start_key":[":version"],
 		 "end_key":[":version",{}] } }
@@ -175,6 +176,19 @@ ddoc.views.maintainernames = {
 	emit([name, email], 1)
     },
     reduce: "_sum"
+}
+
+ddoc.views.needscompilation = {
+    map: function(doc) {
+	if (doc.type && doc.type != "package") return
+	if (doc.archived) return
+	if (!doc.versions) return
+	if (!doc.latest) return
+	var ver = doc.versions[doc.latest]
+	if ('NeedsCompilation' in ver && ver['NeedsCompilation'] == 'yes') {
+	    emit(doc._id, doc._id)
+	}
+    }
 }
 
 ddoc.views.sysreqs = {
