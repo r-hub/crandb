@@ -224,9 +224,10 @@ update_design <- function() {
   check_curl()
 
   ## Copy design document
+  message("Create backup copy app-old, of design document")
   ("curl -X COPY " %+% couchdb_server(root = TRUE)[[1]]$uri %+%
      '/_design/app -H "Destination: _design/app-old"') %>%
-    system(ignore.stdout = TRUE, ignore.stderr = TRUE)
+    system()
 
   ## Update design document, under a new name
   tmp <- tempfile()
@@ -239,11 +240,13 @@ update_design <- function() {
         fixed = TRUE) %>%
     writeLines(tmpfile)
 
+  message("Create/update app-new design document")
   ("couchapp push " %+% tmpfile %+% " " %+% couchdb_server(root = TRUE)[[1]]$uri) %>%
     system()
 
   ## Query DB to trigger indexing. Indexing will take a while,
   ## so we make sure that we wait until it is done
+  message("Wait for indexing the app-new")
   repeat {
     status <- couchdb_server(root = TRUE)[[1]]$uri %>%
       paste0("/_design/app-new/_view/active?limit=5") %>%
@@ -256,8 +259,9 @@ update_design <- function() {
   message("Note: you can try it at ", couchdb_server()[[1]]$uri %>%
             paste0('/_design/app-new/_view/active?limit=5'))
   if (menu(c("Yes", "No")) == 1) {
+    message("Activating design document app")
     ("curl -X COPY " %+% couchdb_server(root = TRUE)[[1]]$uri %+%
        '/_design/app-new -H "Destination: _design/app"') %>%
-         system(ignore.stdout = TRUE, ignore.stderr = TRUE)
+         system()
   }
 }
