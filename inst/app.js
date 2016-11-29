@@ -1,5 +1,3 @@
-var couchapp = require('couchapp')
-, path = require('path');
 
 // Views
 // =====
