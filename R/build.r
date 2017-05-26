@@ -129,8 +129,11 @@ add_more_info <- function(pkg, file, desc) {
   file_date <- file %>%
     file.info() %>%
     extract2("mtime")
-  desc <- paste0(desc, "\ncrandb_file_date: ", file_date, "\n")
-  
+  desc <- paste0(desc, "\ncrandb_file_date: ", file_date)
+
+  md5 <- tools::md5sum(normalizePath(file))
+  desc <- paste0(desc, "\nMD5sum: ", md5, "\n")
+
   grepl("^Package:", desc, useBytes = TRUE) %||% {
     desc <- paste0(desc, "\nPackage: ", pkg, "\n")
   }
