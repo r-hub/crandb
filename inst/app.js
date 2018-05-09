@@ -50,6 +50,7 @@ ddoc = {
     , shows: {}
     , rewrites: 
     [ { from: "/", to: "../.." }
+    , { from: '/-/pkgnames', to: '_list/id/pkgnames' }
     , { from: '/-/all', to: '_list/id/active' }
     , { from: '/-/desc', to: '_list/desc/active' }
     , { from: '/-/latest', to: '_list/latest/active' }
@@ -107,6 +108,13 @@ ddoc.views.active = {
     map: function(doc) {
 	if (doc.type && doc.type != "package") return
 	if (!doc.archived) { emit(doc._id, doc); }
+    }
+}
+
+ddoc.views.pkgnames = {
+    map: function(doc) {
+	if (doc.type && doc.type != "package") return
+	if (!doc.archived) { emit(doc._id, doc._id); }
     }
 }
 
