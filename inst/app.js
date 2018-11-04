@@ -10,7 +10,7 @@
 //
 // We have the following views:
 // - packages, all package documents, ordered by package name
-// - active, active (non-archived) package documents, ordered by 
+// - active, active (non-archived) package documents, ordered by
 //   release date
 // - deps, package dependencies, for active packages
 // - pkgreleases, package versions, ordered by release date
@@ -31,7 +31,7 @@
 // A list is a transformation of a view, e.g. taking out one specific
 // version, or specific fields. A list has an input format and an
 // output format.
-// 
+//
 // We have the following lists:
 // - id, put rows in an dictionary, use key as key
 // - id1, put rows in an dictionary, use key[1] as key
@@ -48,7 +48,7 @@ ddoc = {
     , views: {}
     , lists: {}
     , shows: {}
-    , rewrites: 
+    , rewrites:
     [ { from: "/", to: "../.." }
     , { from: '/-/pkgnames', to: '_list/id/pkgnames' }
     , { from: '/-/all', to: '_list/id/active' }
@@ -75,11 +75,11 @@ ddoc = {
     , { from: '/-/releasepkgs/:version', to: '_list/id1/releasepkgs',
 	query: { "start_key":[":version"],
 		 "end_key":[":version",{}] } }
-    , { from: '/-/release/:version', to: '_list/id1/release', 
+    , { from: '/-/release/:version', to: '_list/id1/release',
         query: { "start_key":[":version"],
 		 "end_key":[":version",{}] } }
     , { from: '/-/releasedesc/:version', to: '_list/id1/releasedesc',
-        query: { "start_key":[":version"], 
+        query: { "start_key":[":version"],
 		 "end_key":[":version",{}] } }
     , { from: '/-/topdeps/:version', to: '_list/top20/topdeps',
         query: { "group_level": "2", "start_key":[":version"],
@@ -89,6 +89,8 @@ ddoc = {
 		 "end_key":[":version",{}] } }
     , { from: '/-/revdeps/:pkg', to: '_list/revdeps/revdeps',
 	query: { "keys": [":pkg"] } }
+    , { from: '/-/revdeps', to: '_list/revdeppkgs/revdeppkgs',
+	query: { "include_docs": "true" } }
     , { from: '/-/nummaint', to: '_show/package/num-maint' }
     , { from: '/:pkg', to: '_show/package/:pkg' }
     , { from: '/:pkg/:version', to: '_show/package/:pkg' }
@@ -104,7 +106,7 @@ ddoc.views.packages = {
     }
 }
 
-ddoc.views.active = { 
+ddoc.views.active = {
     map: function(doc) {
 	if (doc.type && doc.type != "package") return
 	if (!doc.archived) { emit(doc._id, doc); }
@@ -221,7 +223,7 @@ ddoc.views.pkgreleases = {
 	for (var t in doc.timeline) {
 	    if (doc.timeline && doc.timeline[t] != "Invalid date" &&
 		t != "archived") {
-		emit(doc.timeline[t], 
+		emit(doc.timeline[t],
 		     { "date": doc.timeline[t], "name": doc.name,
 		       "event": "released", "package": doc.versions[t] })
 	    }
@@ -237,8 +239,8 @@ ddoc.views.events = {
 	    if (doc.timeline && doc.timeline[t] != "Invalid date") {
 		var ev = t === "archived" ? "archived" : "released"
 		var ver = t
-		if (ver === "archived") ver=doc.latest		    
-		emit(doc.timeline[t], 
+		if (ver === "archived") ver=doc.latest
+		emit(doc.timeline[t],
 		     { "date": doc.timeline[t], "name": doc.name, "event": ev,
 		       "package": doc.versions[ver] })
 	    }
@@ -251,7 +253,7 @@ ddoc.views.archivals = {
     map: function(doc) {
 	if (doc.type && doc.type != "package") return
 	if (doc.archived) {
-	    emit(doc.timeline['archived'], 
+	    emit(doc.timeline['archived'],
 		 { "date": doc.timeline['archived'], "name": doc.name,
 		   "comment": doc.archived_comment,
 		   "event": "archived",
@@ -376,6 +378,35 @@ ddoc.views.revdeps = {
     }
 }
 
+ddoc.views.revdeppkgs = {
+    map: function (doc) {
+	if (doc.type && doc.type != "package") return
+	if (doc.archived) return
+	if (!doc.versions) return
+
+	var base=["base", "compiler", "datasets", "graphics", "grDevices",
+		  "grid", "methods", "parallel", "splines", "stats",
+		  "stats4", "tcltk", "utils"]
+	var dep_fields = [ "Depends", "Imports", "Suggests", "Enhances",
+			   "LinkingTo" ]
+
+	var ver = doc.versions[doc.latest]
+	var reported = []
+	for (var f in dep_fields) {
+	    var ff = dep_fields[f]
+	    if (ff in ver) {
+		for (var p in ver[ff]) {
+		    if (p != 'R' && reported.indexOf(p) < 0 &&
+			base.indexOf(p) < 0) {
+			emit(p, { type: ff, _id: p, up: doc._id })
+			reported.push(p)
+		    }
+		}
+	    }
+	}
+    }
+}
+
 ddoc.lists.il = function(doc, req) {
     var row, first=true
     send('[ ')
@@ -477,6 +508,20 @@ ddoc.lists.revdeps = function(doc, req) {
     send(JSON.stringify(rd))
 }
 
+ddoc.lists.revdeppkgs = function(doc, req)  {
+    var row;
+    var rd = { }
+    while (row = getRow()) {
+	if (! (row.key in rd)) {
+	    rd[row.key] = row.doc.versions[row.doc.latest];
+	}
+	var type = "Reverse-" + row.value.type
+	if (! (type in rd[row.key])) { rd[row.key][type] = [ ] }
+	rd[row.key][type].push(row.value.up)
+    }
+    send(JSON.stringify(rd))
+}
+
 ddoc.lists.const = function(doc, req) {
     var row = getRow()
     send(JSON.stringify(row.value))
@@ -487,7 +532,7 @@ ddoc.shows.package = function(doc, req) {
     var code = 200
       , headers = {"Content-Type":"application/json"}
       , body = null
-    
+
     var ver = req.query.version
 
     if (doc.type && doc.type != "package") {
@@ -509,7 +554,7 @@ ddoc.shows.package = function(doc, req) {
 	    delete body._revisions
 	}
     }
-    
+
     body = req.query.jsonp
 	? req.query.jsonp + "(" + JSON.stringify(body) + ")"
 	: toJSON(body)
@@ -518,7 +563,7 @@ ddoc.shows.package = function(doc, req) {
 }
 
 ddoc.validate_doc_update = function(newDoc, oldDoc, userCtx) {
-    if ((userCtx.roles.indexOf('_admin') === -1)) { 
-	throw({unauthorized: 'Only admins may create/edit documents.'}); 
+    if ((userCtx.roles.indexOf('_admin') === -1)) {
+	throw({unauthorized: 'Only admins may create/edit documents.'});
     }
 }
