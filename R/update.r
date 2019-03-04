@@ -7,7 +7,7 @@ cran_site <- function() {
     extract("CRAN") %>%
     NA_NULL()
 
-  cran %||% "http://cran.r-project.org"
+  cran %||% "https://cloud.r-project.org"
 }
 
 read_remote_rds <- function(URL) {
@@ -261,13 +261,9 @@ archive_package <- function(pkg, archive, current) {
 }
 
 archival_date_url <- function(pkg) {
-  tmp <- tempfile()
-  on.exit(try(silent = TRUE, unlink(tmp, recursive = TRUE)))
-  dir.create(tmp)
-  rsync(paste("cran.r-project.org::CRAN", "web", "packages", pkg, sep="/"), tmp)
-  file.path(tmp, pkg) %>%
-    file.info() %>%
-    extract2("mtime")
+  ## This does not work currently, because i don't have access to the
+  ## main R mirror. So we just use the current time instead....
+  return(Sys.time())
 }
 
 ## Check the version(s) of a package that is/are missing
