@@ -152,7 +152,11 @@ from_tarball <- function(tar_file, files) {
   tmp <- tempfile()
   on.exit(try(unlink(tmp, recursive = TRUE)))
   dir.create(tmp)
-  untar(tar_file, files = files, exdir = tmp)
+
+  if (untar(tar_file, files = files, exdir = tmp) != 0L) {
+    stop(sprintf("Cannot uncompress tar file `%s`", tar_file))
+  }
+
   file.path(tmp, files) %>%
     sapply(read_file) %>%
     set_names(files)

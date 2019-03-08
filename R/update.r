@@ -104,7 +104,7 @@ crandb_update <- function(force = FALSE) {
   new_pkgs <- names(cran_versions) %>%
     setdiff(names(current_db))
 
-  new_packages(new_pkgs, archive = archive, current = current)
+  new_pkgs <- new_packages(new_pkgs, archive = archive, current = current)
 
   ## Updated packages
   common_pkgs <- intersect(names(cran_versions),
@@ -112,7 +112,8 @@ crandb_update <- function(force = FALSE) {
   updated_pkgs <- common_pkgs[ current_db[common_pkgs] !=
                                  cran_versions[common_pkgs] ]
 
-  updated_packages(updated_pkgs, archive = archive, current = current)
+  updated_pkgs <- update_packages(
+    updated_pkgs, archive = archive, current = current)
 
   ## Check for archived packages
   archived_pkgs <- names(current_db) %>%
@@ -145,9 +146,11 @@ new_package <- function(pkg, archive, current) {
     add_versions(cran_versions(pkg, archive, current), archive, current) %>%
     back_to_json() %>%
     couch_add(id = pkg)
+
+  pkg
 }
 
-updated_packages <- function(pkgs, archive, current) {
+update_packages <- function(pkgs, archive, current) {
   sapply(pkgs, update_package, archive, current)
 }
 
@@ -160,6 +163,8 @@ update_package <- function(pkg, archive, current) {
     add_versions(to_add, archive, current) %>%
     back_to_json() %>%
     couch_add(id = pkg)
+
+  pkg
 }
 
 unarchive <- function(object) {
