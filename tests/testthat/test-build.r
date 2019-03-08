@@ -50,8 +50,9 @@ test_that("Extract a file from a tarball", {
 
 test_that("List tarballs for a package", {
   need_pkgs(c("assertthat", "testthat", "igraph0"))
-  expect_equal(list_tarballs("assertthat"),
-               file.path(cran_mirror(), "src/contrib/assertthat_0.1.tar.gz"))
+  expect_equal(
+    list_tarballs("assertthat")[1],
+    file.path(cran_mirror(), "src/contrib/Archive/assertthat/assertthat_0.1.tar.gz"))
 
   igraph0_res <- c("src/contrib/Archive/igraph0/igraph0_0.5.5.tar.gz",
                    "src/contrib/Archive/igraph0/igraph0_0.5.5-1.tar.gz",
@@ -69,7 +70,7 @@ test_that("List tarballs for a package", {
 test_that("", {
   need_pkgs(c("assertthat", "testthat", "igraph0"))
   desc <- get_descriptions("assertthat")
-  expect_equal(nrow(desc), 1)
+  expect_equal(nrow(desc), 2)
   expect_true(all(c("Package", "Version", "Title") %in% colnames(desc)))
 
   desc2 <- get_descriptions("igraph0")
@@ -105,7 +106,6 @@ test_that("Convert DESCRIPTIONs to JSON", {
       "Version"))
   expect_equal(vers[[1]]$Suggests, structure(list(testthat = "*"),
                                              .Names = "testthat"))
-  expect_equal(vers[[1]]$date, "2013-12-06T00:51:10+00:00")
   ## TODO: latest
 })
 
