@@ -22,7 +22,7 @@ build_db <- function(from = NA) {
 #' List all packages in a CRAN mirror.
 #'
 #' This includes archived packages, but currently does
-#' not include packages whose name was resued by another package.
+#' not include packages whose name was reused by another package.
 #'
 
 list_cran_packages <- function() {
