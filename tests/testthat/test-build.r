@@ -70,7 +70,7 @@ test_that("List tarballs for a package", {
 test_that("", {
   need_pkgs(c("assertthat", "testthat", "igraph0"))
   desc <- get_descriptions("assertthat")
-  expect_equal(nrow(desc), 2)
+  expect_equal(nrow(desc), 3)
   expect_true(all(c("Package", "Version", "Title") %in% colnames(desc)))
 
   desc2 <- get_descriptions("igraph0")
