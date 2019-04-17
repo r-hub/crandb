@@ -48,8 +48,8 @@ crandb_dev <- function() {
   uri <- "https://" %+% user %+% ":" %+% passwd %+% "@" %+%
     "crandb.r-pkg.org:6984/cran-dev"
   root <- list(list(uri = uri, priority = 10))
-  crandb:::couchdb_server(nonroot, root = FALSE)
-  crandb:::couchdb_server(root, root = TRUE)
+  couchdb_server(nonroot, root = FALSE)
+  couchdb_server(root, root = TRUE)
   try(remove_service(service), silent = TRUE)
   add_service(
     service,
@@ -63,8 +63,8 @@ crandb_production <- function() {
   uri <- "https://" %+% couchdb_user() %+% ":" %+% couchdb_password() %+%
     "@" %+% "crandb.r-pkg.org:6984/cran"
   root <- list(list(uri = uri, priority = 10))
-  crandb:::couchdb_server(couchdb_uris, root = FALSE)
-  crandb:::couchdb_server(root, root = TRUE)
+  couchdb_server(couchdb_uris, root = FALSE)
+  couchdb_server(root, root = TRUE)
   try(remove_service(service), silent = TRUE)
   add_service(service,
               server(couchdb_uris[[1]]$uri, priority = couchdb_uris[[1]]$priority),
