@@ -57,7 +57,7 @@ package("httr", version = "all")
 archived packages as well:
 
 ```{r}
-list_packages(from = "falsy", limit = 10, archived = FALSE)
+list_packages(from = "cranlogs", limit = 10, archived = FALSE)
 ```
 
 ### CRAN events
