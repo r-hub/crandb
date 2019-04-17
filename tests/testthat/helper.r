@@ -27,7 +27,7 @@ download_from_cran <- function(file, dest_dir, suffix = "",
   if (! file.exists(dest_file) || overwrite) {
     dir <- dirname(dest_file)
     if (!file.exists(dir)) { dir.create(dir, recursive = TRUE) }
-    download.file(url = url, destfile = dest_file,
+    utils::download.file(url = url, destfile = dest_file,
                   method = download_method(), quiet = TRUE)
   }
 }
