@@ -127,33 +127,3 @@ releases <- function() {
 
 ## ----------------------------------------------------------------------
 ## /-/release, /-/releasepkgs, /-/releasedesc
-
-#' Package versions snapshotted for R releases
-#'
-#' @param version R version number.
-#' @param format What to return. \sQuote{\code{version}} means only the
-#'   version numbers that were current at the given R
-#'   release. \sQuote{\code{short}} also includes the title of the packages
-#'
-#' @return List of packages.
-#'
-#' @export
-#' @importFrom assertthat assert_that
-
-cran_releases <- function(version, format = c("version", "short",
-                                     "full")) {
-
-  assert_that(is_package_version(version))
-  format <- match.arg(format)
-
-  url <- switch(format,
-         "version" = "/-/release",
-         "short" = "/-/releasedesc",
-         "full" = "/-/releasepkgs")
-
-  url %>%
-    paste0("/", version) %>%
-    query() %>%
-    add_attr("release", version) %>%
-    add_class("cran_releases")
-}

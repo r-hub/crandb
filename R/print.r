@@ -239,47 +239,6 @@ print.r_releases <- function(x, ...) {
 
 ## ----------------------------------------------------------------------
 
-#' @method summary cran_releases
-#' @export
-
-summary.cran_releases <- function(object, ...) {
-
-  cat("CRAN release " %+% attr(object, "release"), "\n")
-
-  version <- if ("version" %in% names(object[[1]]) ||
-                 "Version" %in% names(object[[1]])) {
-    sapply(object, function(xx) xx$version %||% xx$Version)
-  } else {
-    object
-  }
-
-  paste0(
-    names(object),
-    "@",
-    version
-  ) %>% print()
-
-  invisible(object)
-}
-
-## ----------------------------------------------------------------------
-
-#' @method print cran_releases
-#' @export
-
-print.cran_releases <- function(x, ...) {
-  header <- "CRAN release " %+% attr(x, "release")
-  if ("version" %in% names(x[[1]])) {
-    print_cran_list_i(x, header, "version", "title")
-  } else if ("date" %in% names(x[[1]])) {
-    print_cran_list_i(x, header, "Version", "Title")
-  } else {
-    cat_fill(header)
-    print(paste0(names(x), "@", x))
-  }
-  invisible(x)
-}
-
 ## ----------------------------------------------------------------------
 ## Utilities
 

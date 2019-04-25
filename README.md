@@ -83,7 +83,7 @@ Or all versions:
 package("httr", version = "all")
 ```
 
-    ## CRAN package httr, latest: 1.4.0, 4 months ago
+    ## CRAN package httr, latest: 1.4.0, 5 months ago
     ## ['1.4.0']:
     ##   Title: Tools for Working with URLs and HTTP
     ##   Maintainer: Hadley Wickham <hadley@rstudio.com>
@@ -146,16 +146,16 @@ events()
 
     ## CRAN events (events)---------------------------------------------------------------------
     ##  . When     Package       Version Title                                                  
-    ##  + 12 hours filehash      2.4-2   Simple Key-Value Database                              
-    ##  + 12 hours EpiILMCT      1.1.3   Continuous Time Distance-Based and Network-Based Ind...
-    ##  + 12 hours eNetXplorer   1.0.2   Quantitative Exploration of Elastic Net Families for...
-    ##  + 12 hours gRc           0.4-3.2 Inference in Graphical Gaussian Models with Edge and...
-    ##  - 12 hours packagefinder 0.1.1   Comfortable Search for R Packages on CRAN Directly f...
-    ##  + 12 hours worldmet      0.8.7   Import Surface Meteorological Data from NOAA Integra...
-    ##  + 12 hours swdft         1.0.0   Sliding Window Discrete Fourier Transform (SWDFT)      
-    ##  + 1 day    SPUTNIK       1.1.2   SPatially aUTomatic deNoising for Ims toolKit          
-    ##  + 1 day    discSurv      1.4.0   Discrete Time Survival Analysis                        
-    ##  + 1 day    statVisual    1.0.9   Statistical Visualization Tools
+    ##  + 13 hours osmdata       0.1.0   Import 'OpenStreetMap' Data as Simple Features or Sp...
+    ##  + 13 hours sigminer      0.1.9   Capture Genomic Variation Signatures using Non-Negat...
+    ##  + 13 hours cliqueMS      0.3.1   Annotation of Isotopes, Adducts and Fragmentation Ad...
+    ##  + 13 hours BALLI         0.2.0   Expression RNA-Seq Data Analysis Based on Linear Mix...
+    ##  + 13 hours streamDepletr 0.1.0   Estimate Streamflow Depletion Due to Groundwater Pum...
+    ##  + 13 hours MEtest        1.0     A Homogeneity Test under the Presence of Measurement...
+    ##  + 13 hours CramTest      1.5     Univariate Cramer Test on Two Samples of Data          
+    ##  + 13 hours suppdata      1.1-1   Downloading Supplementary Data from Published Manusc...
+    ##  + 13 hours EMSNM         1.0     EM Algorithm for Sigmoid Normal Model                  
+    ##  + 13 hours AzureKusto    1.0.1   Interface to 'Kusto'/'Azure Data Explorer'
 
 ### R and CRAN releases
 
@@ -214,84 +214,6 @@ releases()
     ##  3.0.3   2014-03-06 01:00:00
     ##  3.1.0   2014-04-10 02:00:00
     ##  3.1.1   2014-07-10 02:00:00
-
-The CRAN packages that were current at the time of an R releases can be
-listed with the `cran_releases()`
-    function:
-
-``` r
-cran_releases(version = "2.13.1")
-```
-
-    ## CRAN release 2.13.1----------------------------------------------------------------------
-    ##   [1] "aaMI@1.0-1"               "abd@0.1-18"               "abind@1.3-0"             
-    ##   [4] "AcceptanceSampling@1.0-1" "accuracy@1.35"            "acepack@1.3-3.0"         
-    ##   [7] "aCGH.Spline@2.1"          "actuar@1.1-2"             "ada@2.0-2"               
-    ##  [10] "adabag@1.1"               "ADaCGH@1.5-3"             "adapt@1.0-4"             
-    ##  [13] "AdaptFit@0.2-1"           "adaptivetau@0.902"        "adaptTest@1.0"           
-    ##  [16] "ade4@1.4-17"              "ade4TkGUI@0.2-4"          "adephylo@1.1-1"          
-    ##  [19] "ADGofTest@0.1"            "adimpro@0.7.5"            "adk@1.0-1"               
-    ##  [22] "adlift@0.9-6"             "ADM3@1.1"                 "AdMit@1-01.03.1"         
-    ##  [25] "ads@1.2-10"               "AER@1.1-8"                "afc@1.0"                 
-    ##  [28] "afmtools@0.1.2"           "agce@1.2"                 "agilp@1.0"               
-    ##  [31] "agreement@1.0-1"          "agricolae@1.0-9"          "agridat@1.2"             
-    ##  [34] "AGSDest@2.0"              "agsemisc@1.2-1"           "ahaz@1.1"                
-    ##  [37] "AIGIS@1.0"                "AIM@1.01"                 "AIS@1.0"                 
-    ##  [40] "akima@0.5-4"              "alabama@2011.3-1"         "AlgDesign@1.1-2"         
-    ##  [43] "allan@1.0"                "allelic@0.1"              "AllPossibleSpellings@1.0"
-    ##  [46] "alphahull@0.2-0"          "alr3@2.0.3"               "ALS@0.0.4"               
-    ##  [49] "AMA@1.0.8"                "amap@0.8-5"               "amba@0.3.0"              
-    ##  [52] "amei@1.0-3"               "Amelia@1.2-18"            "amer@0.6.10"             
-    ##  [55] "AMORE@0.2-12"             "anacor@1.0-1"             "analogue@0.7-0"          
-    ##  [58] "AnalyzeFMRI@1.1-13"       "AnalyzeIO@0.1.1"          "anapuce@2.1"             
-    ##  [61] "anchors@3.0-7"            "anesrake@0.65"            "Animal@1.02"             
-    ##  [64] "anm@1.0-9"                "AnnotLists@1.0"           "ant@0.0-10"              
-    ##  [67] "aod@1.2"                  "aplpack@1.2.3"            "approximator@1.2-2"      
-    ##  [70] "apsrtable@0.8-6"          "apt@1.0"                  "apTreeshape@1.4-3"       
-    ##  [73] "aqfig@0.1"                "aqp@0.99-1"               "AquaEnv@1.0-2"           
-    ##  [76] "aratio@1.0"               "archetypes@2.0-2"         "ArDec@1.2-3"             
-    ##  [79] "ares@0.7.2"               "ARES@1.2-3"               "arf3DS4@2.5-2"           
-    ##  [82] "argosfilter@0.6"          "arm@1.4-13"               "aroma.affymetrix@2.1.0"  
-    ##  [85] "aroma.apd@0.1.8"          "aroma.core@2.1.0"         "arrayImpute@1.3"         
-    ##  [88] "arrayMissPattern@1.3"     "ars@0.4"                  "arules@1.0-6"            
-    ##  [91] "arulesNBMiner@0.1-1"      "arulesSequences@0.1-11"   "arulesViz@0.1-3"         
-    ##  [94] "ash@1.0-12"               "aspace@3.0"               "aspect@1.0-0"            
-    ##  [97] "assist@3.1.1"             "aster@0.7-7"              "aster2@0.1"              
-    ## [100] "asuR@0.08-24"             "asympTest@0.1.2"          "asypow@1.2.2"            
-    ## [103] "atm@0.1.0"                "atmi@1.0"                 "audio@0.1-4"             
-    ## [106] "aws@1.6-2"                "aylmer@1.0-7"             "BaBooN@0.1-6"            
-    ## [109] "BACCO@1.1-4"              "backfitRichards@0.5.0"    "backtest@0.3-0"          
-    ## [112] "BaM@0.98.1"               "BAMD@3.4"                 "barcode@1.0"             
-    ## [115] "BARD@1.24"                "bark@0.1-0"               "Barnard@1.0"             
-    ## [118] "BAS@0.92"                 "baseline@1.0-0"           "basicspace@0.02"         
-    ## [121] "batch@1.1-3"              "bats@0.1-2"               "bayesCGH@0.6"            
-    ## [124] "bayesclust@3.0"           "bayescount@0.9.9-1"       "BayesDA@1.0-1"           
-    ## [127] "bayesGARCH@1-00.10"       "bayesLife@0.2-0"          "bayesm@2.2-4"            
-    ## [130] "bayesmix@0.7-1"           "bayespack@1.0-2"          "BayesPanel@0.1-2"        
-    ## [133] "bayesQR@1.3"              "BayesQTLBIC@1.0-1"        "bayesSurv@0.6-2"         
-    ## [136] "BayesTree@0.3-1.1"        "BayesValidate@0.0"        "BayesX@0.2-5"            
-    ## [139] "BayHap@1.0"               "BayHaz@0.0-6"             "baymvb@1.0.4"            
-    ## [142] "BAYSTAR@0.2-3"            "BBMM@2.2"                 "BCA@0.1-1"               
-    ## [145] "BCE@1.3"                  "Bchron@3.1.4"             "bclust@1.2"              
-    ## [148] "bcp@2.2.0"                "bcv@1.0"                  "bdoc@1.1"                
-    ## [151] "bdsmatrix@1.0"            "beadarrayMSV@1.1.0"       "beanplot@1.1"            
-    ## [154] "bear@2.5.2"               "beeswarm@0.0.7"           "belief@1.0.1"            
-    ## [157] "benchden@1.0.4"           "benchmark@0.3-2"          "bentcableAR@0.2.2"       
-    ## [160] "ber@2.0"                  "Bergm@1.4"                "Bessel@0.5-3"            
-    ## [163] "bestglm@0.31"             "betaper@1.0-0"            "betareg@2.3-0"           
-    ## [166] "bethel@0.1"               "bfast@1.2-1"              "bfp@0.0-19"              
-    ## [169] "bgmm@1.2"                 "Bhat@0.9-09"              "BHH2@1.0.3"              
-    ## [172] "BiasedUrn@1.03"           "bibtex@0.2-1"             "biclust@1.0.1"           
-    ## [175] "bicreduc@0.4-7"           "bifactorial@1.4.6"        "biganalytics@1.0.14"     
-    ## [178] "biglars@1.0.1"            "biglm@0.7"                "bigmemory@4.2.3"         
-    ## [181] "biGraph@0.9-3"            "bigtabulate@1.0.13"       "bild@1.0"                
-    ## [184] "bim@1.01-5"               "binarySimCLF@1.0"         "bindata@0.9-17"          
-    ## [187] "binGroup@1.0-8"           "binMto@0.0-3"             "binom@1.0-5"             
-    ## [190] "binomSamSize@0.1-2"       "bio.infer@1.2-9"          "Biodem@0.1"              
-    ## [193] "BiodiversityR@1.5"        "Biograph@1.0"             "BioIDMapper@3.0"         
-    ## [196] "BiomarkeR@1.2"            "biopara@1.4"              "BioPhysConnectoR@1.6-7"  
-    ## [199] "biOps@0.2.1"              "biOpsGUI@0.1.1"          
-    ##  [ reached getOption("max.print") -- omitted 2755 entries ]
 
 ## The raw API
 
@@ -681,41 +603,41 @@ DB("/-/pkgreleases?limit=3&descending=true", head = 20)
 
     ## [
     ##     {
-    ##         "date": "2019-04-17T09:10:03+00:00",
-    ##         "name": "filehash",
+    ##         "date": "2019-04-25T10:30:02+00:00",
+    ##         "name": "osmdata",
     ##         "event": "released",
     ##         "package": {
-    ##             "Package": "filehash",
-    ##             "Version": "2.4-2",
+    ##             "Package": "osmdata",
+    ##             "Version": "0.1.0",
+    ##             "Authors@R": "c(\nperson(\"Mark\", \"Padgham\", email=\"mark.padgham@email.com\", role=c(\"aut\", \"cre\")),\nperson(\"Bob\", \"Rudis\", role=\"aut\"),\nperson(\"Robin\", \"Lovelace\", role=\"aut\"),\nperson(\"Maëlle\", \"Salmon\", role=\"aut\"),\nperson(\"Andrew\", \"Smith\", role=\"ctb\"),\nperson(\"James\", \"Smith\", role=\"ctb\"),\nperson(\"Marcin\", \"Kalicinski\", role=c(\"ctb\", \"cph\"),\ncomment=\"Author of included RapidXML code\"),\nperson(\"Finkelstein\", \"Noam\", role=c(\"ctb\",\"cph\"),\ncomment=\"Author of included stub.R code\"),\nperson (\"Bartnik\", \"Lukasz\", role=c(\"ctb\",\"cph\"),\ncomment=\"Author of included stub.R code\"))",
+    ##             "Maintainer": "Mark Padgham <mark.padgham@email.com>",
+    ##             "Title": "Import 'OpenStreetMap' Data as Simple Features or Spatial\nObjects",
+    ##             "Description": "Download and import of 'OpenStreetMap' ('OSM') data as 'sf' or 'sp'\nobjects.  'OSM' data are extracted from the 'Overpass' web server and\nprocessed with very fast 'C++' routines for return to 'R'.",
     ##             "Depends": {
-    ##                 "R": ">= 3.0.0",
-    ##                 "methods": "*"
+    ##                 "R": ">= 3.2.4"
     ##             },
-    ##             "Collate": "filehash.R filehash-DB1.R filehash-RDS.R coerce.R dump.R\nhash.R queue.R stack.R zzz.R",
-    ##             "Title": "Simple Key-Value Database",
-    ##             "Author": "Roger D. Peng <rdpeng@jhu.edu>",
-    ##             "Maintainer": "Roger D. Peng <rdpeng@jhu.edu>",
-    ##             "Description": "Implements a simple key-value style database where character string keys\nare associated with data values that are stored on the disk. A simple interface is provided for inserting,\nretrieving, and deleting data from the database. Utilities are provided that allow 'filehash' databases to be\ntreated much like environments and lists are already used in R. These utilities are provided to encourage\ninteractive and exploratory analysis on large datasets. Three different file formats for representing the\ndatabase are currently available and new formats can easily be incorporated by third parties for use in the\n'filehash' framework.",
-    ##             "License": "GPL (>= 2)",
-    ##             "URL": "http://github.com/rdpeng/filehash",
+    ##             "License": "GPL-3",
+    ##             "SystemRequirements": "C++11",
     ##             "NeedsCompilation": "yes",
+    ##             "LazyData": "true",
+    ##             "Imports": {
     ## 
-    ## ... not showing 81 lines ...
+    ## ... not showing 148 lines ...
     ## 
-    ##                 "rmarkdown": "*"
+    ##                 "rmarkdown": "*",
+    ##                 "testthat": "*",
+    ##                 "CAMERA": "*"
     ##             },
     ##             "VignetteBuilder": "knitr",
-    ##             "Description": "Provides a quantitative toolkit to explore elastic net families and to uncover correlates contributing to prediction under a cross-validation framework. Fits linear, binomial (logistic) and multinomial models. Candia J and Tsang JS, BMC Bioinformatics (2019) 20:189 <doi:10.1186/s12859-019-2778-5>.",
-    ##             "License": "GPL-3",
-    ##             "LazyData": "true",
-    ##             "LazyLoad": "yes",
-    ##             "NeedsCompilation": "no",
-    ##             "Packaged": "2019-04-16 21:12:09 UTC; candiajm",
+    ##             "NeedsCompilation": "yes",
+    ##             "Packaged": "2019-04-25 10:26:16 UTC; master",
+    ##             "Author": "Oriol Senan Campos [aut, cre],\nAntoni Aguilar-Mogas [aut],\nJordi Capellades [aut],\nMiriam Navarro [aut],\nOscar Yanes [aut],\nRoger Guimerà [aut],\nMarta Sales-Pardo [aut]",
+    ##             "Maintainer": "Oriol Senan Campos <oriol.senan@urv.cat>",
     ##             "Repository": "CRAN",
-    ##             "Date/Publication": "2019-04-17 10:00:07 UTC",
-    ##             "crandb_file_date": "2019-04-17 11:02:27",
-    ##             "MD5sum": "2ef17dbcd7441eea88a06ca959359916",
-    ##             "date": "2019-04-17T09:00:07+00:00",
+    ##             "Date/Publication": "2019-04-25 10:50:03 UTC",
+    ##             "crandb_file_date": "2019-04-25 12:08:35",
+    ##             "MD5sum": "ee41df6772d46c0026b7fd4ec2db2326",
+    ##             "date": "2019-04-25T09:50:03+00:00",
     ##             "releases": [
     ## 
     ##             ]
@@ -736,41 +658,41 @@ DB("/-/archivals?limit=3&descending=true", head = 20)
 
     ## [
     ##     {
-    ##         "date": "2019-04-17T07:32:26+00:00",
-    ##         "name": "packagefinder",
+    ##         "date": "2019-04-23T05:50:27+00:00",
+    ##         "name": "rgeoapi",
     ##         "event": "archived",
     ##         "package": {
-    ##             "Package": "packagefinder",
+    ##             "Package": "rgeoapi",
     ##             "Type": "Package",
-    ##             "Title": "Comfortable Search for R Packages on CRAN Directly from the R\nConsole",
-    ##             "Version": "0.1.1",
-    ##             "Authors@R": "person(\"Joachim\", \"Zuckarelli\", role = c(\"aut\", \"cre\"), email = \"joachim@zuckarelli.de\", comment = c(ORCID = \"0000-0002-9280-3016\"))",
-    ##             "Maintainer": "Joachim Zuckarelli <joachim@zuckarelli.de>",
-    ##             "Description": "Search for R packages on CRAN directly from the R console, based on the packages' titles, short and long descriptions, or other fields. Combine multiple keywords with logical operators ('and', 'or'), view detailed information on any package and keep track of the latest package contributions to CRAN.",
+    ##             "Title": "Get Information from the GeoAPI",
+    ##             "Version": "1.1.0",
+    ##             "Date": "2016-10-30",
+    ##             "Author": "Colin FAY",
+    ##             "Maintainer": "Colin FAY <contact@colinfay.me>",
+    ##             "Description": "Provides access to information from\n<https://api.gouv.fr/explorer/geoapi/> about French\n\"Communes\", \"Departements\" and \"Regions\".",
     ##             "License": "GPL-3",
-    ##             "Encoding": "UTF-8",
-    ##             "BugReports": "https://github.com/jsugarelli/packagefinder/issues",
-    ##             "URL": "https://github.com/jsugarelli/packagefinder/",
-    ##             "Repository": "CRAN",
-    ##             "LazyData": "true",
+    ##             "LazyData": "TRUE",
     ##             "Imports": {
+    ##                 "httr": "*",
+    ##                 "rjson": "*",
+    ##                 "magrittr": "*",
     ## 
-    ## ... not showing 123 lines ...
+    ## ... not showing 88 lines ...
     ## 
+    ##             "Suggests": {
+    ## 
+    ##             },
+    ##             "Description": "Functions for recursive online fitting of time-adaptive lasso vector auto regression. A recursive coordinate descent algorithm is used to estimate sparse vector auto regressive models and exponential forgetting is applied to allow model changes. Details can be found in Jakob W. Messner and Pierre Pinson (2018). \"Online adaptive LASSO estimation in Vector Auto Regressive models for wind power forecasting in high dimension\". International Journal of Forecasting, in press. Preprint: <http://pierrepinson.com/docs/MessnerPinson18.pdf>.",
+    ##             "License": "GPL-2 | GPL-3",
     ##             "NeedsCompilation": "yes",
-    ##             "Biarch": "yes",
-    ##             "License": "GPL (>= 2)",
-    ##             "URL": "https://github.com/vdorie/treatSens",
-    ##             "BugReports": "https://github.com/vdorie/treatSens/issues",
-    ##             "RoxygenNote": "5.0.1",
-    ##             "Packaged": "2018-03-08 19:07:07 UTC; t89v647",
-    ##             "Author": "Nicole Bohme Carnegie [aut, cre],\nMasataka Harada [aut],\nVincent Dorie [aut],\nJennifer Hill [ctb]",
-    ##             "Maintainer": "Nicole Bohme Carnegie <nicole.carnegie@montana.edu>",
+    ##             "Packaged": "2018-02-26 12:09:22 UTC; jakobm",
+    ##             "Author": "Jakob Messner [aut, cre]",
+    ##             "Maintainer": "Jakob Messner <jwmm@dtu.dk>",
     ##             "Repository": "CRAN",
-    ##             "Date/Publication": "2018-03-08 23:32:57 UTC",
-    ##             "crandb_file_date": "2018-03-08 23:38:21",
-    ##             "MD5sum": "1a937de0b08ff46784618883b9bd8ebf",
-    ##             "date": "2018-03-08T22:32:57+00:00",
+    ##             "Date/Publication": "2018-02-26 18:39:32 UTC",
+    ##             "crandb_file_date": "2018-02-26 18:44:21",
+    ##             "MD5sum": "e4e129fbe2503df2b326e8eb3e39b9b7",
+    ##             "date": "2018-02-26T17:39:32+00:00",
     ##             "releases": [
     ## 
     ##             ]
@@ -789,41 +711,41 @@ DB("/-/events?limit=3&descending=true", head = 20)
 
     ## [
     ##     {
-    ##         "date": "2019-04-17T09:10:03+00:00",
-    ##         "name": "filehash",
+    ##         "date": "2019-04-25T10:30:02+00:00",
+    ##         "name": "osmdata",
     ##         "event": "released",
     ##         "package": {
-    ##             "Package": "filehash",
-    ##             "Version": "2.4-2",
+    ##             "Package": "osmdata",
+    ##             "Version": "0.1.0",
+    ##             "Authors@R": "c(\nperson(\"Mark\", \"Padgham\", email=\"mark.padgham@email.com\", role=c(\"aut\", \"cre\")),\nperson(\"Bob\", \"Rudis\", role=\"aut\"),\nperson(\"Robin\", \"Lovelace\", role=\"aut\"),\nperson(\"Maëlle\", \"Salmon\", role=\"aut\"),\nperson(\"Andrew\", \"Smith\", role=\"ctb\"),\nperson(\"James\", \"Smith\", role=\"ctb\"),\nperson(\"Marcin\", \"Kalicinski\", role=c(\"ctb\", \"cph\"),\ncomment=\"Author of included RapidXML code\"),\nperson(\"Finkelstein\", \"Noam\", role=c(\"ctb\",\"cph\"),\ncomment=\"Author of included stub.R code\"),\nperson (\"Bartnik\", \"Lukasz\", role=c(\"ctb\",\"cph\"),\ncomment=\"Author of included stub.R code\"))",
+    ##             "Maintainer": "Mark Padgham <mark.padgham@email.com>",
+    ##             "Title": "Import 'OpenStreetMap' Data as Simple Features or Spatial\nObjects",
+    ##             "Description": "Download and import of 'OpenStreetMap' ('OSM') data as 'sf' or 'sp'\nobjects.  'OSM' data are extracted from the 'Overpass' web server and\nprocessed with very fast 'C++' routines for return to 'R'.",
     ##             "Depends": {
-    ##                 "R": ">= 3.0.0",
-    ##                 "methods": "*"
+    ##                 "R": ">= 3.2.4"
     ##             },
-    ##             "Collate": "filehash.R filehash-DB1.R filehash-RDS.R coerce.R dump.R\nhash.R queue.R stack.R zzz.R",
-    ##             "Title": "Simple Key-Value Database",
-    ##             "Author": "Roger D. Peng <rdpeng@jhu.edu>",
-    ##             "Maintainer": "Roger D. Peng <rdpeng@jhu.edu>",
-    ##             "Description": "Implements a simple key-value style database where character string keys\nare associated with data values that are stored on the disk. A simple interface is provided for inserting,\nretrieving, and deleting data from the database. Utilities are provided that allow 'filehash' databases to be\ntreated much like environments and lists are already used in R. These utilities are provided to encourage\ninteractive and exploratory analysis on large datasets. Three different file formats for representing the\ndatabase are currently available and new formats can easily be incorporated by third parties for use in the\n'filehash' framework.",
-    ##             "License": "GPL (>= 2)",
-    ##             "URL": "http://github.com/rdpeng/filehash",
+    ##             "License": "GPL-3",
+    ##             "SystemRequirements": "C++11",
     ##             "NeedsCompilation": "yes",
+    ##             "LazyData": "true",
+    ##             "Imports": {
     ## 
-    ## ... not showing 81 lines ...
+    ## ... not showing 148 lines ...
     ## 
-    ##                 "rmarkdown": "*"
+    ##                 "rmarkdown": "*",
+    ##                 "testthat": "*",
+    ##                 "CAMERA": "*"
     ##             },
     ##             "VignetteBuilder": "knitr",
-    ##             "Description": "Provides a quantitative toolkit to explore elastic net families and to uncover correlates contributing to prediction under a cross-validation framework. Fits linear, binomial (logistic) and multinomial models. Candia J and Tsang JS, BMC Bioinformatics (2019) 20:189 <doi:10.1186/s12859-019-2778-5>.",
-    ##             "License": "GPL-3",
-    ##             "LazyData": "true",
-    ##             "LazyLoad": "yes",
-    ##             "NeedsCompilation": "no",
-    ##             "Packaged": "2019-04-16 21:12:09 UTC; candiajm",
+    ##             "NeedsCompilation": "yes",
+    ##             "Packaged": "2019-04-25 10:26:16 UTC; master",
+    ##             "Author": "Oriol Senan Campos [aut, cre],\nAntoni Aguilar-Mogas [aut],\nJordi Capellades [aut],\nMiriam Navarro [aut],\nOscar Yanes [aut],\nRoger Guimerà [aut],\nMarta Sales-Pardo [aut]",
+    ##             "Maintainer": "Oriol Senan Campos <oriol.senan@urv.cat>",
     ##             "Repository": "CRAN",
-    ##             "Date/Publication": "2019-04-17 10:00:07 UTC",
-    ##             "crandb_file_date": "2019-04-17 11:02:27",
-    ##             "MD5sum": "2ef17dbcd7441eea88a06ca959359916",
-    ##             "date": "2019-04-17T09:00:07+00:00",
+    ##             "Date/Publication": "2019-04-25 10:50:03 UTC",
+    ##             "crandb_file_date": "2019-04-25 12:08:35",
+    ##             "MD5sum": "ee41df6772d46c0026b7fd4ec2db2326",
+    ##             "date": "2019-04-25T09:50:03+00:00",
     ##             "releases": [
     ## 
     ##             ]
@@ -1124,64 +1046,64 @@ DB("/-/topdeps/devel")
 
     ## [
     ##     {
-    ##         "knitr": 3898
+    ##         "knitr": 3895
     ##     },
     ##     {
-    ##         "testthat": 3806
+    ##         "testthat": 3796
     ##     },
     ##     {
     ##         "rmarkdown": 2957
     ##     },
     ##     {
-    ##         "ggplot2": 2177
+    ##         "ggplot2": 2175
     ##     },
     ##     {
-    ##         "MASS": 1807
+    ##         "MASS": 1800
     ##     },
     ##     {
-    ##         "Rcpp": 1648
+    ##         "Rcpp": 1647
     ##     },
     ##     {
-    ##         "dplyr": 1442
+    ##         "dplyr": 1450
     ##     },
     ##     {
-    ##         "Matrix": 885
+    ##         "Matrix": 883
     ##     },
     ##     {
-    ##         "magrittr": 868
+    ##         "magrittr": 870
     ##     },
     ##     {
-    ##         "covr": 827
+    ##         "covr": 829
     ##     },
     ##     {
-    ##         "stringr": 757
+    ##         "stringr": 759
     ##     },
     ##     {
-    ##         "plyr": 708
+    ##         "plyr": 703
     ##     },
     ##     {
-    ##         "mvtnorm": 684
+    ##         "jsonlite": 686
     ##     },
     ##     {
-    ##         "jsonlite": 681
+    ##         "mvtnorm": 682
     ##     },
     ##     {
-    ##         "data.table": 644
+    ##         "data.table": 642
     ##     },
     ##     {
-    ##         "survival": 640
+    ##         "survival": 638
     ##     },
     ##     {
-    ##         "lattice": 611
+    ##         "lattice": 609
     ##     },
     ##     {
-    ##         "shiny": 600
+    ##         "shiny": 603
     ##     },
     ##     {
-    ##         "tidyr": 595
+    ##         "tidyr": 599
     ##     },
     ##     {
-    ##         "httr": 592
+    ##         "httr": 593
     ##     }
     ## ]
 
