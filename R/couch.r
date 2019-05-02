@@ -10,7 +10,7 @@ pkg_to_json <- function(dcf, archived, archived_at = NA,
 
   pkg <- dcf[, "Package"] %>%
     unique() %>%
-    tail(1)
+    utils::tail(1)
 
   if (length(pkg) < 1) { stop("No packages in DCF", call. = FALSE) }
 
@@ -64,7 +64,7 @@ pkg_ver_at_time <- function(frec, date) {
     is_weakly_less_than(date) %>%
     which() %>%
     names() %>%
-    tail(1)
+    utils::tail(1)
 
   ver %||% NA_character_
 }
@@ -78,7 +78,7 @@ add_latest_version <- function(pkg) {
   pkg[["latest"]] <- pkg$timeline %>%
     names() %>%
     grep(pattern = "archived", invert = TRUE, fixed = TRUE, value = TRUE) %>%
-    tail(1) %>%
+    utils::tail(1) %>%
     unbox()
   pkg
 }
@@ -102,7 +102,7 @@ add_timeline <- function(frec, archived, archived_at) {
 pkg_version_to_json <- function(rec) {
   rec %>%
     set_encoding() %>%
-    na.omit() %>%
+    stats::na.omit() %>%
     as.list() %>%
     add_date() %>%
     lapply(unbox) %>%
@@ -171,7 +171,7 @@ create_empty_db <- function() {
     stop("Cannot create DB", call. = TRUE)
 
   paste("couchapp push",
-        system.file("app.js", package = packageName()),
+        system.file("app.js", package = utils::packageName()),
         couchdb_server(root = TRUE))[[1]]$uri %>%
     system(ignore.stdout = TRUE, ignore.stderr = TRUE)
 }
@@ -234,7 +234,7 @@ update_design <- function() {
   on.exit(try(unlink(tmp, recursive = TRUE)))
   dir.create(tmp)
   tmpfile <- file.path(tmp, "app-new.js")
-  system.file("app.js", package = packageName()) %>%
+  system.file("app.js", package = utils::packageName()) %>%
     readLines() %>%
     sub(pattern = "'_design/app'", replacement = "'_design/app-new'",
         fixed = TRUE) %>%
@@ -258,7 +258,7 @@ update_design <- function() {
   message("The new design seems indexed now. Should I activate it?")
   message("Note: you can try it at ", couchdb_server()[[1]]$uri %>%
             paste0('/_design/app-new/_view/active?limit=5'))
-  if (menu(c("Yes", "No")) == 1) {
+  if (utils::menu(c("Yes", "No")) == 1) {
     message("Activating design document app")
     ("curl -X COPY " %+% couchdb_server(root = TRUE)[[1]]$uri %+%
        '/_design/app-new -H "Destination: _design/app"') %>%
