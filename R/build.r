@@ -153,7 +153,7 @@ from_tarball <- function(tar_file, files) {
   on.exit(try(unlink(tmp, recursive = TRUE)))
   dir.create(tmp)
 
-  if (untar(tar_file, files = files, exdir = tmp) != 0L) {
+  if (utils::untar(tar_file, files = files, exdir = tmp) != 0L) {
     stop(sprintf("Cannot uncompress tar file `%s`", tar_file))
   }
 
