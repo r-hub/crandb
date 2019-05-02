@@ -102,27 +102,3 @@ test_that("releases() works", {
   expect_equal(colnames(r1), c("version", "date"))
 
 })
-
-test_that("cran_releases() works", {
-
-  r1 <- cran_releases("2.1.0")
-  expect_true(is.list(r1))
-  r1 %>%
-    sapply(class) %>%
-    unique() %>%
-    expect_equal("character")
-
-  r2 <- cran_releases("2.2.0", format = "short")
-  r2 %>%
-    lapply(names) %>%
-    unique() %>%
-    expect_equal(list(c("version", "title"), "version"))
-
-  r3 <- cran_releases("2.3.0", format = "full")
-  r3[[1]] %>%
-    names() %>%
-    contains(c("Package", "Version", "Date", "Title", "Author", "date")) %>%
-    all() %>%
-    expect_true()
-
-})

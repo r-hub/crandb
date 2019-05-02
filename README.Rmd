@@ -83,13 +83,6 @@ The `releases()` function lists recent R versions, with their release dates.
 releases()
 ```
 
-The CRAN packages that were current at the time of an R releases can be listed
-with the `cran_releases()` function:
-
-```{r}
-cran_releases(version = "2.13.1")
-```
-
 ## The raw API
 
 This is the raw JSON API.
