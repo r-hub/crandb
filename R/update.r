@@ -1,6 +1,4 @@
 
-#' @importFrom falsy "%||%"
-
 cran_site <- function() {
 
   cran <- getOption("repos") %>%
@@ -66,7 +64,10 @@ crandb_update <- function(force = FALSE) {
       headers() %>%
       extract2("etag")
 
-    identical(etag_new, etag) %&&% return()
+    if (identical(etag_new, etag)) {
+      return()
+    }
+    
     last_mod(etag_new)
   }
 
@@ -138,10 +139,12 @@ new_packages <- function(pkgs, archive, current) {
   sapply(pkgs, new_package, archive, current)
 }
 
-#' @importFrom falsy "%&&%"
-
 new_package <- function(pkg, archive, current) {
-  exists(pkg) %&&% return(update_package(pkg, archive, current))
+  
+  if(exists(pkg)) {
+    return(update_package(pkg, archive, current))
+  }
+  
   list("_id" = pkg, "name" = pkg, "archived" = FALSE) %>%
     add_versions(cran_versions(pkg, archive, current), archive, current) %>%
     back_to_json() %>%
@@ -189,28 +192,28 @@ add_versions <- function(object, to_add, archive, current) {
     add_releases_to_versions()
 }
 
-#' @importFrom falsy "%&&%"
-
 download_dcf <- function(pkg, versions, archive, current) {
   tarnames <- archive[[pkg]] %>%
     rownames()
   tarnames <- tarnames[which(ver_from_tarname(tarnames) %in% versions)]
-  url1 <- tarnames %&&% {
-    paste(sep = "/",
-          cran_site(),
-          paste(archive_path_comps, collapse = "/"),
-          tarnames)
+  
+  if (length(tarnames) > 0) {
+    url1 <- paste(sep = "/",
+                  cran_site(),
+                  paste(archive_path_comps, collapse = "/"),
+                  tarnames)
   }
-
+  
   tarname2 <- rownames(current)[ rownames(current) %in%
-                                 paste0(pkg, "_", versions, ".tar.gz")]
-  url2 <- tarname2 %&&% {
-    paste(sep = "/",
-          cran_site(),
-          paste(pkg_path_comps, collapse = "/"),
-          tarname2)
+                                   paste0(pkg, "_", versions, ".tar.gz")]
+  
+  if (length(tarname2) > 0) {
+    
+    url2 <- paste(sep = "/",
+                  cran_site(),
+                  paste(pkg_path_comps, collapse = "/"),
+                  tarname2)
   }
-
   c(url1, url2) %>%
     sapply(get_desc_from_url, pkg = pkg) %>%
     paste(collapse = "\n\n") %>%
@@ -296,12 +299,15 @@ update_revdeps <- function(which = "devel") {
     mapply(FUN=update_revdep, pkg = names(.), no = .)
 }
 
-#' @importFrom falsy %&&%
-
 update_revdep <- function(pkg, no) {
   current <- get_package(pkg)
-  current$error %&&% return(FALSE)
-  current$revdeps %&&% (current$revdeps == no) %&&% return(FALSE)
+  if (current$error) {
+    return(FALSE)
+  }
+  
+  if (current$revdeps && (current$revdeps == no)) {
+    return(FALSE)
+  }
   current$revdeps <- no
   current %>%
     back_to_json() %>%
