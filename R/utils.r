@@ -41,7 +41,9 @@ check_couchapp <- function() {
 }
 
 check_curl <- function() {
-  check_external("curl --version") %||% stop("Need a working 'curl'")
+  if (!check_external("curl --version")) {
+    stop("Need a working 'curl'")
+  }
 }
 
 NA_NULL <- function(x) {
@@ -136,10 +138,4 @@ download_method <- function() {
   if (is.na(capabilities()["libcurl"])) "internal" else "libcurl"
 }
 
-# from https://github.com/gaborcsardi/falsy/blob/ee26873d99255560cfad60be2812cea4437d20e1/R/falsy-package.r#L209
-try_quietly <- function(expr) {
-  try(expr, silent = TRUE)
-}
-
-# from https://github.com/r-lib/remotes/blob/1f657ec067088add76adedfcc9a0ea2a45aac9e9/R/utils.R#L2
-`%||%` <- function (a, b) if (!is.null(a)) a else b
+`%||%` <- function (a, b) if (is.null(a)) b else a

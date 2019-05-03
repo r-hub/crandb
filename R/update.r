@@ -21,7 +21,7 @@ last_mod <- function(new_value) {
 
   if (missing(new_value)) {
 
-    cache_dir %||% return(NULL)
+    if (!nzchar(cache_dir)) return(NULL)
 
     cache_dir %>%
       file.path("crandb_etag.txt") %>%
@@ -32,7 +32,7 @@ last_mod <- function(new_value) {
 
   } else {
 
-    cache_dir %||% return(FALSE)
+    if (!nzchar(cache_dir)) return(FALSE)
 
     cache_dir %>%
       file.path("crandb_etag.txt") %>%
@@ -197,23 +197,23 @@ download_dcf <- function(pkg, versions, archive, current) {
     rownames()
   tarnames <- tarnames[which(ver_from_tarname(tarnames) %in% versions)]
 
-  if (length(tarnames) > 0) {
-    url1 <- paste(sep = "/",
-                  cran_site(),
-                  paste(archive_path_comps, collapse = "/"),
-                  tarnames)
+  url1 <- if (length(tarnames) > 0) {
+    paste(sep = "/",
+          cran_site(),
+          paste(archive_path_comps, collapse = "/"),
+          tarnames)
   }
 
   tarname2 <- rownames(current)[ rownames(current) %in%
                                    paste0(pkg, "_", versions, ".tar.gz")]
 
-  if (length(tarname2) > 0) {
-
-    url2 <- paste(sep = "/",
-                  cran_site(),
-                  paste(pkg_path_comps, collapse = "/"),
-                  tarname2)
+  url2 <- if (length(tarname2) > 0) {
+    paste(sep = "/",
+          cran_site(),
+          paste(pkg_path_comps, collapse = "/"),
+          tarname2)
   }
+
   c(url1, url2) %>%
     sapply(get_desc_from_url, pkg = pkg) %>%
     paste(collapse = "\n\n") %>%
@@ -301,13 +301,9 @@ update_revdeps <- function(which = "devel") {
 
 update_revdep <- function(pkg, no) {
   current <- get_package(pkg)
-  if (current$error) {
-    return(FALSE)
-  }
+  if (!is.null(current$error)) return(FALSE)
+  if (!is.null(current$revdeps) && (current$revdeps == no)) return(FALSE)
 
-  if (current$revdeps && (current$revdeps == no)) {
-    return(FALSE)
-  }
   current$revdeps <- no
   current %>%
     back_to_json() %>%

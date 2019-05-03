@@ -16,7 +16,7 @@
 package <- function(name, version = NULL) {
 
   assert_that(is_package_name(name))
-  is.null(version) %||% assert_that(is_package_version(version))
+  assert_that(is.null(version) || is_package_version(version))
 
   url <- name
   if (! is.null(version)) url <- paste0(url, "/", version)

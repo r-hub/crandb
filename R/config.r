@@ -32,7 +32,9 @@ set_config <- function(key, value) {
 
 getset_config <- function(key, value, default, environment = NA) {
   if (missing(value)) {
-    try_quietly(get_config(key)) %||% Sys.getenv(environment) %||% default
+    if (!is.null(r <- get_config(key))) return(r)
+    if (nzchar(r <- Sys.getenv(environment))) return(r)
+    default
   } else {
     set_config(key, value)
   }

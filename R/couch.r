@@ -66,7 +66,7 @@ pkg_ver_at_time <- function(frec, date) {
     names() %>%
     utils::tail(1)
 
-  ver %||% NA_character_
+  if (length(ver)) ver else NA_character_
 }
 
 add_title <- function(pkg) {
@@ -133,7 +133,7 @@ fix_deps <- function(rec) {
 
 try_date <- function(date) {
 
-  date %||% return(NULL)
+  if (is.null(date)) return(NULL)
 
   norm_date <- date %>%
     sub(pattern = ";.*$", replacement = "") %>%
@@ -167,8 +167,9 @@ normalize_date <- function(date) {
 create_empty_db <- function() {
   check_couchapp()
 
-  couch_exists() %||% couch_create_db() %||%
+  if (!couch_exists() && !couch_create_db()) {
     stop("Cannot create DB", call. = TRUE)
+  }
 
   paste("couchapp push",
         system.file("app.js", package = utils::packageName()),
