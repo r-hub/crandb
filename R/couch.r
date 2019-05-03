@@ -91,7 +91,7 @@ add_timeline <- function(frec, archived, archived_at) {
       format_iso_8601() %>%
       unbox
   }
-  
+
   frec
 }
 

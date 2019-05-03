@@ -52,7 +52,7 @@ crandb_update <- function(force = FALSE) {
   packages_url <- packages_rds_path_comps %>%
     paste(collapse = "/") %>%
     paste(cran_site(), ., sep = "/")
-  
+
   current_url <- current_rds_path_comps %>%
     paste(collapse = "/") %>%
     paste(cran_site(), ., sep="/")
@@ -67,7 +67,7 @@ crandb_update <- function(force = FALSE) {
     if (identical(etag_new, etag)) {
       return()
     }
-    
+
     last_mod(etag_new)
   }
 
@@ -83,7 +83,7 @@ crandb_update <- function(force = FALSE) {
 
   rownames(current) <- paste0(rownames(current), "_",
                               packages[, "Version"], ".tar.gz")
-  
+
   archive <- archive_rds_path_comps %>%
     paste(collapse = "/") %>%
     paste(cran_site(), ., sep="/") %>%
@@ -140,11 +140,11 @@ new_packages <- function(pkgs, archive, current) {
 }
 
 new_package <- function(pkg, archive, current) {
-  
-  if(exists(pkg)) {
+
+  if (exists(pkg)) {
     return(update_package(pkg, archive, current))
   }
-  
+
   list("_id" = pkg, "name" = pkg, "archived" = FALSE) %>%
     add_versions(cran_versions(pkg, archive, current), archive, current) %>%
     back_to_json() %>%
@@ -196,19 +196,19 @@ download_dcf <- function(pkg, versions, archive, current) {
   tarnames <- archive[[pkg]] %>%
     rownames()
   tarnames <- tarnames[which(ver_from_tarname(tarnames) %in% versions)]
-  
+
   if (length(tarnames) > 0) {
     url1 <- paste(sep = "/",
                   cran_site(),
                   paste(archive_path_comps, collapse = "/"),
                   tarnames)
   }
-  
+
   tarname2 <- rownames(current)[ rownames(current) %in%
                                    paste0(pkg, "_", versions, ".tar.gz")]
-  
+
   if (length(tarname2) > 0) {
-    
+
     url2 <- paste(sep = "/",
                   cran_site(),
                   paste(pkg_path_comps, collapse = "/"),
@@ -304,7 +304,7 @@ update_revdep <- function(pkg, no) {
   if (current$error) {
     return(FALSE)
   }
-  
+
   if (current$revdeps && (current$revdeps == no)) {
     return(FALSE)
   }

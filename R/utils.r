@@ -76,7 +76,7 @@ query <- function(url, error = TRUE, ...) {
   if (error && ("error" %in% names(result))) {
     stop("crandb query: ", result$reason, call. = FALSE)
   }
-  
+
   result
 }
 
