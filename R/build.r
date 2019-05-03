@@ -73,7 +73,7 @@ add_package <- function(pkg, archived = FALSE) {
   descs <- get_descriptions(pkg) %>%
     remove_bundles()
 
-  archived_at <- (! archived) %||% archival_date(pkg)
+  archived_at <- if (isTRUE(archived)) archival_date(pkg)
 
   if (nrow(descs) > 0) {
     descs %>%
@@ -134,7 +134,7 @@ add_more_info <- function(pkg, file, desc) {
   md5 <- tools::md5sum(normalizePath(file))
   desc <- paste0(desc, "\nMD5sum: ", md5, "\n")
 
-  grepl("^Package:", desc, useBytes = TRUE) %||% {
+  if (! grepl("^Package:", desc, useBytes = TRUE)) {
     desc <- paste0(desc, "\nPackage: ", pkg, "\n")
   }
   desc
@@ -163,7 +163,7 @@ from_tarball <- function(tar_file, files) {
 }
 
 read_file <- function(path) {
-  file.exists(path) %||% return("")
+  if (!file.exists(path)) return("")
   readChar(path, file.info(path)$size, useBytes = TRUE) %>%
     try_to_decode() %>%
     gsub(pattern = '\r\n', replacement = '\n')
@@ -177,7 +177,7 @@ try_to_decode <- function(text) {
   (iconv_or_null(text, from = "UTF-8", "UTF-8") %||%
    iconv_or_null(text, from = "latin1", "UTF-8") %||%
    iconv_or_null(text, from = "latin2", "UTF-8")
-   )
+  )
 }
 
 dcf_from_string <- function(dcf, ...) {

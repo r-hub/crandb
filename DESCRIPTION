@@ -8,7 +8,6 @@ Description: The CRAN metadata database contains information about
 Imports:
     dotenv,
     magrittr,
-    falsy,
     jsonlite,
     parsedate,
     httr,
@@ -35,5 +34,4 @@ Suggests:
     testthat
 URL: https://github.com/metacran/crandb
 BugReports: https://github.com/metacran/crandb/issues
-Remotes: gaborcsardi/falsy
 RoxygenNote: 6.1.1

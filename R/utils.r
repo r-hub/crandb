@@ -41,7 +41,9 @@ check_couchapp <- function() {
 }
 
 check_curl <- function() {
-  check_external("curl --version") %||% stop("Need a working 'curl'")
+  if (!check_external("curl --version")) {
+    stop("Need a working 'curl'")
+  }
 }
 
 NA_NULL <- function(x) {
@@ -73,8 +75,9 @@ query <- function(url, error = TRUE, ...) {
     content(as = "text", encoding = "UTF-8") %>%
     fromJSON(...)
 
-  error %&&% ("error" %in% names(result)) %&&%
+  if (error && ("error" %in% names(result))) {
     stop("crandb query: ", result$reason, call. = FALSE)
+  }
 
   result
 }
@@ -134,3 +137,5 @@ make_id <- function(length = 8) {
 download_method <- function() {
   if (is.na(capabilities()["libcurl"])) "internal" else "libcurl"
 }
+
+`%||%` <- function (a, b) if (is.null(a)) b else a
