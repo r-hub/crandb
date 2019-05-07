@@ -68,7 +68,7 @@ rsync <- function(from, to, args = "-rtlzv --delete") {
 
 query <- function(url, error = TRUE, ...) {
 
-  result <- couchdb_uris[[1]]$uri %>%
+  result <- couchdb_uri()$uri %>%
     paste0(url) %>%
     httr::GET(...) %>%
     content(as = "text", encoding = "UTF-8") %>%

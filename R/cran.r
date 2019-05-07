@@ -20,10 +20,9 @@ cache_dir_var <- "CRANDB_CACHE_DIR"
 ## CRAN@github configuration
 
 cran_mirror_default <- NA_character_
-couchdb_uris <- list(
-  list(uri = "http://crandb.r-pkg.org/", priority = 10, timeout = 10),
-  list(uri = "http://crandb2.r-pkg.org/", priority = 5, timeout = 1000)
-)
+couchdb_uri <- function(){
+  list(uri = "http://crandb.r-pkg.org/")
+}
 
 service <- NA
 
@@ -57,18 +56,12 @@ crandb_dev <- function() {
   )
 }
 
-#' @importFrom spareserver remove_service add_service server
-
 crandb_production <- function() {
   uri <- "https://" %+% couchdb_user() %+% ":" %+% couchdb_password() %+%
     "@" %+% "crandb.r-pkg.org:6984/cran"
   root <- list(list(uri = uri, priority = 10))
-  couchdb_server(couchdb_uris, root = FALSE)
+  couchdb_server(couchdb_uri(), root = FALSE)
   couchdb_server(root, root = TRUE)
-  try(remove_service(service), silent = TRUE)
-  add_service(service,
-              server(couchdb_uris[[1]]$uri, priority = couchdb_uris[[1]]$priority),
-              server(couchdb_uris[[2]]$uri, priority = couchdb_uris[[2]]$priority))
 }
 
 ## R release dates
