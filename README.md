@@ -4,9 +4,9 @@
 # The CRAN database
 
 [![Linux Build
-Status](https://travis-ci.org/metacran/crandb.svg?branch=master)](https://travis-ci.org/metacran/crandb)
+Status](https://travis-ci.org/r-hub/crandb.svg?branch=master)](https://travis-ci.org/r-hub/crandb)
 [![Windows Build
-status](https://ci.appveyor.com/api/projects/status/github/metacran/crandb?svg=true)](https://ci.appveyor.com/project/gaborcsardi/crandb)
+status](https://ci.appveyor.com/api/projects/status/github/r-hub/crandb?svg=true)](https://ci.appveyor.com/project/gaborcsardi/crandb)
 
 The CRAN database provides an API for programatically accessing all
 meta-data of CRAN R packages. This API can be used for various purposes,
@@ -145,17 +145,17 @@ events()
 ```
 
     ## CRAN events (events)---------------------------------------------------------------------
-    ##  . When    Package            Version Title                                              
-    ##  - 9 hours traitdataform      0.5.3   Formatting and Harmonizing Ecological Trait-Data   
-    ##  + 1 day   rangeModelMetadata 0.1.2   Provides Templates for Metadata Files Associated...
-    ##  + 1 day   divest             0.8.1   Get Images Out of DICOM Format Quickly             
-    ##  + 1 day   gStream            0.2.0   Graph-Based Sequential Change-Point Detection fo...
-    ##  + 1 day   origami            1.0.1   Generalized Framework for Cross-Validation         
-    ##  + 1 day   rqPen              2.1     Penalized Quantile Regression                      
-    ##  + 1 day   MIIVsem            0.5.4   Model Implied Instrumental Variable (MIIV) Estim...
-    ##  + 1 day   ingredients        0.3.3   Effects and Importances of Model Ingredients       
-    ##  + 1 day   textutils          0.1-11  Utilities for Handling Strings and Text            
-    ##  + 1 day   cluster            2.0.9   "Finding Groups in Data": Cluster Analysis Exten...
+    ##  . When  Package       Version Title                                                     
+    ##  + 1 day fs            1.3.1   Cross-Platform File System Operations Based on 'libuv'    
+    ##  + 1 day clhs          0.7-2   Conditioned Latin Hypercube Sampling                      
+    ##  + 1 day minimaxdesign 0.1.4   Minimax and Minimax Projection Designs                    
+    ##  + 1 day intccr        1.1.3   Semiparametric Competing Risks Regression under Interva...
+    ##  + 1 day styler        1.1.1   Non-Invasive Pretty Printing of R Code                    
+    ##  + 1 day grImport2     0.1-5   Importing 'SVG' Graphics                                  
+    ##  + 1 day ratematrix    1.2     Bayesian Estimation of the Evolutionary Rate Matrix       
+    ##  + 1 day prevR         3.4.0   Estimating Regional Trends of a Prevalence from a DHS     
+    ##  + 1 day shipunov      1.1     Miscellaneous Functions from Alexey Shipunov              
+    ##  + 1 day shinytest     1.3.1   Test Shiny Apps
 
 ### R and CRAN releases
 
@@ -603,41 +603,41 @@ DB("/-/pkgreleases?limit=3&descending=true", head = 20)
 
     ## [
     ##     {
-    ##         "date": "2019-05-01T21:20:03+00:00",
-    ##         "name": "rangeModelMetadata",
+    ##         "date": "2019-05-06T21:50:03+00:00",
+    ##         "name": "fs",
     ##         "event": "released",
     ##         "package": {
-    ##             "Package": "rangeModelMetadata",
-    ##             "Type": "Package",
-    ##             "Title": "Provides Templates for Metadata Files Associated with Species\nRange Models",
-    ##             "Version": "0.1.2",
-    ##             "Author": "Cory Merow, Brian Maitner, Hannah Owens, Jamie Kass, Brian Enquist, Rob Guralnick",
-    ##             "Maintainer": "Cory Merow <cory.merow@gmail.com>",
-    ##             "Description": "Range Modeling Metadata Standards (RMMS) address three challenges: they (i) are designed for convenience to encourage use, (ii) accommodate a wide variety of applications, and (iii) are extensible to allow the community of range modelers to steer it as needed. RMMS are based on a data dictionary that specifies a hierarchical structure to catalog different aspects of the range modeling process. The dictionary balances a constrained, minimalist vocabulary to improve standardization with flexibility for users to provide their own values. Associated manuscript in review.",
-    ##             "License": "MIT + file LICENSE",
+    ##             "Package": "fs",
+    ##             "Title": "Cross-Platform File System Operations Based on 'libuv'",
+    ##             "Version": "1.3.1",
+    ##             "Authors@R": "c(\nperson(\"Jim\", \"Hester\", email = \"james.f.hester@gmail.com\", role = c(\"aut\", \"cre\")),\nperson(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", \"aut\"),\nperson(\"libuv project contributors\", role = \"cph\", comment = \"libuv library\"),\nperson(\"Joyent, Inc. and other Node contributors\", role = \"cph\", comment = \"libuv library\"),\nperson(\"RStudio\", role = c(\"cph\", \"fnd\"))\n)",
+    ##             "Description": "A cross-platform interface to file system operations, built on\ntop of the 'libuv' C library.",
+    ##             "Depends": {
+    ##                 "R": ">= 3.1"
+    ##             },
+    ##             "License": "GPL-3",
     ##             "Encoding": "UTF-8",
     ##             "LazyData": "true",
-    ##             "RoxygenNote": "6.1.1",
-    ##             "Depends": {
+    ##             "ByteCompile": "true",
+    ##             "LinkingTo": {
+    ##                 "Rcpp": "*"
     ## 
+    ## ... not showing 116 lines ...
+    ## 
+    ##                 "FrF2": "*"
     ##             },
-    ## 
-    ## ... not showing 90 lines ...
-    ## 
-    ##             "Author": "Hao Chen and Lynna Chu",
-    ##             "Maintainer": "Hao Chen <hxchen@ucdavis.edu>",
-    ##             "Depends": {
-    ##                 "R": ">= 3.0.1"
+    ##             "LinkingTo": {
+    ##                 "Rcpp": "*",
+    ##                 "RcppArmadillo": "*"
     ##             },
-    ##             "Description": "Uses an approach based on k-nearest neighbor information to sequentially detect change-points. Offers analytic approximations for false discovery control given user-specified average run length.  Can be applied to any type of data (high-dimensional, non-Euclidean, etc.) as long as a reasonable similarity measure is available.  See references (1) Chen, H. (2019) Sequential change-point detection based on nearest neighbors. The Annals of Statistics, 47(3):1381-1407. (2) Chu, L. and Chen, H. (2018) Sequential change-point detection for high-dimensional and non-Euclidean data <arXiv:1810.05973>.",
-    ##             "License": "GPL (>= 2)",
-    ##             "NeedsCompilation": "no",
-    ##             "Packaged": "2019-04-30 21:27:32 UTC; haochen",
+    ##             "RoxygenNote": "6.0.1",
+    ##             "NeedsCompilation": "yes",
+    ##             "Packaged": "2019-05-06 21:05:55 UTC; smak6",
     ##             "Repository": "CRAN",
-    ##             "Date/Publication": "2019-05-01 22:00:03 UTC",
-    ##             "crandb_file_date": "2019-05-02 00:20:22",
-    ##             "MD5sum": "ab7a4bc40e430bf835cb2afd1812f83a",
-    ##             "date": "2019-05-01T21:00:03+00:00",
+    ##             "Date/Publication": "2019-05-06 22:30:03 UTC",
+    ##             "crandb_file_date": "2019-05-06 23:50:19",
+    ##             "MD5sum": "edfc7fa1f05fbe34377c8890794dcf49",
+    ##             "date": "2019-05-06T21:30:03+00:00",
     ##             "releases": [
     ## 
     ##             ]
@@ -658,41 +658,41 @@ DB("/-/archivals?limit=3&descending=true", head = 20)
 
     ## [
     ##     {
-    ##         "date": "2019-05-02T07:50:18+00:00",
-    ##         "name": "traitdataform",
+    ##         "date": "2019-05-04T12:20:21+00:00",
+    ##         "name": "sinx",
     ##         "event": "archived",
     ##         "package": {
-    ##             "Package": "traitdataform",
-    ##             "Type": "Package",
-    ##             "Title": "Formatting and Harmonizing Ecological Trait-Data",
-    ##             "Version": "0.5.3",
-    ##             "Date": "2019-04-11",
-    ##             "Authors@R": "c(person(\"Florian D.\", \"Schneider\",, \"florian.dirk.schneider@gmail.com\", role = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0002-1494-5684\")),\nperson(\"Caterina\", \"Penone\", role = c(\"ctb\"), comment = c(ORCID = \"0000-0002-8170-6659\")),\nperson(\"Andreas\", \"Ostrowski\", role = c(\"ctb\"), comment = c(ORCID = \"0000-0002-2033-779X\")),\nperson(\"Dennis\", \"Heimann\", role = c(\"ctb\")),\nperson(\"Felix\",\"Neff\", role = c(\"ctb\")),\nperson(\"Markus J.\", \"Ankenbrand\", role = c(\"ctb\")))",
-    ##             "Description": "Assistance for handling ecological trait data and applying the\nEcological Trait-Data Standard terminology (Schneider et al. 2018\n<doi:10.1101/328302>). There are two major use cases: (1) preparation of\nown trait datasets for upload into public data bases, and (2) harmonizing\ntrait datasets from different sources by re-formatting them into a unified\nformat. See 'traitdataform' website for full documentation.",
-    ##             "License": "MIT + file LICENSE",
-    ##             "LazyData": "TRUE",
-    ##             "Depends": {
-    ##                 "R": ">= 2.10"
-    ##             },
+    ##             "Package": "sinx",
+    ##             "Version": "0.0.11",
+    ##             "Date": "2019-05-01",
+    ##             "Title": "Sino Xmen Said",
+    ##             "Authors@R": "c(\nperson(\"Peng\", \"Zhao\", role = c(\"aut\", \"cre\"), email = \"pzhao@pzhao.net\")\n)",
+    ##             "Maintainer": "Peng Zhao <pzhao@pzhao.net>",
     ##             "Imports": {
-    ##                 "data.table": "*",
+    ##                 "utils": "*",
+    ##                 "cowsay": "*",
+    ##                 "jsonlite": "*",
+    ##                 "xaringan": "*",
+    ##                 "pagedown": "*",
+    ##                 "bookdownplus": "*",
+    ##                 "rosr": "*",
     ## 
-    ## ... not showing 114 lines ...
+    ## ... not showing 97 lines ...
     ## 
-    ##                 "testthat": "*"
+    ##             "Suggests": {
+    ##                 "grasp2db": "*",
+    ##                 "knitr": "*",
+    ##                 "rmarkdown": "*"
     ##             },
-    ##             "RoxygenNote": "6.0.1",
-    ##             "URL": "http://github.com/beanumber/mdsr",
-    ##             "BugReports": "https://github.com/beanumber/mdsr/issues",
+    ##             "VignetteBuilder": "knitr",
     ##             "NeedsCompilation": "no",
-    ##             "Packaged": "2018-06-18 18:36:06 UTC; bbaumer",
-    ##             "Author": "Ben Baumer [aut, cre],\nNicholas Horton [aut],\nDaniel Kaplan [aut]",
-    ##             "Maintainer": "Ben Baumer <ben.baumer@gmail.com>",
+    ##             "Packaged": "2017-01-22 15:23:21 UTC; klh64",
+    ##             "Author": "Katherine Hartmann [aut, cre]",
+    ##             "Maintainer": "Katherine Hartmann <klh64@cornell.edu>",
     ##             "Repository": "CRAN",
-    ##             "Date/Publication": "2018-06-18 18:49:22 UTC",
-    ##             "crandb_file_date": "2018-06-18 18:50:36",
-    ##             "MD5sum": "5ee51ac3c2ec8cfdc85258d51208eeef",
-    ##             "date": "2018-06-18T17:49:22+00:00",
+    ##             "Date/Publication": "2017-01-22 17:02:21",
+    ##             "crandb_file_date": "2017-01-25 10:48:03",
+    ##             "date": "2017-01-22T16:02:21+00:00",
     ##             "releases": [
     ## 
     ##             ]
@@ -711,41 +711,41 @@ DB("/-/events?limit=3&descending=true", head = 20)
 
     ## [
     ##     {
-    ##         "date": "2019-05-02T07:50:18+00:00",
-    ##         "name": "traitdataform",
-    ##         "event": "archived",
+    ##         "date": "2019-05-06T21:50:03+00:00",
+    ##         "name": "fs",
+    ##         "event": "released",
     ##         "package": {
-    ##             "Package": "traitdataform",
-    ##             "Type": "Package",
-    ##             "Title": "Formatting and Harmonizing Ecological Trait-Data",
-    ##             "Version": "0.5.3",
-    ##             "Date": "2019-04-11",
-    ##             "Authors@R": "c(person(\"Florian D.\", \"Schneider\",, \"florian.dirk.schneider@gmail.com\", role = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0002-1494-5684\")),\nperson(\"Caterina\", \"Penone\", role = c(\"ctb\"), comment = c(ORCID = \"0000-0002-8170-6659\")),\nperson(\"Andreas\", \"Ostrowski\", role = c(\"ctb\"), comment = c(ORCID = \"0000-0002-2033-779X\")),\nperson(\"Dennis\", \"Heimann\", role = c(\"ctb\")),\nperson(\"Felix\",\"Neff\", role = c(\"ctb\")),\nperson(\"Markus J.\", \"Ankenbrand\", role = c(\"ctb\")))",
-    ##             "Description": "Assistance for handling ecological trait data and applying the\nEcological Trait-Data Standard terminology (Schneider et al. 2018\n<doi:10.1101/328302>). There are two major use cases: (1) preparation of\nown trait datasets for upload into public data bases, and (2) harmonizing\ntrait datasets from different sources by re-formatting them into a unified\nformat. See 'traitdataform' website for full documentation.",
-    ##             "License": "MIT + file LICENSE",
-    ##             "LazyData": "TRUE",
+    ##             "Package": "fs",
+    ##             "Title": "Cross-Platform File System Operations Based on 'libuv'",
+    ##             "Version": "1.3.1",
+    ##             "Authors@R": "c(\nperson(\"Jim\", \"Hester\", email = \"james.f.hester@gmail.com\", role = c(\"aut\", \"cre\")),\nperson(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", \"aut\"),\nperson(\"libuv project contributors\", role = \"cph\", comment = \"libuv library\"),\nperson(\"Joyent, Inc. and other Node contributors\", role = \"cph\", comment = \"libuv library\"),\nperson(\"RStudio\", role = c(\"cph\", \"fnd\"))\n)",
+    ##             "Description": "A cross-platform interface to file system operations, built on\ntop of the 'libuv' C library.",
     ##             "Depends": {
-    ##                 "R": ">= 2.10"
+    ##                 "R": ">= 3.1"
     ##             },
-    ##             "Imports": {
-    ##                 "data.table": "*",
-    ## 
-    ## ... not showing 113 lines ...
-    ## 
-    ##             "Description": "Provides tools to sort DICOM-format medical image files, and\nconvert them to NIfTI-1 format.",
-    ##             "License": "BSD_3_clause + file LICENCE",
-    ##             "URL": "https://github.com/jonclayden/divest",
-    ##             "BugReports": "https://github.com/jonclayden/divest/issues",
+    ##             "License": "GPL-3",
     ##             "Encoding": "UTF-8",
-    ##             "RoxygenNote": "6.1.1",
+    ##             "LazyData": "true",
+    ##             "ByteCompile": "true",
+    ##             "LinkingTo": {
+    ##                 "Rcpp": "*"
+    ## 
+    ## ... not showing 116 lines ...
+    ## 
+    ##                 "FrF2": "*"
+    ##             },
+    ##             "LinkingTo": {
+    ##                 "Rcpp": "*",
+    ##                 "RcppArmadillo": "*"
+    ##             },
+    ##             "RoxygenNote": "6.0.1",
     ##             "NeedsCompilation": "yes",
-    ##             "Packaged": "2019-05-01 09:28:11 UTC; jon",
-    ##             "Author": "Jon Clayden [aut, cre],\nChris Rorden [aut],\nMartin J Fiedler [cph],\nCong Xu [cph],\nPascal Gloor [cph]",
+    ##             "Packaged": "2019-05-06 21:05:55 UTC; smak6",
     ##             "Repository": "CRAN",
-    ##             "Date/Publication": "2019-05-01 22:00:26 UTC",
-    ##             "crandb_file_date": "2019-05-02 00:20:21",
-    ##             "MD5sum": "5b85127a11f7687ceef8d2cd02604836",
-    ##             "date": "2019-05-01T21:00:26+00:00",
+    ##             "Date/Publication": "2019-05-06 22:30:03 UTC",
+    ##             "crandb_file_date": "2019-05-06 23:50:19",
+    ##             "MD5sum": "edfc7fa1f05fbe34377c8890794dcf49",
+    ##             "date": "2019-05-06T21:30:03+00:00",
     ##             "releases": [
     ## 
     ##             ]
@@ -1046,64 +1046,64 @@ DB("/-/topdeps/devel")
 
     ## [
     ##     {
-    ##         "knitr": 3900
+    ##         "knitr": 3928
     ##     },
     ##     {
-    ##         "testthat": 3807
+    ##         "testthat": 3836
     ##     },
     ##     {
-    ##         "rmarkdown": 2965
+    ##         "rmarkdown": 2994
     ##     },
     ##     {
-    ##         "ggplot2": 2180
+    ##         "ggplot2": 2200
     ##     },
     ##     {
-    ##         "MASS": 1805
+    ##         "MASS": 1810
     ##     },
     ##     {
-    ##         "Rcpp": 1647
+    ##         "Rcpp": 1656
     ##     },
     ##     {
-    ##         "dplyr": 1464
+    ##         "dplyr": 1481
     ##     },
     ##     {
-    ##         "Matrix": 884
+    ##         "magrittr": 893
     ##     },
     ##     {
-    ##         "magrittr": 880
+    ##         "Matrix": 886
     ##     },
     ##     {
-    ##         "covr": 835
+    ##         "covr": 842
     ##     },
     ##     {
-    ##         "stringr": 762
+    ##         "stringr": 769
     ##     },
     ##     {
-    ##         "plyr": 704
+    ##         "plyr": 707
     ##     },
     ##     {
-    ##         "jsonlite": 692
+    ##         "jsonlite": 695
     ##     },
     ##     {
-    ##         "mvtnorm": 682
+    ##         "mvtnorm": 685
     ##     },
     ##     {
-    ##         "data.table": 647
+    ##         "data.table": 654
     ##     },
     ##     {
-    ##         "survival": 638
+    ##         "survival": 640
     ##     },
     ##     {
-    ##         "shiny": 610
+    ##         "shiny": 615
     ##     },
     ##     {
-    ##         "lattice": 610
+    ##         "lattice": 613
     ##     },
     ##     {
-    ##         "tidyr": 604
+    ##         "tidyr": 609
     ##     },
     ##     {
-    ##         "httr": 593
+    ##         "tibble": 594
     ##     }
     ## ]
 

@@ -17,8 +17,8 @@ options(max.print = 200)
 
 # The CRAN database
 
-[![Linux Build Status](https://travis-ci.org/metacran/crandb.svg?branch=master)](https://travis-ci.org/metacran/crandb)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/metacran/crandb?svg=true)](https://ci.appveyor.com/project/gaborcsardi/crandb)
+[![Linux Build Status](https://travis-ci.org/r-hub/crandb.svg?branch=master)](https://travis-ci.org/r-hub/crandb)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/r-hub/crandb?svg=true)](https://ci.appveyor.com/project/gaborcsardi/crandb)
 
 The CRAN database provides an API for programatically accessing all
 meta-data of CRAN R packages. This API can be used for various purposes,
