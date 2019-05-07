@@ -59,10 +59,10 @@ list_packages <- function(from = "", limit = 10,
   }
 
   url <- switch(format,
-                "short" = "/-/desc",
-                "latest" = "/-/latest",
-                "full" = "/-/all")
-  if (archived) url <- "/-/allall"
+                "short" = "-/desc",
+                "latest" = "-/latest",
+                "full" = "-/all")
+  if (archived) url <- "-/allall"
 
   url %>%
     paste0('?start_key="', from, '"') %>%
@@ -99,8 +99,8 @@ events <- function(limit = 10, releases = TRUE, archivals = TRUE) {
   } else {
     "archivals"
   }
-
-  "/-/" %>%
+browser()
+  "-/" %>%
     paste0(mode) %>%
     paste0("?limit=", limit) %>%
     paste0("&descending=true") %>%
@@ -120,7 +120,7 @@ events <- function(limit = 10, releases = TRUE, archivals = TRUE) {
 
 releases <- function() {
 
-  "/-/releases" %>%
+  "-/releases" %>%
     query() %>%
     add_class("r_releases")
 }

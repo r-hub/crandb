@@ -26,7 +26,6 @@ couchdb_uri <- function(){
 
 service <- NA
 
-#' @importFrom spareserver add_service add_server server
 #' @include utils.r
 
 .onLoad <- function(libname, pkgname) {
@@ -36,8 +35,6 @@ service <- NA
   service <<- "crandb-" %+% make_id()
   crandb_production()
 }
-
-#' @importFrom spareserver remove_service add_service server
 
 crandb_dev <- function() {
   nonroot <- list(list(uri = "http://crandb-dev.r-pkg.org/",
@@ -49,11 +46,6 @@ crandb_dev <- function() {
   root <- list(list(uri = uri, priority = 10))
   couchdb_server(nonroot, root = FALSE)
   couchdb_server(root, root = TRUE)
-  try(remove_service(service), silent = TRUE)
-  add_service(
-    service,
-    server("http://crandb.r-pkg.org/", priority = 10)
-  )
 }
 
 crandb_production <- function() {
