@@ -66,12 +66,10 @@ rsync <- function(from, to, args = "-rtlzv --delete") {
   system(cmd, ignore.stdout = TRUE, ignore.stderr = TRUE)
 }
 
-#' @importFrom spareserver spare_q
-
 query <- function(url, error = TRUE, ...) {
 
   result <- url %>%
-    spare_q(service = service, GET, ...) %>%
+    httr::GET() %>%
     content(as = "text", encoding = "UTF-8") %>%
     fromJSON(...)
 
