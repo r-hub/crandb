@@ -68,10 +68,11 @@ rsync <- function(from, to, args = "-rtlzv --delete") {
 
 query <- function(url, error = TRUE, ...) {
 
-  result <- url %>%
+  result <- couchdb_uris[[1]]$uri %>%
+    paste0(url) %>%
     httr::GET(...) %>%
     content(as = "text", encoding = "UTF-8") %>%
-    fromJSON(...)
+    fromJSON()
 
   if (error && ("error" %in% names(result))) {
     stop("crandb query: ", result$reason, call. = FALSE)
