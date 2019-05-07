@@ -99,7 +99,6 @@ events <- function(limit = 10, releases = TRUE, archivals = TRUE) {
   } else {
     "archivals"
   }
-
   "/-/" %>%
     paste0(mode) %>%
     paste0("?limit=", limit) %>%
