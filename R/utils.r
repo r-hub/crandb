@@ -69,7 +69,7 @@ rsync <- function(from, to, args = "-rtlzv --delete") {
 query <- function(url, error = TRUE, ...) {
 
   result <- url %>%
-    httr::GET() %>%
+    httr::GET(...) %>%
     content(as = "text", encoding = "UTF-8") %>%
     fromJSON(...)
 
