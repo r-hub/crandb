@@ -12,8 +12,7 @@ Imports:
     parsedate,
     httr,
     assertthat,
-    prettyunits,
-    spareserver
+    prettyunits
 Depends:
     methods
 License: MIT + file LICENSE
