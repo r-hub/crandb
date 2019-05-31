@@ -10,12 +10,15 @@ status](https://ci.appveyor.com/api/projects/status/github/r-hub/crandb?svg=true
 
 The CRAN database provides an API for programatically accessing all
 meta-data of CRAN R packages. This API can be used for various purposes,
-here are three examples I am woking on right now: \* Writing a package
-manager for R. The package manager can use the CRAN DB API to query
-dependencies, or other meta data. \* Building a search engine for CRAN
-packages. The DB itself does not provide a search API, but it can be
-(easily) mirrored in a search engine. \* Creating an RSS feed for the
-new, updated or archived packages on CRAN.
+here are three examples I am working on right now:
+
+  - Writing a package manager for R. The package manager can use the
+    CRAN DB API to query dependencies, or other meta data.
+  - Building a search engine for CRAN packages. The DB itself does not
+    provide a search API, but it can be (easily) mirrored in a search
+    engine.
+  - Creating an RSS feed for the new, updated or archived packages on
+    CRAN.
 
 **Note that `crandb` is *NOT* an official CRAN project, and is not
 supported by CRAN.**
@@ -83,7 +86,7 @@ Or all versions:
 package("httr", version = "all")
 ```
 
-    ## CRAN package httr, latest: 1.4.0, 5 months ago
+    ## CRAN package httr, latest: 1.4.0, 6 months ago
     ## ['1.4.0']:
     ##   Title: Tools for Working with URLs and HTTP
     ##   Maintainer: Hadley Wickham <hadley@rstudio.com>
@@ -129,7 +132,7 @@ list_packages(from = "cranlogs", limit = 10, archived = FALSE)
     ##  crawl        2.2.1   Fit Continuous-Time Correlated Random Walk Models to Animal Move...
     ##  crayon       1.3.4   Colored Terminal Output                                            
     ##  crblocks     1.0-0   Categorical Randomized Block Data Analysis                         
-    ##  crch         1.0-2   Censored Regression with Conditional Heteroscedasticity            
+    ##  crch         1.0-3   Censored Regression with Conditional Heteroscedasticity            
     ##  CREAM        1.1.1   Clustering of Genomic Regions Analysis Method                      
     ##  credentials  1.1     Tools for Managing SSH and Git Credentials
 
@@ -145,17 +148,17 @@ events()
 ```
 
     ## CRAN events (events)---------------------------------------------------------------------
-    ##  . When  Package       Version Title                                                     
-    ##  + 1 day fs            1.3.1   Cross-Platform File System Operations Based on 'libuv'    
-    ##  + 1 day clhs          0.7-2   Conditioned Latin Hypercube Sampling                      
-    ##  + 1 day minimaxdesign 0.1.4   Minimax and Minimax Projection Designs                    
-    ##  + 1 day intccr        1.1.3   Semiparametric Competing Risks Regression under Interva...
-    ##  + 1 day styler        1.1.1   Non-Invasive Pretty Printing of R Code                    
-    ##  + 1 day grImport2     0.1-5   Importing 'SVG' Graphics                                  
-    ##  + 1 day ratematrix    1.2     Bayesian Estimation of the Evolutionary Rate Matrix       
-    ##  + 1 day prevR         3.4.0   Estimating Regional Trends of a Prevalence from a DHS     
-    ##  + 1 day shipunov      1.1     Miscellaneous Functions from Alexey Shipunov              
-    ##  + 1 day shinytest     1.3.1   Test Shiny Apps
+    ##  . When     Package       Version     Title                                              
+    ##  + 3 hours  RxODE         0.9.0-6     Facilities for Simulating from ODE-Based Models    
+    ##  + 4 hours  MIAmaxent     1.1.0       A Modular, Integrated Approach to Maximum Entrop...
+    ##  + 4 hours  brunnermunzel 1.3.5       (Permuted) Brunner-Munzel Test                     
+    ##  + 7 hours  tframe        2015.12-1.1 Time Frame Coding Kernel                           
+    ##  + 8 hours  seriation     1.2-5       Infrastructure for Ordering Objects Using Seriat...
+    ##  + 8 hours  SWMPr         2.3.1       Retrieving, Organizing, and Analyzing Estuary Mo...
+    ##  + 10 hours DendroSync    0.1.3       A Set of Tools for Calculating Spatial Synchrony...
+    ##  + 10 hours jsmodule      0.8.4       'RStudio' Addins and 'Shiny' Modules for Medical...
+    ##  + 11 hours parlitools    0.3.3       Tools for Analysing UK Politics                    
+    ##  + 11 hours Repliscope    1.0.1       Replication Timing Profiling using DNA Copy Numb...
 
 ### R and CRAN releases
 
@@ -167,53 +170,53 @@ releases()
 ```
 
     ## R releases-------------------------------------------------------------------------------
-    ##  Version Date               
-    ##  2.0.0   2004-10-04 02:00:00
-    ##  2.0.1   2004-11-15 01:00:00
-    ##  2.1.0   2005-04-18 02:00:00
-    ##  2.1.1   2005-06-20 02:00:00
-    ##  2.2.0   2005-10-06 02:00:00
-    ##  2.2.1   2005-12-20 01:00:00
-    ##  2.3.0   2006-04-24 02:00:00
-    ##  2.3.1   2006-06-01 02:00:00
-    ##  2.4.0   2006-10-03 02:00:00
-    ##  2.4.1   2006-12-18 01:00:00
-    ##  2.5.0   2007-04-24 02:00:00
-    ##  2.5.1   2007-06-28 02:00:00
-    ##  2.6.0   2007-10-03 02:00:00
-    ##  2.6.1   2007-11-26 01:00:00
-    ##  2.6.2   2008-02-08 01:00:00
-    ##  2.7.0   2008-04-22 02:00:00
-    ##  2.7.1   2008-06-23 02:00:00
-    ##  2.7.2   2008-08-25 02:00:00
-    ##  2.8.0   2008-10-20 02:00:00
-    ##  2.8.1   2008-12-22 01:00:00
-    ##  2.9.0   2009-04-17 02:00:00
-    ##  2.9.1   2009-06-26 02:00:00
-    ##  2.9.2   2009-08-24 02:00:00
-    ##  2.10.0  2009-10-26 01:00:00
-    ##  2.10.1  2009-12-14 01:00:00
-    ##  2.11.0  2010-04-22 02:00:00
-    ##  2.11.1  2010-05-31 02:00:00
-    ##  2.12.0  2010-10-15 02:00:00
-    ##  2.12.1  2010-12-16 01:00:00
-    ##  2.12.2  2011-02-25 01:00:00
-    ##  2.13.0  2011-04-13 02:00:00
-    ##  2.13.1  2011-07-08 02:00:00
-    ##  2.13.2  2011-09-30 02:00:00
-    ##  2.14.0  2011-10-31 01:00:00
-    ##  2.14.1  2011-12-22 01:00:00
-    ##  2.14.2  2012-02-29 01:00:00
-    ##  2.15.0  2012-03-30 02:00:00
-    ##  2.15.1  2012-06-22 02:00:00
-    ##  2.15.2  2012-10-26 02:00:00
-    ##  2.15.3  2013-03-01 01:00:00
-    ##  3.0.0   2013-04-03 02:00:00
-    ##  3.0.1   2013-05-16 02:00:00
-    ##  3.0.2   2013-09-25 02:00:00
-    ##  3.0.3   2014-03-06 01:00:00
-    ##  3.1.0   2014-04-10 02:00:00
-    ##  3.1.1   2014-07-10 02:00:00
+    ##  Version Date      
+    ##  2.0.0   2004-10-04
+    ##  2.0.1   2004-11-15
+    ##  2.1.0   2005-04-18
+    ##  2.1.1   2005-06-20
+    ##  2.2.0   2005-10-06
+    ##  2.2.1   2005-12-20
+    ##  2.3.0   2006-04-24
+    ##  2.3.1   2006-06-01
+    ##  2.4.0   2006-10-03
+    ##  2.4.1   2006-12-18
+    ##  2.5.0   2007-04-24
+    ##  2.5.1   2007-06-28
+    ##  2.6.0   2007-10-03
+    ##  2.6.1   2007-11-26
+    ##  2.6.2   2008-02-08
+    ##  2.7.0   2008-04-22
+    ##  2.7.1   2008-06-23
+    ##  2.7.2   2008-08-25
+    ##  2.8.0   2008-10-20
+    ##  2.8.1   2008-12-22
+    ##  2.9.0   2009-04-17
+    ##  2.9.1   2009-06-26
+    ##  2.9.2   2009-08-24
+    ##  2.10.0  2009-10-26
+    ##  2.10.1  2009-12-14
+    ##  2.11.0  2010-04-22
+    ##  2.11.1  2010-05-31
+    ##  2.12.0  2010-10-15
+    ##  2.12.1  2010-12-16
+    ##  2.12.2  2011-02-25
+    ##  2.13.0  2011-04-13
+    ##  2.13.1  2011-07-08
+    ##  2.13.2  2011-09-30
+    ##  2.14.0  2011-10-31
+    ##  2.14.1  2011-12-22
+    ##  2.14.2  2012-02-29
+    ##  2.15.0  2012-03-30
+    ##  2.15.1  2012-06-22
+    ##  2.15.2  2012-10-26
+    ##  2.15.3  2013-03-01
+    ##  3.0.0   2013-04-03
+    ##  3.0.1   2013-05-16
+    ##  3.0.2   2013-09-25
+    ##  3.0.3   2014-03-06
+    ##  3.1.0   2014-04-10
+    ##  3.1.1   2014-07-10
 
 ## The raw API
 
@@ -603,41 +606,41 @@ DB("/-/pkgreleases?limit=3&descending=true", head = 20)
 
     ## [
     ##     {
-    ##         "date": "2019-05-06T21:50:03+00:00",
-    ##         "name": "fs",
+    ##         "date": "2019-05-30T21:00:03+00:00",
+    ##         "name": "RxODE",
     ##         "event": "released",
     ##         "package": {
-    ##             "Package": "fs",
-    ##             "Title": "Cross-Platform File System Operations Based on 'libuv'",
-    ##             "Version": "1.3.1",
-    ##             "Authors@R": "c(\nperson(\"Jim\", \"Hester\", email = \"james.f.hester@gmail.com\", role = c(\"aut\", \"cre\")),\nperson(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", \"aut\"),\nperson(\"libuv project contributors\", role = \"cph\", comment = \"libuv library\"),\nperson(\"Joyent, Inc. and other Node contributors\", role = \"cph\", comment = \"libuv library\"),\nperson(\"RStudio\", role = c(\"cph\", \"fnd\"))\n)",
-    ##             "Description": "A cross-platform interface to file system operations, built on\ntop of the 'libuv' C library.",
+    ##             "Package": "RxODE",
+    ##             "Version": "0.9.0-6",
+    ##             "Title": "Facilities for Simulating from ODE-Based Models",
+    ##             "Authors@R": "c(\nperson(\"Matthew L.\",\"Fidler\",\nrole = \"aut\", email = \"matthew.fidler@gmail.com\",\ncomment=c(ORCID=\"0000-0001-8538-6691\")),\nperson(\"Melissa\", \"Hallow\",\nrole = \"aut\", email = \"hallowkm@uga.edu\"),\nperson(\"Wenping\", \"Wang\",\nrole = c(\"aut\", \"cre\"), email = \"wwang8198@gmail.com\"),\nperson(\"Zufar\", \"Mulyukov\", role=\"ctb\", email=\"zufar.mulyukov@novartis.com\"),\nperson(\"Justin\", \"Wilkins\",\nrole = \"ctb\", email = \"justin.wilkins@occams.com\", comment=c(ORCID=\"0000-0002-7099-9396\")),\nperson(\"Simon\", \"Frost\", role=\"ctb\"),\nperson(\"Heng\", \"Li\", role=\"ctb\"),\nperson(\"Yu\", \"Feng\", role=\"ctb\"),\nperson(\"Alan\", \"Hindmarsh\",role=\"ctb\"),\nperson(\"Linda\", \"Petzold\", role=\"ctb\"),\nperson(\"Ernst\", \"Hairer\", role=\"ctb\"),\nperson(\"Gerhard\", \"Wanner\", role=\"ctb\"),\nperson(\"J\", \"Colinge\", role=\"ctb\"),\nperson(\"Hadley\", \"Wickham\", role=\"ctb\"),\nperson(\"G\", \"Grothendieck\", role=\"ctb\"),\nperson(\"Robert\", \"Gentleman\",role=\"ctb\"),\nperson(\"Ross\", \"Ihaka\",role=\"ctb\"),\nperson(\"R core team\", role=\"cph\"),\nperson(\"odepack authors\", role=\"cph\")\n)",
+    ##             "Maintainer": "Wenping Wang <wwang8198@gmail.com>",
     ##             "Depends": {
-    ##                 "R": ">= 3.1"
+    ##                 "R": ">= 3.4.0"
     ##             },
-    ##             "License": "GPL-3",
-    ##             "Encoding": "UTF-8",
-    ##             "LazyData": "true",
-    ##             "ByteCompile": "true",
-    ##             "LinkingTo": {
-    ##                 "Rcpp": "*"
+    ##             "Suggests": {
+    ##                 "knitr": "*",
+    ##                 "DT": "*",
+    ##                 "nlme": "*",
+    ##                 "shiny": "*",
+    ##                 "tcltk": "*",
     ## 
-    ## ... not showing 116 lines ...
+    ## ... not showing 141 lines ...
     ## 
-    ##                 "FrF2": "*"
+    ##                 "rmarkdown": "*",
+    ##                 "dplyr": "*",
+    ##                 "ggplot2": "*"
     ##             },
-    ##             "LinkingTo": {
-    ##                 "Rcpp": "*",
-    ##                 "RcppArmadillo": "*"
-    ##             },
-    ##             "RoxygenNote": "6.0.1",
+    ##             "VignetteBuilder": "knitr",
     ##             "NeedsCompilation": "yes",
-    ##             "Packaged": "2019-05-06 21:05:55 UTC; smak6",
+    ##             "Packaged": "2019-05-30 20:22:50 UTC; ara",
+    ##             "Author": "Toshiaki Ara [aut, cre]",
+    ##             "Maintainer": "Toshiaki Ara <toshiaki.ara@gmail.com>",
     ##             "Repository": "CRAN",
-    ##             "Date/Publication": "2019-05-06 22:30:03 UTC",
-    ##             "crandb_file_date": "2019-05-06 23:50:19",
-    ##             "MD5sum": "edfc7fa1f05fbe34377c8890794dcf49",
-    ##             "date": "2019-05-06T21:30:03+00:00",
+    ##             "Date/Publication": "2019-05-30 20:40:03 UTC",
+    ##             "crandb_file_date": "2019-05-30 22:20:24",
+    ##             "MD5sum": "d538a2a2b4b53654f688c4883b72d3f8",
+    ##             "date": "2019-05-30T19:40:03+00:00",
     ##             "releases": [
     ## 
     ##             ]
@@ -658,41 +661,41 @@ DB("/-/archivals?limit=3&descending=true", head = 20)
 
     ## [
     ##     {
-    ##         "date": "2019-05-04T12:20:21+00:00",
-    ##         "name": "sinx",
+    ##         "date": "2019-05-21T13:26:19+00:00",
+    ##         "name": "qle",
     ##         "event": "archived",
     ##         "package": {
-    ##             "Package": "sinx",
-    ##             "Version": "0.0.11",
-    ##             "Date": "2019-05-01",
-    ##             "Title": "Sino Xmen Said",
-    ##             "Authors@R": "c(\nperson(\"Peng\", \"Zhao\", role = c(\"aut\", \"cre\"), email = \"pzhao@pzhao.net\")\n)",
-    ##             "Maintainer": "Peng Zhao <pzhao@pzhao.net>",
-    ##             "Imports": {
-    ##                 "utils": "*",
-    ##                 "cowsay": "*",
-    ##                 "jsonlite": "*",
-    ##                 "xaringan": "*",
-    ##                 "pagedown": "*",
-    ##                 "bookdownplus": "*",
-    ##                 "rosr": "*",
-    ## 
-    ## ... not showing 97 lines ...
-    ## 
-    ##             "Suggests": {
-    ##                 "grasp2db": "*",
-    ##                 "knitr": "*",
-    ##                 "rmarkdown": "*"
+    ##             "Package": "qle",
+    ##             "Title": "Simulation-Based Quasi-Likelihood Estimation",
+    ##             "Version": "0.18",
+    ##             "Date": "2018-10-04",
+    ##             "Authors@R": "c(person(\"Markus\", \"Baaske\", role = c(\"aut\", \"cre\", \"cph\"),\nemail = \"markus.baaske@uni-jena.de\"),\nperson(\"K. Gerald\", \"van den Boogaart\", role = c(\"ths\"),\nemail = \"boogaart@math.tu-freiberg.de\"))",
+    ##             "Author": "Markus Baaske [aut, cre, cph],\nK. Gerald van den Boogaart [ths]",
+    ##             "Maintainer": "Markus Baaske <markus.baaske@uni-jena.de>",
+    ##             "Description": "A simulation-based quasi-likelihood method (Baaske, M., Ballani, F., v.d. Boogaart, K.G. (2014) <doi:10.5566/ias.v33.p107-119>) for parameter estimation of parametric statistical models for which closed-form representations of distributional characteristics are unavailable and can only be obtained by computationally intensive simulations of the model.",
+    ##             "Depends": {
+    ##                 "R": ">= 3.4.0",
+    ##                 "parallel": "*"
     ##             },
-    ##             "VignetteBuilder": "knitr",
+    ##             "Imports": {
+    ##                 "nloptr": "*",
+    ## 
+    ## ... not showing 95 lines ...
+    ## 
+    ##                 "utils": "*"
+    ##             },
+    ##             "Suggests": {
+    ##                 "testthat": "*"
+    ##             },
+    ##             "Depends": {
+    ##                 "methods": "*"
+    ##             },
     ##             "NeedsCompilation": "no",
-    ##             "Packaged": "2017-01-22 15:23:21 UTC; klh64",
-    ##             "Author": "Katherine Hartmann [aut, cre]",
-    ##             "Maintainer": "Katherine Hartmann <klh64@cornell.edu>",
+    ##             "Packaged": "2015-07-13 00:52:39 UTC; gaborcsardi",
     ##             "Repository": "CRAN",
-    ##             "Date/Publication": "2017-01-22 17:02:21",
-    ##             "crandb_file_date": "2017-01-25 10:48:03",
-    ##             "date": "2017-01-22T16:02:21+00:00",
+    ##             "Date/Publication": "2015-07-13 03:54:46",
+    ##             "crandb_file_date": "2015-07-12 22:06:21",
+    ##             "date": "2015-07-13T03:54:46+00:00",
     ##             "releases": [
     ## 
     ##             ]
@@ -711,41 +714,41 @@ DB("/-/events?limit=3&descending=true", head = 20)
 
     ## [
     ##     {
-    ##         "date": "2019-05-06T21:50:03+00:00",
-    ##         "name": "fs",
+    ##         "date": "2019-05-30T21:00:03+00:00",
+    ##         "name": "RxODE",
     ##         "event": "released",
     ##         "package": {
-    ##             "Package": "fs",
-    ##             "Title": "Cross-Platform File System Operations Based on 'libuv'",
-    ##             "Version": "1.3.1",
-    ##             "Authors@R": "c(\nperson(\"Jim\", \"Hester\", email = \"james.f.hester@gmail.com\", role = c(\"aut\", \"cre\")),\nperson(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", \"aut\"),\nperson(\"libuv project contributors\", role = \"cph\", comment = \"libuv library\"),\nperson(\"Joyent, Inc. and other Node contributors\", role = \"cph\", comment = \"libuv library\"),\nperson(\"RStudio\", role = c(\"cph\", \"fnd\"))\n)",
-    ##             "Description": "A cross-platform interface to file system operations, built on\ntop of the 'libuv' C library.",
+    ##             "Package": "RxODE",
+    ##             "Version": "0.9.0-6",
+    ##             "Title": "Facilities for Simulating from ODE-Based Models",
+    ##             "Authors@R": "c(\nperson(\"Matthew L.\",\"Fidler\",\nrole = \"aut\", email = \"matthew.fidler@gmail.com\",\ncomment=c(ORCID=\"0000-0001-8538-6691\")),\nperson(\"Melissa\", \"Hallow\",\nrole = \"aut\", email = \"hallowkm@uga.edu\"),\nperson(\"Wenping\", \"Wang\",\nrole = c(\"aut\", \"cre\"), email = \"wwang8198@gmail.com\"),\nperson(\"Zufar\", \"Mulyukov\", role=\"ctb\", email=\"zufar.mulyukov@novartis.com\"),\nperson(\"Justin\", \"Wilkins\",\nrole = \"ctb\", email = \"justin.wilkins@occams.com\", comment=c(ORCID=\"0000-0002-7099-9396\")),\nperson(\"Simon\", \"Frost\", role=\"ctb\"),\nperson(\"Heng\", \"Li\", role=\"ctb\"),\nperson(\"Yu\", \"Feng\", role=\"ctb\"),\nperson(\"Alan\", \"Hindmarsh\",role=\"ctb\"),\nperson(\"Linda\", \"Petzold\", role=\"ctb\"),\nperson(\"Ernst\", \"Hairer\", role=\"ctb\"),\nperson(\"Gerhard\", \"Wanner\", role=\"ctb\"),\nperson(\"J\", \"Colinge\", role=\"ctb\"),\nperson(\"Hadley\", \"Wickham\", role=\"ctb\"),\nperson(\"G\", \"Grothendieck\", role=\"ctb\"),\nperson(\"Robert\", \"Gentleman\",role=\"ctb\"),\nperson(\"Ross\", \"Ihaka\",role=\"ctb\"),\nperson(\"R core team\", role=\"cph\"),\nperson(\"odepack authors\", role=\"cph\")\n)",
+    ##             "Maintainer": "Wenping Wang <wwang8198@gmail.com>",
     ##             "Depends": {
-    ##                 "R": ">= 3.1"
+    ##                 "R": ">= 3.4.0"
     ##             },
-    ##             "License": "GPL-3",
-    ##             "Encoding": "UTF-8",
-    ##             "LazyData": "true",
-    ##             "ByteCompile": "true",
-    ##             "LinkingTo": {
-    ##                 "Rcpp": "*"
+    ##             "Suggests": {
+    ##                 "knitr": "*",
+    ##                 "DT": "*",
+    ##                 "nlme": "*",
+    ##                 "shiny": "*",
+    ##                 "tcltk": "*",
     ## 
-    ## ... not showing 116 lines ...
+    ## ... not showing 141 lines ...
     ## 
-    ##                 "FrF2": "*"
+    ##                 "rmarkdown": "*",
+    ##                 "dplyr": "*",
+    ##                 "ggplot2": "*"
     ##             },
-    ##             "LinkingTo": {
-    ##                 "Rcpp": "*",
-    ##                 "RcppArmadillo": "*"
-    ##             },
-    ##             "RoxygenNote": "6.0.1",
+    ##             "VignetteBuilder": "knitr",
     ##             "NeedsCompilation": "yes",
-    ##             "Packaged": "2019-05-06 21:05:55 UTC; smak6",
+    ##             "Packaged": "2019-05-30 20:22:50 UTC; ara",
+    ##             "Author": "Toshiaki Ara [aut, cre]",
+    ##             "Maintainer": "Toshiaki Ara <toshiaki.ara@gmail.com>",
     ##             "Repository": "CRAN",
-    ##             "Date/Publication": "2019-05-06 22:30:03 UTC",
-    ##             "crandb_file_date": "2019-05-06 23:50:19",
-    ##             "MD5sum": "edfc7fa1f05fbe34377c8890794dcf49",
-    ##             "date": "2019-05-06T21:30:03+00:00",
+    ##             "Date/Publication": "2019-05-30 20:40:03 UTC",
+    ##             "crandb_file_date": "2019-05-30 22:20:24",
+    ##             "MD5sum": "d538a2a2b4b53654f688c4883b72d3f8",
+    ##             "date": "2019-05-30T19:40:03+00:00",
     ##             "releases": [
     ## 
     ##             ]
@@ -836,7 +839,7 @@ DB("/-/releasepkgs/2.15.3", head = 20)
     ##             "2.3.0",
     ##             "2.3.1",
     ## 
-    ## ... not showing 160255 lines ...
+    ## ... not showing 160259 lines ...
     ## 
     ##             "Kendall": "*"
     ##         },
@@ -976,13 +979,13 @@ DB("/-/topdeps/3.1.1")
 
     ## [
     ##     {
-    ##         "MASS": 623
+    ##         "MASS": 624
     ##     },
     ##     {
     ##         "lattice": 311
     ##     },
     ##     {
-    ##         "mvtnorm": 219
+    ##         "mvtnorm": 220
     ##     },
     ##     {
     ##         "Matrix": 214
@@ -1015,10 +1018,10 @@ DB("/-/topdeps/3.1.1")
     ##         "nlme": 103
     ##     },
     ##     {
-    ##         "coda": 101
+    ##         "coda": 100
     ##     },
     ##     {
-    ##         "sp": 97
+    ##         "sp": 96
     ##     },
     ##     {
     ##         "RUnit": 94
@@ -1027,7 +1030,7 @@ DB("/-/topdeps/3.1.1")
     ##         "boot": 94
     ##     },
     ##     {
-    ##         "knitr": 89
+    ##         "knitr": 88
     ##     },
     ##     {
     ##         "RColorBrewer": 85
@@ -1046,64 +1049,64 @@ DB("/-/topdeps/devel")
 
     ## [
     ##     {
-    ##         "knitr": 3928
+    ##         "knitr": 4024
     ##     },
     ##     {
-    ##         "testthat": 3836
+    ##         "testthat": 3920
     ##     },
     ##     {
-    ##         "rmarkdown": 2994
+    ##         "rmarkdown": 3082
     ##     },
     ##     {
-    ##         "ggplot2": 2200
+    ##         "ggplot2": 2257
     ##     },
     ##     {
-    ##         "MASS": 1810
+    ##         "MASS": 1826
     ##     },
     ##     {
-    ##         "Rcpp": 1656
+    ##         "Rcpp": 1681
     ##     },
     ##     {
-    ##         "dplyr": 1481
+    ##         "dplyr": 1530
     ##     },
     ##     {
-    ##         "magrittr": 893
+    ##         "magrittr": 922
     ##     },
     ##     {
-    ##         "Matrix": 886
+    ##         "Matrix": 902
     ##     },
     ##     {
-    ##         "covr": 842
+    ##         "covr": 873
     ##     },
     ##     {
-    ##         "stringr": 769
+    ##         "stringr": 784
     ##     },
     ##     {
-    ##         "plyr": 707
+    ##         "plyr": 709
     ##     },
     ##     {
-    ##         "jsonlite": 695
+    ##         "jsonlite": 709
     ##     },
     ##     {
-    ##         "mvtnorm": 685
+    ##         "mvtnorm": 691
     ##     },
     ##     {
-    ##         "data.table": 654
+    ##         "data.table": 674
     ##     },
     ##     {
-    ##         "survival": 640
+    ##         "survival": 646
     ##     },
     ##     {
-    ##         "shiny": 615
+    ##         "shiny": 631
     ##     },
     ##     {
-    ##         "lattice": 613
+    ##         "tidyr": 626
     ##     },
     ##     {
-    ##         "tidyr": 609
+    ##         "lattice": 615
     ##     },
     ##     {
-    ##         "tibble": 594
+    ##         "tibble": 610
     ##     }
     ## ]
 
