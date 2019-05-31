@@ -22,7 +22,8 @@ options(max.print = 200)
 
 The CRAN database provides an API for programatically accessing all
 meta-data of CRAN R packages. This API can be used for various purposes,
-here are three examples I am woking on right now:
+here are three examples I am working on right now:
+
 * Writing a package manager for R. The package manager can use the
   CRAN DB API to query dependencies, or other meta data.
 * Building a search engine for CRAN packages. The DB itself does not
