@@ -108,7 +108,7 @@ get_descriptions <- function(pkg) {
 
 get_desc_from_file <- function(file, pkg) {
   file %>%
-    from_tarball(files = file.path(pkg, "DESCRIPTION")) %>%
+    description_from_tarball() %>%
     trim_trailing() %>%
     add_more_info(pkg = pkg, file = file) %>%
     fix_empty_lines() %>%
@@ -148,18 +148,21 @@ fix_empty_lines <- function(text) {
          perl = TRUE, useBytes = TRUE)
 }
 
-from_tarball <- function(tar_file, files) {
+description_from_tarball <- function(tar_file) {
   tmp <- tempfile()
   on.exit(try(unlink(tmp, recursive = TRUE)))
   dir.create(tmp)
 
-  if (utils::untar(tar_file, files = files, exdir = tmp) != 0L) {
+  if (utils::untar(tar_file, exdir = tmp) != 0L) {
     stop(sprintf("Cannot uncompress tar file `%s`", tar_file))
   }
 
-  file.path(tmp, files) %>%
+  root_dir <- dir(tmp)[1]
+  flname <- file.path(root_dir, "DESCRIPTION")
+
+  file.path(tmp, root_dir, "DESCRIPTION") %>%
     sapply(read_file) %>%
-    set_names(files)
+    set_names(flname)
 }
 
 read_file <- function(path) {

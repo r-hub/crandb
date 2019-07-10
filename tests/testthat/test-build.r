@@ -29,25 +29,6 @@ Imports:
   expect_equal(dcf[, "Version"], c(Version = "0.1"))
 })
 
-test_that("Extract a file from a tarball", {
-  tmp <- tempfile()
-  on.exit(try(unlink(tmp, recursive = TRUE)), add = TRUE)
-  dir.create(tmp)
-
-  cat("Hello world!\n", file = file.path(tmp, "hello.txt"))
-  tarfile <- basename(tmp) %>%
-    paste0(".tar.gz")
-  on.exit(try(unlink(tarfile)), add = TRUE)
-  with_wd(tempdir(), tar(tarfile, basename(tmp), compression = "gzip"))
-
-  hello <- basename(tmp) %>%
-    file.path("hello.txt")
-  cnt <- file.path(tempdir(), tarfile) %>%
-    from_tarball(hello)
-  expect_equal(unname(cnt), "Hello world!\n")
-
-})
-
 test_that("List tarballs for a package", {
   need_pkgs(c("assertthat", "testthat", "igraph0"))
   expect_equal(
