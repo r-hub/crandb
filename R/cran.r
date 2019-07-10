@@ -37,8 +37,8 @@ service <- NA
 }
 
 crandb_dev <- function() {
-  nonroot <- list(list(uri = "http://crandb-dev.r-pkg.org/",
-                       priority = 10))
+  nonroot <- list(uri = "http://crandb-dev.r-pkg.org/",
+                  priority = 10)
   user <- couchdb_user()
   passwd <- couchdb_password()
   uri <- "https://" %+% user %+% ":" %+% passwd %+% "@" %+%
