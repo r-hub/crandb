@@ -43,7 +43,7 @@ crandb_dev <- function() {
   passwd <- couchdb_password()
   uri <- "https://" %+% user %+% ":" %+% passwd %+% "@" %+%
     "crandb.r-pkg.org:6984/cran-dev"
-  root <- list(list(uri = uri, priority = 10))
+  root <- list(uri = uri, priority = 10)
   couchdb_server(nonroot, root = FALSE)
   couchdb_server(root, root = TRUE)
 }
@@ -51,7 +51,7 @@ crandb_dev <- function() {
 crandb_production <- function() {
   uri <- "https://" %+% couchdb_user() %+% ":" %+% couchdb_password() %+%
     "@" %+% "crandb.r-pkg.org:6984/cran"
-  root <- list(list(uri = uri, priority = 10))
+  root <- list(uri = uri, priority = 10)
   couchdb_server(couchdb_uri(), root = FALSE)
   couchdb_server(root, root = TRUE)
 }
