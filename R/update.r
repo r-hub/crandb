@@ -89,7 +89,7 @@ crandb_update <- function(force = FALSE) {
     paste(cran_site(), ., sep="/") %>%
     read_remote_rds()
 
-  current_db <- couchdb_server()[[1]]$uri %>%
+  current_db <- couchdb_server()$uri %>%
     paste0("/-/desc") %>%
     httr::GET() %>%
     httr::content(as = "text", encoding = "UTF-8") %>%
