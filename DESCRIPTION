@@ -26,6 +26,7 @@ Collate:
     'config.r'
     'couch.r'
     'crandb-package.r'
+    'fix.R'
     'print.r'
     'public_api.r'
     'update.r'
