@@ -81,8 +81,11 @@ crandb_update <- function(force = FALSE) {
   current <- current[rownames(current) %in% rownames(packages),, drop = FALSE ]
   packages <- packages[rownames(current), , drop = FALSE]
 
-  rownames(current) <- paste0(rownames(current), "_",
-                              packages[, "Version"], ".tar.gz")
+  rownames(current) <- if (nrow(current) == 0) {
+    character()
+  } else  {
+    paste0(rownames(current), "_", packages[, "Version"], ".tar.gz")
+  }
 
   archive <- archive_rds_path_comps %>%
     paste(collapse = "/") %>%
