@@ -77,6 +77,7 @@ crandb_update <- function(force = FALSE) {
 
   current <- current_url %>%
     read_remote_rds()
+  rownames(current) <- sub("_.*$", "", rownames(current))
 
   current <- current[rownames(current) %in% rownames(packages),, drop = FALSE ]
   packages <- packages[rownames(current), , drop = FALSE]
