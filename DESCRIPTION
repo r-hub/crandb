@@ -27,6 +27,7 @@ Collate:
     'couch.r'
     'crandb-package.r'
     'fix.R'
+    'missing.r'
     'print.r'
     'public_api.r'
     'update.r'
@@ -34,4 +35,4 @@ Suggests:
     testthat
 URL: https://github.com/metacran/crandb
 BugReports: https://github.com/metacran/crandb/issues
-RoxygenNote: 6.1.1
+RoxygenNote: 7.2.3
